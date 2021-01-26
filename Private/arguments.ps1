@@ -1,4 +1,4 @@
-function New-NbArgumentString {
+function New-ArgumentString {
     [CmdletBinding()]
     param (
         [Parameter(Mandatory=$True,Position=0)][hashtable]$QueryArguments
