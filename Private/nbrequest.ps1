@@ -1,0 +1,24 @@
+function Invoke-NbRequest {
+    [CmdletBinding()]
+    param (
+        [Parameter(Mandatory=$True,Position=0)][Object]$restParams
+    )
+    $Headers = @{
+        "Authorization" = "Token $($Connection.ApiKey)"
+        "Content-Type" = 'application/json'
+        "Accept" = "application/json; indent=4"
+    }
+    Write-Verbose "[$($MyInvocation.MyCommand.Name)] Making API call."
+    try {
+        $result = Invoke-RestMethod @restParams -Headers $headers
+    }
+    catch {
+        if ($_.ErrorDetails.Message) {
+            Write-Error "Response from $($paConnection.Address): $(($_.ErrorDetails.Message|convertfrom-json).message)."
+        }
+        else {
+            $_.ErrorDetails
+        }
+    }
+    $result
+}
