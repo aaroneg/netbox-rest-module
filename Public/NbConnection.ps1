@@ -54,7 +54,7 @@ function Test-NbConnection {
         [Parameter(ValueFromPipeline=$True,Mandatory=$True,Position=0)][object]$Connection
     )
     Write-Output "User list:"
-    Get-NbItems -RelativePath 'users/users/'|Select-Object -Property id,username,is_staff,is_active|Write-Output
+    Get-NbItems -RelativePath 'users/users/'|Select-Object -Property id,username,is_staff,is_active
     Write-Output "`nPrinting results for user 1:`n"
     Get-NbItem -RelativePath 'users/users/' -Field 'id' -Value '1'
 }
