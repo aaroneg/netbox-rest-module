@@ -4,7 +4,7 @@ function Invoke-NbRequest {
         [Parameter(Mandatory=$True,Position=0)][Object]$restParams
     )
     $Headers = @{
-        "Authorization" = "Token $($Connection.ApiKey)"
+        "Authorization" = "Token $($script:nbConnection.ApiKey)"
         "Content-Type" = 'application/json'
         "Accept" = "application/json; indent=4"
     }
