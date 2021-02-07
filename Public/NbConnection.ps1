@@ -29,7 +29,7 @@ function New-NbConnection {
     }
     $Connection = New-Object psobject -Property $ConnectionProperties
     Write-Verbose "[$($MyInvocation.MyCommand.Name)] Host '$($Connection.Address)' is now the default connection."
-    $Script:Connection=$Connection
+    $Script:nbConnection=$Connection
     if ($Passthru){
         $Connection
     }
