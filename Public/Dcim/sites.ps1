@@ -1,6 +1,10 @@
 class Site{
 #region Properties    
     [ValidateNotNullOrEmpty()][string]$name
+    [int]$id
+    [string]$url
+    [string]$display
+    [string]$name
     [string]$slug
     [Validateset('planned','staging','active','decommissioning','retired')]
         [string]$status
