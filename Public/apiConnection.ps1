@@ -25,12 +25,17 @@ function Test-NBConnection {
 	)
 	if (!($NBConnection)) { 
 		Write-Verbose "[$($MyInvocation.MyCommand.Name)] Trying Default Connection"
+		$NBConnection=$Script:Connection
 	}
 
 	$restParams=@{
 		Method = 'Get'
 		Uri = "$($NBConnection.ApiBaseUrl)/"
 	}
-
+	Invoke-CustomRequest -restparams $restParams -Connection $NBConnection
 }
 
+function Get-NBCurrentConnection {
+	"Default Netbox Connection:"
+	$Script:Connection
+}
