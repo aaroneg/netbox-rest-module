@@ -5,8 +5,8 @@ function Invoke-CustomRequest {
 		[Parameter(Mandatory = $True, Position = 1)][System.Object]$Connection
 	)
 	$Headers = @{
-		"Authorization" = $Connection.ApiKey
-		ContentType    = 'application/json'
+		Authorization = "Token $($Connection.ApiKey)"
+		"Content-Type"    = 'application/json'
 	}
 	Write-Verbose "[$($MyInvocation.MyCommand.Name)] Making API call."
 	try {
