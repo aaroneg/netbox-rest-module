@@ -49,7 +49,7 @@ function Get-NBSite {
 	[CmdletBinding()]
 	param (
 		[Parameter(Mandatory=$false)][object]$Connection=$Script:Connection,
-		[Parameter(Mandatory=$true)][int]$id
+		[Parameter(Mandatory=$true,Position=0)][int]$id
 	)
 	$restParams=@{
 		Method = 'Get'
@@ -62,11 +62,11 @@ function Set-NBSite {
 	[CmdletBinding()]
 	param (
 		[Parameter(Mandatory=$false)][object]$Connection=$Script:Connection,
-		[Parameter(Mandatory=$true)][int]$id,
-		[Parameter(Mandatory=$true)][string]
+		[Parameter(Mandatory=$true,Position=0)][int]$id,
+		[Parameter(Mandatory=$true,Position=1)][string]
 			[ValidateSet('name','slug','status','region','group','tenant','facility','time_zone','description','physical_address','shipping_address','latitude','longitude','comments')]
 			$key,
-		[Parameter(Mandatory=$true)][string]$value
+		[Parameter(Mandatory=$true,Position=2)][string]$value
 	)
 	switch($key){
 		'slug' {$value=makeSlug -name $value}
@@ -87,7 +87,7 @@ function Remove-NBSite {
 	[CmdletBinding()]
 	param (
 		[Parameter(Mandatory=$false)][object]$Connection=$Script:Connection,
-		[Parameter(Mandatory=$true)][int]$id
+		[Parameter(Mandatory=$true,Position=0)][int]$id
 	)
 	$restParams=@{
 		Method = 'Delete'

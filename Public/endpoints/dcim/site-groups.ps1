@@ -44,7 +44,7 @@ function Get-NBSiteGroup {
 	[CmdletBinding()]
 	param (
 		[Parameter(Mandatory=$false)][object]$Connection=$Script:Connection,
-		[Parameter(Mandatory=$true)][int]$id
+		[Parameter(Mandatory=$true,Position=0)][int]$id
 	)
 	$restParams=@{
 		Method = 'Get'
@@ -57,11 +57,11 @@ function Set-NBSiteGroup {
 	[CmdletBinding()]
 	param (
 		[Parameter(Mandatory=$false)][object]$Connection=$Script:Connection,
-		[Parameter(Mandatory=$true)][int]$id,
-		[Parameter(Mandatory=$true)][string]
-			[ValidateSet('name','slug','description')]
+		[Parameter(Mandatory=$true,Position=0)][int]$id,
+		[Parameter(Mandatory=$true,Position=1)][string]
+			[ValidateSet('name','slug','description','parent')]
 			$key,
-		[Parameter(Mandatory=$true)][string]$value
+		[Parameter(Mandatory=$true,Position=2)][string]$value
 	)
 	switch($key){
 		'slug' {$value=makeSlug -name $value}
@@ -82,7 +82,7 @@ function Remove-NBSiteGroup {
 	[CmdletBinding()]
 	param (
 		[Parameter(Mandatory=$false)][object]$Connection=$Script:Connection,
-		[Parameter(Mandatory=$true)][int]$id
+		[Parameter(Mandatory=$true,Position=0)][int]$id
 	)
 	$restParams=@{
 		Method = 'Delete'
