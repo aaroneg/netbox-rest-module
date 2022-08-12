@@ -9,6 +9,7 @@ Class NBSite {
 	[string]$name
 	[string]$status
 	[string]$slug
+	# Constructor
 	NBSite(
 		[string]$name,
 		[string]$status
@@ -35,7 +36,6 @@ function New-NBSite {
 	}
 	Write-Verbose $Site|ConvertTo-Json -Depth 50
 	$Site=Invoke-CustomRequest -restParams $restParams -Connection $Connection
-	$restParams.body
 	$Site
 }
 
@@ -62,7 +62,6 @@ function Get-NBSite {
 		Method = 'Get'
 		URI = "$($Connection.ApiBaseURL)/$SitesAPIPath/$id/"
 	}
-	$restParams.URI
 	(Invoke-CustomRequest -restParams $restParams -Connection $Connection)
 }
 
@@ -88,6 +87,19 @@ function Set-NBSite {
 		URI = "$($Connection.ApiBaseURL)/$SitesAPIPath/$id/"
 		body = $update | ConvertTo-Json -Depth 50
 	}
-	$restParams.URI
+	(Invoke-CustomRequest -restParams $restParams -Connection $Connection)
+}
+
+function Remove-NBSite {
+	[CmdletBinding()]
+	param (
+		[Parameter(Mandatory=$false)][object]$Connection=$Script:Connection,
+		[Parameter(Mandatory=$true)][int]$id
+	)
+	$restParams=@{
+		Method = 'Delete'
+		URI = "$($Connection.ApiBaseURL)/$SitesAPIPath/$id/"
+		body = $update | ConvertTo-Json -Depth 50
+	}
 	(Invoke-CustomRequest -restParams $restParams -Connection $Connection)
 }
