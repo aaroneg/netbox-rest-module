@@ -16,7 +16,7 @@ Class NBLocation {
 		$this.status = $status
 	}
 }
-$LocationsAPIPath="dcim/Locations"
+$LocationsAPIPath="dcim/locations"
 
 function New-NBLocation {
 	[CmdletBinding()]
