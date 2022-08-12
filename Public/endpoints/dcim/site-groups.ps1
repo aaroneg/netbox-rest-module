@@ -1,10 +1,3 @@
-# Enum NBSiteStatus {
-# 	Planned = "planned"
-# 	Staging = "staging"
-# 	Active = "active"
-# 	Decommissioning = "decommissioning"
-# 	Retired = "retired"
-# }
 Class NBSiteGroup {
 	[string]$name
 	[string]$slug
