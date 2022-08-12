@@ -17,8 +17,8 @@ $SitesAPIPath="dcim/sites"
 function New-NBSite {
 	[CmdletBinding()]
 	param (
-		[Parameter(Mandatory=$true)][string]$name,
-		[Parameter(Mandatory=$true)][string]$status,
+		[Parameter(Mandatory=$true,Position=0)][string]$name,
+		[Parameter(Mandatory=$true,Position=1)][string]$status,
 		[Parameter(Mandatory=$false)][object]$Connection=$Script:Connection
 	)
 	$Site=[NBsite]::New($name,$status)

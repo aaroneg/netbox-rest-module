@@ -14,7 +14,7 @@ $regionsAPIPath="dcim/regions"
 function New-NBregion {
 	[CmdletBinding()]
 	param (
-		[Parameter(Mandatory=$true)][string]$name,
+		[Parameter(Mandatory=$true,Position=0)][string]$name,
 		[Parameter(Mandatory=$false)][object]$Connection=$Script:Connection
 	)
 	$region=[NBregion]::New($name)

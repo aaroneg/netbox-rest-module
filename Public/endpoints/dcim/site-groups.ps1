@@ -14,7 +14,7 @@ $SiteGroupsAPIPath="dcim/site-groups"
 function New-NBSiteGroup {
 	[CmdletBinding()]
 	param (
-		[Parameter(Mandatory=$true)][string]$name,
+		[Parameter(Mandatory=$true,Position=0)][string]$name,
 		[Parameter(Mandatory=$false)][object]$Connection=$Script:Connection
 	)
 	$Site=[NBsiteGroup]::New($name)
