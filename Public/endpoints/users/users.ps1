@@ -1,15 +1,15 @@
-Class NBUser {
-	[string]$username
-	[string]$password
-	# Constructor
-	NBUser(
-		[string]$username,
-		[string]$password
-	){
-		$this.username = $username
-		$this.password = $password
-	}
-}
+# Class NBUser {
+# 	[string]$username
+# 	[string]$password
+# 	# Constructor
+# 	NBUser(
+# 		[string]$username,
+# 		[string]$password
+# 	){
+# 		$this.username = $username
+# 		$this.password = $password
+# 	}
+# }
 $UsersAPIPath="users/users"
 
 # function New-NBUser {
