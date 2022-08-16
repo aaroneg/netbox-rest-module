@@ -19,19 +19,19 @@ function New-NBRack {
 	[CmdletBinding()]
 	param (
 		[Parameter(Mandatory=$true,Position=0)][string]$name,
-		[Parameter(Mandatory=$true,Position=1)][int]$site,
-		[Parameter(Mandatory=$true,Position=2)][int]$location,
+		[Parameter(Mandatory=$true,Position=1)][int]$siteID,
+		[Parameter(Mandatory=$true,Position=2)][int]$locationID,
 		[Parameter(Mandatory=$false)][object]$Connection=$Script:Connection
 	)
-	$Rack=[NBRack]::New($name,$site,$location)
+	$PostObject=[NBRack]::New($name,$site,$location)
 	$restParams=@{
 		Method = 'Post'
 		URI = "$($Connection.ApiBaseURL)/$RacksAPIPath/"
-		body = $Rack|ConvertTo-Json -Depth 50
+		body = $PostObject|ConvertTo-Json -Depth 50
 	}
-	Write-Verbose $Rack|ConvertTo-Json -Depth 50
-	$Rack=Invoke-CustomRequest -restParams $restParams -Connection $Connection
-	$Rack
+	Write-Verbose $PostObject|ConvertTo-Json -Depth 50
+	$PostObject=Invoke-CustomRequest -restParams $restParams -Connection $Connection
+	$PostObject
 }
 
 function Get-NBRacks {

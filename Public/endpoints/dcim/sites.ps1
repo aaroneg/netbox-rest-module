@@ -21,15 +21,15 @@ function New-NBSite {
 		[Parameter(Mandatory=$true,Position=1)][string]$status,
 		[Parameter(Mandatory=$false)][object]$Connection=$Script:Connection
 	)
-	$Site=[NBsite]::New($name,$status)
+	$PostObject=[NBsite]::New($name,$status)
 	$restParams=@{
 		Method = 'Post'
 		URI = "$($Connection.ApiBaseURL)/$SitesAPIPath/"
-		body = $Site|ConvertTo-Json -Depth 50
+		body = $PostObject|ConvertTo-Json -Depth 50
 	}
-	Write-Verbose $Site|ConvertTo-Json -Depth 50
-	$Site=Invoke-CustomRequest -restParams $restParams -Connection $Connection
-	$Site
+	Write-Verbose $PostObject|ConvertTo-Json -Depth 50
+	$PostObject=Invoke-CustomRequest -restParams $restParams -Connection $Connection
+	$PostObject
 }
 
 function Get-NBSites {

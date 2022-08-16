@@ -17,15 +17,15 @@ function New-NBVMClusterGroup {
 		[Parameter(Mandatory=$true,Position=0)][string]$name,
 		[Parameter(Mandatory=$false)][object]$Connection=$Script:Connection
 	)
-	$Contact=[NBVMClusterGroup]::New($name)
+	$PostObject=[NBVMClusterGroup]::New($name)
 	$restParams=@{
 		Method = 'Post'
 		URI = "$($Connection.ApiBaseURL)/$VirtualizationClusterGroupsAPIPath/"
-		body = $Contact|ConvertTo-Json -Depth 50
+		body = $PostObject|ConvertTo-Json -Depth 50
 	}
-	Write-Verbose $Contact|ConvertTo-Json -Depth 50
-	$Contact=Invoke-CustomRequest -restParams $restParams -Connection $Connection
-	$Contact
+	Write-Verbose $PostObject|ConvertTo-Json -Depth 50
+	$PostObject=Invoke-CustomRequest -restParams $restParams -Connection $Connection
+	$PostObject
 }
 
 function Get-NBVMClusterGroups {

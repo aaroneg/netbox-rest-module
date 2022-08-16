@@ -17,15 +17,15 @@ function New-NBTenant {
 		[Parameter(Mandatory=$true,Position=0)][string]$name,
 		[Parameter(Mandatory=$false)][object]$Connection=$Script:Connection
 	)
-	$Tenant=[NBTenant]::New($name)
+	$PostObject=[NBTenant]::New($name)
 	$restParams=@{
 		Method = 'Post'
 		URI = "$($Connection.ApiBaseURL)/$TenantsAPIPath/"
-		body = $Tenant|ConvertTo-Json -Depth 50
+		body = $PostObject|ConvertTo-Json -Depth 50
 	}
-	Write-Verbose $Tenant|ConvertTo-Json -Depth 50
-	$Tenant=Invoke-CustomRequest -restParams $restParams -Connection $Connection
-	$Tenant
+	Write-Verbose $PostObject|ConvertTo-Json -Depth 50
+	$PostObject=Invoke-CustomRequest -restParams $restParams -Connection $Connection
+	$PostObject
 }
 
 function Get-NBTenants {

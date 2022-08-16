@@ -28,15 +28,15 @@ $RackReservationsAPIPath="dcim/rack-reservations"
 # 		[Parameter(Mandatory=$true,Position=4)][string]$description,
 # 		[Parameter(Mandatory=$false)][object]$Connection=$Script:Connection
 # 	)
-# 	$RackReservation=[NBRackReservation]::New($rackid,$units,$user,$description)
+# 	$PostObject=[NBRackReservation]::New($rackid,$units,$user,$description)
 # 	$restParams=@{
 # 		Method = 'Post'
 # 		URI = "$($Connection.ApiBaseURL)/$RackReservationsAPIPath/"
-# 		body = $RackReservation|ConvertTo-Json -Depth 50
+# 		body = $PostObject|ConvertTo-Json -Depth 50
 # 	}
-# 	$RackReservation|ConvertTo-Json -Depth 50
-# 	$RackReservation=Invoke-CustomRequest -restParams $restParams -Connection $Connection
-# 	$RackReservation
+# 	$PostObject|ConvertTo-Json -Depth 50
+# 	$PostObject=Invoke-CustomRequest -restParams $restParams -Connection $Connection
+# 	$PostObject
 # }
 
 function Get-NBRackReservations {

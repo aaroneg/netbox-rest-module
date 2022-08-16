@@ -17,15 +17,15 @@ function New-NBRackRole {
 		[Parameter(Mandatory=$true,Position=0)][string]$name,
 		[Parameter(Mandatory=$false)][object]$Connection=$Script:Connection
 	)
-	$RackRole=[NBRackRole]::New($name)
+	$PostObject=[NBRackRole]::New($name)
 	$restParams=@{
 		Method = 'Post'
 		URI = "$($Connection.ApiBaseURL)/$RackRolesAPIPath/"
-		body = $RackRole|ConvertTo-Json -Depth 50
+		body = $PostObject|ConvertTo-Json -Depth 50
 	}
-	Write-Verbose $RackRole|ConvertTo-Json -Depth 50
-	$RackRole=Invoke-CustomRequest -restParams $restParams -Connection $Connection
-	$RackRole
+	Write-Verbose $PostObject|ConvertTo-Json -Depth 50
+	$PostObject=Invoke-CustomRequest -restParams $restParams -Connection $Connection
+	$PostObject
 }
 
 function Get-NBRackRoles {

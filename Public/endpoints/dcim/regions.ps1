@@ -17,15 +17,15 @@ function New-NBRegion {
 		[Parameter(Mandatory=$true,Position=0)][string]$name,
 		[Parameter(Mandatory=$false)][object]$Connection=$Script:Connection
 	)
-	$region=[NBregion]::New($name)
+	$PostObject=[NBregion]::New($name)
 	$restParams=@{
 		Method = 'Post'
 		URI = "$($Connection.ApiBaseURL)/$regionsAPIPath/"
-		body = $region|ConvertTo-Json -Depth 50
+		body = $PostObject|ConvertTo-Json -Depth 50
 	}
-	Write-Verbose $region|ConvertTo-Json -Depth 50
-	$region=Invoke-CustomRequest -restParams $restParams -Connection $Connection
-	$region
+	Write-Verbose $PostObject|ConvertTo-Json -Depth 50
+	$PostObject=Invoke-CustomRequest -restParams $restParams -Connection $Connection
+	$PostObject
 }
 
 function Get-NBRegions {

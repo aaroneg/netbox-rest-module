@@ -1,19 +1,16 @@
 Class NBLocation {
 	[string]$name
+	[string]$slug
 	[int]$site
-	[int]$location
-	[string]$status
+
 	# Constructor
 	NBLocation(
 		[string]$name,
-		[int]$site,
-		[int]$location,
-		[string]$status
+		[int]$site
 	){
-		$this.site = $site
 		$this.name = $name
-		$this.location = $location
-		$this.status = $status
+		$this.slug = makeSlug -name $name
+		$this.site = $site
 	}
 }
 $LocationsAPIPath="dcim/locations"
@@ -22,19 +19,18 @@ function New-NBLocation {
 	[CmdletBinding()]
 	param (
 		[Parameter(Mandatory=$true,Position=0)][string]$name,
-		[Parameter(Mandatory=$true,Position=0)][int]$site,
-		[Parameter(Mandatory=$true,Position=0)][int]$location,
+		[Parameter(Mandatory=$true,Position=1)][int]$siteID,
 		[Parameter(Mandatory=$false)][object]$Connection=$Script:Connection
 	)
-	$Location=[NBLocation]::New($name,$site)
+	$PostObject=[NBLocation]::New($name,$siteID)
 	$restParams=@{
 		Method = 'Post'
 		URI = "$($Connection.ApiBaseURL)/$LocationsAPIPath/"
-		body = $Location|ConvertTo-Json -Depth 50
+		body = $PostObject|ConvertTo-Json -Depth 50
 	}
-	Write-Verbose $Location|ConvertTo-Json -Depth 50
-	$Location=Invoke-CustomRequest -restParams $restParams -Connection $Connection
-	$Location
+	Write-Verbose $PostObject|ConvertTo-Json -Depth 50
+	$PostObject=Invoke-CustomRequest -restParams $restParams -Connection $Connection
+	$PostObject
 }
 
 function Get-NBLocations {
@@ -70,7 +66,7 @@ function Set-NBLocation {
 		[Parameter(Mandatory=$false)][object]$Connection=$Script:Connection,
 		[Parameter(Mandatory=$true,Position=0)][int]$id,
 		[Parameter(Mandatory=$true,Position=1)][string]
-			[ValidateSet('name','location','site','region','group','tenant','facility','time_zone','description','physical_address','shipping_address','latitude','longitude','comments')]
+			[ValidateSet('name','slug','site','parent','tenant','description')]
 			$key,
 		[Parameter(Mandatory=$true,Position=2)][string]$value
 	)

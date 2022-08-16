@@ -17,15 +17,15 @@ function New-NBSiteGroup {
 		[Parameter(Mandatory=$true,Position=0)][string]$name,
 		[Parameter(Mandatory=$false)][object]$Connection=$Script:Connection
 	)
-	$Site=[NBsiteGroup]::New($name)
+	$PostObject=[NBsiteGroup]::New($name)
 	$restParams=@{
 		Method = 'Post'
 		URI = "$($Connection.ApiBaseURL)/$SiteGroupsAPIPath/"
-		body = $Site|ConvertTo-Json -Depth 50
+		body = $PostObject|ConvertTo-Json -Depth 50
 	}
-	Write-Verbose $Site|ConvertTo-Json -Depth 50
-	$Site=Invoke-CustomRequest -restParams $restParams -Connection $Connection
-	$Site
+	Write-Verbose $PostObject|ConvertTo-Json -Depth 50
+	$PostObject=Invoke-CustomRequest -restParams $restParams -Connection $Connection
+	$PostObject
 }
 
 function Get-NBSiteGroups {

@@ -1,12 +1,10 @@
 Class NBContact {
 	[string]$name
-	#[int]$group
 	# Constructor
 	NBContact(
 		[string]$name
 	){
 		$this.name = $name
-		#$this.group = $null
 	}
 }
 $ContactsAPIPath="tenancy/contacts"
@@ -17,15 +15,15 @@ function New-NBContact {
 		[Parameter(Mandatory=$true,Position=0)][string]$name,
 		[Parameter(Mandatory=$false)][object]$Connection=$Script:Connection
 	)
-	$Contact=[NBContact]::New($name)
+	$PostObject=[NBContact]::New($name)
 	$restParams=@{
 		Method = 'Post'
 		URI = "$($Connection.ApiBaseURL)/$ContactsAPIPath/"
-		body = $Contact|ConvertTo-Json -Depth 50
+		body = $PostObject|ConvertTo-Json -Depth 50
 	}
-	Write-Verbose $Contact|ConvertTo-Json -Depth 50
-	$Contact=Invoke-CustomRequest -restParams $restParams -Connection $Connection
-	$Contact
+	Write-Verbose $PostObject|ConvertTo-Json -Depth 50
+	$PostObject=Invoke-CustomRequest -restParams $restParams -Connection $Connection
+	$PostObject
 }
 
 function Get-NBContacts {
