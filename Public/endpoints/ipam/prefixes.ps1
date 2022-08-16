@@ -7,7 +7,7 @@ Class NBPrefix {
 		$this.prefix = $prefix
 	}
 }
-$SitesAPIPath="ipam/prefixes"
+$PrefixesAPIPath="ipam/prefixes"
 
 function New-NBPrefix {
 	[CmdletBinding()]
@@ -18,7 +18,7 @@ function New-NBPrefix {
 	$PostObject=[NBPrefix]::New($prefix)
 	$restParams=@{
 		Method = 'Post'
-		URI = "$($Connection.ApiBaseURL)/$SitesAPIPath/"
+		URI = "$($Connection.ApiBaseURL)/$PrefixesAPIPath/"
 		body = $PostObject|ConvertTo-Json -Depth 50
 	}
 	Write-Verbose $PostObject|ConvertTo-Json -Depth 50
@@ -31,7 +31,7 @@ function Get-NBPrefixes {
 	param (
 		[Parameter(Mandatory=$false)][object]$Connection=$Script:Connection
 	)
-	Get-ApiItems -apiConnection $Connection -RelativePath $SitesAPIPath
+	Get-ApiItems -apiConnection $Connection -RelativePath $PrefixesAPIPath
 }
 
 function Get-NBPrefixByID {
@@ -40,7 +40,7 @@ function Get-NBPrefixByID {
 		[Parameter(Mandatory=$false)][object]$Connection=$Script:Connection,
 		[Parameter(Mandatory=$true,Position=0)][int]$id
 	)
-	Get-ApiItemByID -apiConnection $Connection -RelativePath $SitesAPIPath -id $id
+	Get-ApiItemByID -apiConnection $Connection -RelativePath $PrefixesAPIPath -id $id
 }
 function Set-NBPrefix {
 	[CmdletBinding()]
@@ -58,7 +58,7 @@ function Set-NBPrefix {
 	}
 	$restParams=@{
 		Method = 'Patch'
-		URI = "$($Connection.ApiBaseURL)/$SitesAPIPath/$id/"
+		URI = "$($Connection.ApiBaseURL)/$PrefixesAPIPath/$id/"
 		body = $update | ConvertTo-Json -Depth 50
 	}
 	(Invoke-CustomRequest -restParams $restParams -Connection $Connection)
@@ -72,7 +72,7 @@ function Remove-NBPrefix {
 	)
 	$restParams=@{
 		Method = 'Delete'
-		URI = "$($Connection.ApiBaseURL)/$SitesAPIPath/$id/"
+		URI = "$($Connection.ApiBaseURL)/$PrefixesAPIPath/$id/"
 		body = $update | ConvertTo-Json -Depth 50
 	}
 	(Invoke-CustomRequest -restParams $restParams -Connection $Connection)
