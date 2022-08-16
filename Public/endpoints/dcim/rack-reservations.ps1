@@ -1,22 +1,22 @@
-Class NBRackReservation {
-	[int]$rack
-	[string]$units
-	[array]$user
-	[string]$description
-	# Constructor
-	NBRackReservation(
-		[int]$rack,
-		[array]$units,
-		[int]$user,
-		[string]$description
+# Class NBRackReservation {
+# 	[int]$rack
+# 	[string]$units
+# 	[array]$user
+# 	[string]$description
+# 	# Constructor
+# 	NBRackReservation(
+# 		[int]$rack,
+# 		[array]$units,
+# 		[int]$user,
+# 		[string]$description
 
-	){
-		$this.rack = $rack
-		$this.units = $units
-		$this.user = $user
-		$this.description = $description
-	}
-}
+# 	){
+# 		$this.rack = $rack
+# 		$this.units = $units
+# 		$this.user = $user
+# 		$this.description = $description
+# 	}
+# }
 $RackReservationsAPIPath="dcim/rack-reservations"
 
 # function New-NBRackReservation {
@@ -44,24 +44,16 @@ function Get-NBRackReservations {
 	param (
 		[Parameter(Mandatory=$false)][object]$Connection=$Script:Connection
 	)
-	$restParams=@{
-		Method = 'Get'
-		URI = "$($Connection.ApiBaseURL)/$RackReservationsAPIPath/"
-	}
-	(Invoke-CustomRequest -restParams $restParams -Connection $Connection).results
+	Get-ApiItems -apiConnection $Connection -RelativePath $RackReservationsAPIPath
 }
 
-function Get-NBRackReservation {
+function Get-NBRackReservationByID {
 	[CmdletBinding()]
 	param (
 		[Parameter(Mandatory=$false)][object]$Connection=$Script:Connection,
 		[Parameter(Mandatory=$true,Position=0)][int]$id
 	)
-	$restParams=@{
-		Method = 'Get'
-		URI = "$($Connection.ApiBaseURL)/$RackReservationsAPIPath/$id/"
-	}
-	(Invoke-CustomRequest -restParams $restParams -Connection $Connection)
+	Get-ApiItemByID -apiConnection $Connection -RelativePath $RackReservationsAPIPath -id $id
 }
 
 function Set-NBRackReservation {
