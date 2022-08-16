@@ -18,7 +18,7 @@ function New-NBVLAN {
 		[Parameter(Mandatory=$true,Position=0)][string]$name,
 		[Parameter(Mandatory=$false)][object]$Connection=$Script:Connection
 	)
-	$PostObject=[NBVLAN]::New($name)
+	$PostObject=[NBVLAN]::New($vid,$name)
 	$restParams=@{
 		Method = 'Post'
 		URI = "$($Connection.ApiBaseURL)/$VLANsAPIPath/"
