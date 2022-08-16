@@ -37,7 +37,6 @@ function Get-NBRackRoles {
 		Method = 'Get'
 		URI = "$($Connection.ApiBaseURL)/$RackRolesAPIPath/"
 	}
-	$restParams.URI
 	(Invoke-CustomRequest -restParams $restParams -Connection $Connection).results
 }
 

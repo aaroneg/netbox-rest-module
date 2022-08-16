@@ -41,7 +41,6 @@ function Get-NBSites {
 		Method = 'Get'
 		URI = "$($Connection.ApiBaseURL)/$SitesAPIPath/"
 	}
-	$restParams.URI
 	(Invoke-CustomRequest -restParams $restParams -Connection $Connection).results
 }
 

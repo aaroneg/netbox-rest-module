@@ -39,7 +39,6 @@ function Get-NBUsers {
 		Method = 'Get'
 		URI = "$($Connection.ApiBaseURL)/$UsersAPIPath/"
 	}
-	$restParams.URI
 	(Invoke-CustomRequest -restParams $restParams -Connection $Connection).results
 }
 

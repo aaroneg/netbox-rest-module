@@ -43,7 +43,6 @@ function Get-NBRacks {
 		Method = 'Get'
 		URI = "$($Connection.ApiBaseURL)/$RacksAPIPath/"
 	}
-	$restParams.URI
 	(Invoke-CustomRequest -restParams $restParams -Connection $Connection).results
 }
 

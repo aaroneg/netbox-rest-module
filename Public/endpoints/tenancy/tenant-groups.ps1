@@ -37,7 +37,6 @@ function Get-NBTenantGroups {
 		Method = 'Get'
 		URI = "$($Connection.ApiBaseURL)/$TenantGroupsAPIPath/"
 	}
-	$restParams.URI
 	(Invoke-CustomRequest -restParams $restParams -Connection $Connection).results
 }
 

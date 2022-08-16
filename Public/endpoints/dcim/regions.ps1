@@ -37,7 +37,6 @@ function Get-NBregions {
 		Method = 'Get'
 		URI = "$($Connection.ApiBaseURL)/$regionsAPIPath/"
 	}
-	$restParams.URI
 	(Invoke-CustomRequest -restParams $restParams -Connection $Connection).results
 }
 
