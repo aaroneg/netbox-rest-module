@@ -42,10 +42,6 @@ function Get-NBRackRoleByID {
 		[Parameter(Mandatory=$false)][object]$Connection=$Script:Connection,
 		[Parameter(Mandatory=$true,Position=0)][int]$id
 	)
-	$restParams=@{
-		Method = 'Get'
-		URI = "$($Connection.ApiBaseURL)/$RackRolesAPIPath/$id/"
-	}
 	Get-ApiItemByID -apiConnection $Connection -RelativePath $RackRolesAPIPath -id $id
 }
 
