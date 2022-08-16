@@ -1,23 +1,38 @@
-function Get-ApiItem {
+function Find-ApiItemsByName {
     [CmdletBinding()]
     Param(
         [parameter(Mandatory = $false)][object]$apiConnection = $Script:Connection,
         [parameter(Mandatory = $true)][string]$RelativePath,
         [parameter(Mandatory = $true)][string]$Name
     )
-    $ObjectAPIURI = "$($apiConnection.ApiBaseUrl)$($RelativePath)?"
-    $Arguments = @{
-        location = $Location
-        name = $Name
-    }
-    $Argumentstring = (New-ArgumentString $Arguments)
+	$QueryArguments= @{
+		name__ic = $Name
+	}
+	$ArgumentString= New-ArgumentString $QueryArguments
     $restParams = @{
         Method               = 'get'
-        Uri                  = "$($ObjectAPIURI)$($ArgumentString)"
+        URI                  = "$($Connection.ApiBaseURL)/$RelativePath/?$ArgumentString"
         SkipCertificateCheck = $apiConnection.SkipCertificateCheck
     }
-    (Invoke-CustomRequest $restParams).result.entry
+    (Invoke-CustomRequest $restParams -Connection $Connection).results
 }
+
+
+function Get-ApiItemByID {
+    [CmdletBinding()]
+    Param(
+        [parameter(Mandatory = $false)][object]$apiConnection = $Script:Connection,
+        [parameter(Mandatory = $true)][string]$RelativePath,
+        [parameter(Mandatory = $true)][string]$id
+    )
+    $restParams = @{
+        Method               = 'get'
+        URI                  = "$($Connection.ApiBaseURL)/$RelativePath/$id/"
+        SkipCertificateCheck = $apiConnection.SkipCertificateCheck
+    }
+    Invoke-CustomRequest $restParams -Connection $Connection
+}
+
 
 function Get-ApiItems {
     [CmdletBinding()]
@@ -25,20 +40,14 @@ function Get-ApiItems {
         [parameter(Mandatory = $false)][object]$apiConnection = $Script:Connection,
         [parameter(Mandatory = $true)][string]$RelativePath
     )
-    $ObjectAPIURI = "$($apiConnection.ApiBaseUrl)$($RelativePath)?"
 
-    $Arguments = @{
-        location = $Location
-        name = $Name
-    }
-
-    $Argumentstring = (New-ArgumentString $Arguments)
     $restParams = @{
         Method               = 'get'
-        Uri                  = "$($ObjectAPIURI)$($ArgumentString)"
+        URI                  = "$($Connection.ApiBaseURL)/$RelativePath/"
         SkipCertificateCheck = $apiConnection.SkipCertificateCheck
     }
-    (Invoke-CustomRequest $restParams).result.entry
+	# # (Invoke-CustomRequest -restParams $restParams -Connection $Connection).results
+    (Invoke-CustomRequest $restParams -Connection $apiConnection).results
 }
 
 #Export-ModuleMember -Function "*-*"
