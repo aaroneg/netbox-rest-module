@@ -18,7 +18,10 @@ function New-NBSite {
 	[CmdletBinding()]
 	param (
 		[Parameter(Mandatory=$true,Position=0)][string]$name,
-		[Parameter(Mandatory=$true,Position=1)][string]$status,
+		
+		[Parameter(Mandatory=$true,Position=1)][string]
+			[ValidateSet('planned','staging','active','decommissioning','retired')]
+			$status,
 		[Parameter(Mandatory=$false)][object]$Connection=$Script:Connection
 	)
 	$PostObject=[NBsite]::New($name,$status)
