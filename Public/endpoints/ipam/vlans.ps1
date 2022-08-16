@@ -1,8 +1,8 @@
-Class NBVRF {
+Class NBVLAN {
 	[int]$vid
 	[string]$name
 	# Constructor
-	NBVRF(
+	NBVLAN(
 		[int]$vid,
 		[string]$name
 	){
@@ -10,18 +10,18 @@ Class NBVRF {
 		$this.name = $name
 	}
 }
-$VRFsAPIPath="ipam/vlans"
+$VLANsAPIPath="ipam/vlans"
 
-function New-NBVRF {
+function New-NBVLAN {
 	[CmdletBinding()]
 	param (
 		[Parameter(Mandatory=$true,Position=0)][string]$name,
 		[Parameter(Mandatory=$false)][object]$Connection=$Script:Connection
 	)
-	$PostObject=[NBVRF]::New($name)
+	$PostObject=[NBVLAN]::New($name)
 	$restParams=@{
 		Method = 'Post'
-		URI = "$($Connection.ApiBaseURL)/$VRFsAPIPath/"
+		URI = "$($Connection.ApiBaseURL)/$VLANsAPIPath/"
 		body = $PostObject|ConvertTo-Json -Depth 50
 	}
 	Write-Verbose $PostObject|ConvertTo-Json -Depth 50
@@ -29,33 +29,33 @@ function New-NBVRF {
 	$PostObject
 }
 
-function Get-NBVRFs {
+function Get-NBVLANs {
 	[CmdletBinding()]
 	param (
 		[Parameter(Mandatory=$false)][object]$Connection=$Script:Connection
 	)
-	Get-ApiItems -apiConnection $Connection -RelativePath $VRFsAPIPath
+	Get-ApiItems -apiConnection $Connection -RelativePath $VLANsAPIPath
 }
 
-function Get-NBVRFByID {
+function Get-NBVLANByID {
 	[CmdletBinding()]
 	param (
 		[Parameter(Mandatory=$false)][object]$Connection=$Script:Connection,
 		[Parameter(Mandatory=$true,Position=0)][int]$id
 	)
-	Get-ApiItemByID -apiConnection $Connection -RelativePath $VRFsAPIPath -id $id
+	Get-ApiItemByID -apiConnection $Connection -RelativePath $VLANsAPIPath -id $id
 }
 
-function Find-NBVRFsByName {
+function Find-NBVLANsByName {
 	[CmdletBinding()]
 	param (
 		[Parameter(Mandatory=$false)][object]$Connection=$Script:Connection,
 		[Parameter(Mandatory=$true,Position=1)][string]$name
 	)
-	Find-ApiItemsByName -apiConnection $Connection -RelativePath $VRFsAPIPath -name $name
+	Find-ApiItemsByName -apiConnection $Connection -RelativePath $VLANsAPIPath -name $name
 }
 
-function Set-NBVRF {
+function Set-NBVLAN {
 	[CmdletBinding()]
 	param (
 		[Parameter(Mandatory=$false)][object]$Connection=$Script:Connection,
@@ -71,13 +71,13 @@ function Set-NBVRF {
 	}
 	$restParams=@{
 		Method = 'Patch'
-		URI = "$($Connection.ApiBaseURL)/$VRFsAPIPath/$id/"
+		URI = "$($Connection.ApiBaseURL)/$VLANsAPIPath/$id/"
 		body = $update | ConvertTo-Json -Depth 50
 	}
 	(Invoke-CustomRequest -restParams $restParams -Connection $Connection)
 }
 
-function Remove-NBVRF {
+function Remove-NBVLAN {
 	[CmdletBinding()]
 	param (
 		[Parameter(Mandatory=$false)][object]$Connection=$Script:Connection,
@@ -85,7 +85,7 @@ function Remove-NBVRF {
 	)
 	$restParams=@{
 		Method = 'Delete'
-		URI = "$($Connection.ApiBaseURL)/$VRFsAPIPath/$id/"
+		URI = "$($Connection.ApiBaseURL)/$VLANsAPIPath/$id/"
 		body = $update | ConvertTo-Json -Depth 50
 	}
 	(Invoke-CustomRequest -restParams $restParams -Connection $Connection)
