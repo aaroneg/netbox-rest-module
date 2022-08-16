@@ -19,7 +19,7 @@ function New-NBVMCluster {
 		[Parameter(Mandatory=$true,Position=1)][int]$typeID,
 		[Parameter(Mandatory=$false)][object]$Connection=$Script:Connection
 	)
-	$PostObject=[NBVMCluster]::New($name,$type)
+	$PostObject=[NBVMCluster]::New($name,$typeID)
 	$restParams=@{
 		Method = 'Post'
 		URI = "$($Connection.ApiBaseURL)/$VirtualizationClustersAPIPath/"
