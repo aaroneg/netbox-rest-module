@@ -42,25 +42,26 @@ function Get-NBLocations {
 	param (
 		[Parameter(Mandatory=$false)][object]$Connection=$Script:Connection
 	)
-	$restParams=@{
-		Method = 'Get'
-		URI = "$($Connection.ApiBaseURL)/$LocationsAPIPath/"
-	}
-	$restParams.URI
-	(Invoke-CustomRequest -restParams $restParams -Connection $Connection).results
+	Get-ApiItems -apiConnection $Connection -RelativePath $LocationsAPIPath
 }
 
-function Get-NBLocation {
+function Get-NBLocationByID {
 	[CmdletBinding()]
 	param (
 		[Parameter(Mandatory=$false)][object]$Connection=$Script:Connection,
 		[Parameter(Mandatory=$true,Position=0)][int]$id
 	)
-	$restParams=@{
-		Method = 'Get'
-		URI = "$($Connection.ApiBaseURL)/$LocationsAPIPath/$id/"
-	}
-	(Invoke-CustomRequest -restParams $restParams -Connection $Connection)
+	Get-ApiItemByID -apiConnection $Connection -RelativePath $LocationsAPIPath -id $id
+}
+
+
+function Find-NBLocationsByName {
+	[CmdletBinding()]
+	param (
+		[Parameter(Mandatory=$false)][object]$Connection=$Script:Connection,
+		[Parameter(Mandatory=$true,Position=1)][string]$name
+	)
+	Find-ApiItemsByName -apiConnection $Connection -RelativePath $LocationsAPIPath -name $name
 }
 
 function Set-NBLocation {

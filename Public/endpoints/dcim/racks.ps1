@@ -39,24 +39,26 @@ function Get-NBRacks {
 	param (
 		[Parameter(Mandatory=$false)][object]$Connection=$Script:Connection
 	)
-	$restParams=@{
-		Method = 'Get'
-		URI = "$($Connection.ApiBaseURL)/$RacksAPIPath/"
-	}
-	(Invoke-CustomRequest -restParams $restParams -Connection $Connection).results
+	Get-ApiItems -apiConnection $Connection -RelativePath $RacksAPIPath
 }
 
-function Get-NBRack {
+function Get-NBRackByID {
 	[CmdletBinding()]
 	param (
 		[Parameter(Mandatory=$false)][object]$Connection=$Script:Connection,
 		[Parameter(Mandatory=$true,Position=0)][int]$id
 	)
-	$restParams=@{
-		Method = 'Get'
-		URI = "$($Connection.ApiBaseURL)/$RacksAPIPath/$id/"
-	}
-	(Invoke-CustomRequest -restParams $restParams -Connection $Connection)
+	Get-ApiItemByID -apiConnection $Connection -RelativePath $RacksAPIPath -id $id
+}
+
+
+function Find-NBRacksByName {
+	[CmdletBinding()]
+	param (
+		[Parameter(Mandatory=$false)][object]$Connection=$Script:Connection,
+		[Parameter(Mandatory=$true,Position=1)][string]$name
+	)
+	Find-ApiItemsByName -apiConnection $Connection -RelativePath $RacksAPIPath -name $name
 }
 
 function Set-NBRack {

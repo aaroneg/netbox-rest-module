@@ -35,24 +35,16 @@ function Get-NBUsers {
 	param (
 		[Parameter(Mandatory=$false)][object]$Connection=$Script:Connection
 	)
-	$restParams=@{
-		Method = 'Get'
-		URI = "$($Connection.ApiBaseURL)/$UsersAPIPath/"
-	}
-	(Invoke-CustomRequest -restParams $restParams -Connection $Connection).results
+	Get-ApiItems -apiConnection $Connection -RelativePath $UsersAPIPath
 }
 
-function Get-NBUser {
+function Get-NBUserByID {
 	[CmdletBinding()]
 	param (
 		[Parameter(Mandatory=$false)][object]$Connection=$Script:Connection,
 		[Parameter(Mandatory=$true,Position=0)][int]$id
 	)
-	$restParams=@{
-		Method = 'Get'
-		URI = "$($Connection.ApiBaseURL)/$UsersAPIPath/$id/"
-	}
-	(Invoke-CustomRequest -restParams $restParams -Connection $Connection)
+	Get-ApiItemByID -apiConnection $Connection -RelativePath $UsersAPIPath -id $id
 }
 
 # function Set-NBUser {

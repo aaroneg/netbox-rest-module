@@ -33,24 +33,26 @@ function Get-NBSiteGroups {
 	param (
 		[Parameter(Mandatory=$false)][object]$Connection=$Script:Connection
 	)
-	$restParams=@{
-		Method = 'Get'
-		URI = "$($Connection.ApiBaseURL)/$SiteGroupsAPIPath/"
-	}
-	(Invoke-CustomRequest -restParams $restParams -Connection $Connection).results
+	Get-ApiItems -apiConnection $Connection -RelativePath $SiteGroupsAPIPath
 }
 
-function Get-NBSiteGroup {
+function Get-NBSiteGroupByID {
 	[CmdletBinding()]
 	param (
 		[Parameter(Mandatory=$false)][object]$Connection=$Script:Connection,
 		[Parameter(Mandatory=$true,Position=0)][int]$id
 	)
-	$restParams=@{
-		Method = 'Get'
-		URI = "$($Connection.ApiBaseURL)/$SiteGroupsAPIPath/$id/"
-	}
-	(Invoke-CustomRequest -restParams $restParams -Connection $Connection)
+	Get-ApiItemByID -apiConnection $Connection -RelativePath $SiteGroupsAPIPath -id $id
+}
+
+
+function Find-NBSiteGroupsByName {
+	[CmdletBinding()]
+	param (
+		[Parameter(Mandatory=$false)][object]$Connection=$Script:Connection,
+		[Parameter(Mandatory=$true,Position=1)][string]$name
+	)
+	Find-ApiItemsByName -apiConnection $Connection -RelativePath $SiteGroupsAPIPath -name $name
 }
 
 function Set-NBSiteGroup {

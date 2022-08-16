@@ -11,7 +11,7 @@ Class NBregion {
 }
 $regionsAPIPath="dcim/regions"
 
-function New-NBregion {
+function New-NBRegion {
 	[CmdletBinding()]
 	param (
 		[Parameter(Mandatory=$true,Position=0)][string]$name,
@@ -28,32 +28,34 @@ function New-NBregion {
 	$region
 }
 
-function Get-NBregions {
+function Get-NBRegions {
 	[CmdletBinding()]
 	param (
 		[Parameter(Mandatory=$false)][object]$Connection=$Script:Connection
 	)
-	$restParams=@{
-		Method = 'Get'
-		URI = "$($Connection.ApiBaseURL)/$regionsAPIPath/"
-	}
-	(Invoke-CustomRequest -restParams $restParams -Connection $Connection).results
+	Get-ApiItems -apiConnection $Connection -RelativePath $regionsAPIPath
 }
 
-function Get-NBregion {
+function Get-NBRegionByID {
 	[CmdletBinding()]
 	param (
 		[Parameter(Mandatory=$false)][object]$Connection=$Script:Connection,
 		[Parameter(Mandatory=$true,Position=0)][int]$id
 	)
-	$restParams=@{
-		Method = 'Get'
-		URI = "$($Connection.ApiBaseURL)/$regionsAPIPath/$id/"
-	}
-	(Invoke-CustomRequest -restParams $restParams -Connection $Connection)
+	Get-ApiItemByID -apiConnection $Connection -RelativePath $regionsAPIPath -id $id
 }
 
-function Set-NBregion {
+
+function Find-NBRegionsByName {
+	[CmdletBinding()]
+	param (
+		[Parameter(Mandatory=$false)][object]$Connection=$Script:Connection,
+		[Parameter(Mandatory=$true,Position=1)][string]$name
+	)
+	Find-ApiItemsByName -apiConnection $Connection -RelativePath $regionsAPIPath -name $name
+}
+
+function Set-NBRegion {
 	[CmdletBinding()]
 	param (
 		[Parameter(Mandatory=$false)][object]$Connection=$Script:Connection,
@@ -78,7 +80,7 @@ function Set-NBregion {
 	(Invoke-CustomRequest -restParams $restParams -Connection $Connection)
 }
 
-function Remove-NBregion {
+function Remove-NBRegion {
 	[CmdletBinding()]
 	param (
 		[Parameter(Mandatory=$false)][object]$Connection=$Script:Connection,

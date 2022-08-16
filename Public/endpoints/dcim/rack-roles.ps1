@@ -33,14 +33,10 @@ function Get-NBRackRoles {
 	param (
 		[Parameter(Mandatory=$false)][object]$Connection=$Script:Connection
 	)
-	$restParams=@{
-		Method = 'Get'
-		URI = "$($Connection.ApiBaseURL)/$RackRolesAPIPath/"
-	}
-	(Invoke-CustomRequest -restParams $restParams -Connection $Connection).results
+	Get-ApiItems -apiConnection $Connection -RelativePath $RackRolesAPIPath
 }
 
-function Get-NBRackRole {
+function Get-NBRackRoleByID {
 	[CmdletBinding()]
 	param (
 		[Parameter(Mandatory=$false)][object]$Connection=$Script:Connection,
@@ -50,7 +46,17 @@ function Get-NBRackRole {
 		Method = 'Get'
 		URI = "$($Connection.ApiBaseURL)/$RackRolesAPIPath/$id/"
 	}
-	(Invoke-CustomRequest -restParams $restParams -Connection $Connection)
+	Get-ApiItemByID -apiConnection $Connection -RelativePath $RackRolesAPIPath -id $id
+}
+
+
+function Find-NBRackRolesByName {
+	[CmdletBinding()]
+	param (
+		[Parameter(Mandatory=$false)][object]$Connection=$Script:Connection,
+		[Parameter(Mandatory=$true,Position=1)][string]$name
+	)
+	Find-ApiItemsByName -apiConnection $Connection -RelativePath $RackRolesAPIPath -name $name
 }
 
 function Set-NBRackRole {
