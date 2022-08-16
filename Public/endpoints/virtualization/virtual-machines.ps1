@@ -67,10 +67,6 @@ function Set-NBVM {
 			$key,
 		[Parameter(Mandatory=$true,Position=2)][string]$value
 	)
-	switch($key){
-		'slug' {$value=makeSlug -name $value}
-		default {}
-	}
 	$update=@{
 		$key = $value
 	}
