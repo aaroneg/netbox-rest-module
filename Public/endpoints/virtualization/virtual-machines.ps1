@@ -62,7 +62,8 @@ function Set-NBVM {
 		[Parameter(Mandatory=$false)][object]$Connection=$Script:Connection,
 		[Parameter(Mandatory=$true,Position=0)][int]$id,
 		[Parameter(Mandatory=$true,Position=1)][string]
-			[ValidateSet('name','slug','status','region','group','tenant','facility','time_zone','description','physical_address','shipping_address','latitude','longitude','comments')]
+			[ValidateSet('name','status','cluster','role','tenant','platform','primary_ipv4','primary_ipv6',
+			'vcpus','memory','disk','comments','local_context_data')]
 			$key,
 		[Parameter(Mandatory=$true,Position=2)][string]$value
 	)
