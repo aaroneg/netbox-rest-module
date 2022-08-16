@@ -9,7 +9,7 @@ Class NBVMClusterType {
 		$this.slug = makeSlug -name $name
 	}
 }
-$VirtualizationClusterTypeAPIPath="virtualization/cluster-types"
+$VirtualizationClusterTypesAPIPath="virtualization/cluster-types"
 
 function New-NBVMClusterType {
 	[CmdletBinding()]
@@ -20,7 +20,7 @@ function New-NBVMClusterType {
 	$Contact=[NBVMClusterType]::New($name)
 	$restParams=@{
 		Method = 'Post'
-		URI = "$($Connection.ApiBaseURL)/$VirtualizationClusterTypeAPIPath/"
+		URI = "$($Connection.ApiBaseURL)/$VirtualizationClusterTypesAPIPath/"
 		body = $Contact|ConvertTo-Json -Depth 50
 	}
 	Write-Verbose $Contact|ConvertTo-Json -Depth 50
@@ -33,7 +33,7 @@ function Get-NBVMClusterTypes {
 	param (
 		[Parameter(Mandatory=$false)][object]$Connection=$Script:Connection
 	)
-	Get-ApiItems -apiConnection $Connection -RelativePath $VirtualizationClusterTypeAPIPath
+	Get-ApiItems -apiConnection $Connection -RelativePath $VirtualizationClusterTypesAPIPath
 }
 
 function Get-NBVMClusterTypeByID {
@@ -42,7 +42,7 @@ function Get-NBVMClusterTypeByID {
 		[Parameter(Mandatory=$false)][object]$Connection=$Script:Connection,
 		[Parameter(Mandatory=$true,Position=0)][int]$id
 	)
-	Get-ApiItemByID -apiConnection $Connection -RelativePath $VirtualizationClusterTypeAPIPath -id $id
+	Get-ApiItemByID -apiConnection $Connection -RelativePath $VirtualizationClusterTypesAPIPath -id $id
 }
 
 function Find-NBVMClusterTypesByName {
@@ -51,7 +51,7 @@ function Find-NBVMClusterTypesByName {
 		[Parameter(Mandatory=$false)][object]$Connection=$Script:Connection,
 		[Parameter(Mandatory=$true,Position=1)][string]$name
 	)
-	Find-ApiItemsByName -apiConnection $Connection -RelativePath $VirtualizationClusterTypeAPIPath -name $name
+	Find-ApiItemsByName -apiConnection $Connection -RelativePath $VirtualizationClusterTypesAPIPath -name $name
 }
 
 function Set-NBVMClusterType {
@@ -73,7 +73,7 @@ function Set-NBVMClusterType {
 	}
 	$restParams=@{
 		Method = 'Patch'
-		URI = "$($Connection.ApiBaseURL)/$VirtualizationClusterTypeAPIPath/$id/"
+		URI = "$($Connection.ApiBaseURL)/$VirtualizationClusterTypesAPIPath/$id/"
 		body = $update | ConvertTo-Json -Depth 50
 	}
 	(Invoke-CustomRequest -restParams $restParams -Connection $Connection)
@@ -87,7 +87,7 @@ function Remove-NBVMClusterType {
 	)
 	$restParams=@{
 		Method = 'Delete'
-		URI = "$($Connection.ApiBaseURL)/$VirtualizationClusterTypeAPIPath/$id/"
+		URI = "$($Connection.ApiBaseURL)/$VirtualizationClusterTypesAPIPath/$id/"
 		body = $update | ConvertTo-Json -Depth 50
 	}
 	(Invoke-CustomRequest -restParams $restParams -Connection $Connection)

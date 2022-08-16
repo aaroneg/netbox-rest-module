@@ -9,7 +9,7 @@ Class NBVMClusterGroup {
 		$this.slug = makeSlug -name $name
 	}
 }
-$VirtualizationClusterGroupAPIPath="virtualization/cluster-groups"
+$VirtualizationClusterGroupsAPIPath="virtualization/cluster-groups"
 
 function New-NBVMClusterGroup {
 	[CmdletBinding()]
@@ -20,7 +20,7 @@ function New-NBVMClusterGroup {
 	$Contact=[NBVMClusterGroup]::New($name)
 	$restParams=@{
 		Method = 'Post'
-		URI = "$($Connection.ApiBaseURL)/$VirtualizationClusterGroupAPIPath/"
+		URI = "$($Connection.ApiBaseURL)/$VirtualizationClusterGroupsAPIPath/"
 		body = $Contact|ConvertTo-Json -Depth 50
 	}
 	Write-Verbose $Contact|ConvertTo-Json -Depth 50
@@ -33,7 +33,7 @@ function Get-NBVMClusterGroups {
 	param (
 		[Parameter(Mandatory=$false)][object]$Connection=$Script:Connection
 	)
-	Get-ApiItems -apiConnection $Connection -RelativePath $VirtualizationClusterGroupAPIPath
+	Get-ApiItems -apiConnection $Connection -RelativePath $VirtualizationClusterGroupsAPIPath
 }
 
 function Get-NBVMClusterGroupByID {
@@ -42,7 +42,7 @@ function Get-NBVMClusterGroupByID {
 		[Parameter(Mandatory=$false)][object]$Connection=$Script:Connection,
 		[Parameter(Mandatory=$true,Position=0)][int]$id
 	)
-	Get-ApiItemByID -apiConnection $Connection -RelativePath $VirtualizationClusterGroupAPIPath -id $id
+	Get-ApiItemByID -apiConnection $Connection -RelativePath $VirtualizationClusterGroupsAPIPath -id $id
 }
 
 function Find-NBVMClusterGroupsByName {
@@ -51,7 +51,7 @@ function Find-NBVMClusterGroupsByName {
 		[Parameter(Mandatory=$false)][object]$Connection=$Script:Connection,
 		[Parameter(Mandatory=$true,Position=1)][string]$name
 	)
-	Find-ApiItemsByName -apiConnection $Connection -RelativePath $VirtualizationClusterGroupAPIPath -name $name
+	Find-ApiItemsByName -apiConnection $Connection -RelativePath $VirtualizationClusterGroupsAPIPath -name $name
 }
 
 function Set-NBVMClusterGroup {
@@ -73,7 +73,7 @@ function Set-NBVMClusterGroup {
 	}
 	$restParams=@{
 		Method = 'Patch'
-		URI = "$($Connection.ApiBaseURL)/$VirtualizationClusterGroupAPIPath/$id/"
+		URI = "$($Connection.ApiBaseURL)/$VirtualizationClusterGroupsAPIPath/$id/"
 		body = $update | ConvertTo-Json -Depth 50
 	}
 	(Invoke-CustomRequest -restParams $restParams -Connection $Connection)
@@ -87,7 +87,7 @@ function Remove-NBVMClusterGroup {
 	)
 	$restParams=@{
 		Method = 'Delete'
-		URI = "$($Connection.ApiBaseURL)/$VirtualizationClusterGroupAPIPath/$id/"
+		URI = "$($Connection.ApiBaseURL)/$VirtualizationClusterGroupsAPIPath/$id/"
 		body = $update | ConvertTo-Json -Depth 50
 	}
 	(Invoke-CustomRequest -restParams $restParams -Connection $Connection)
