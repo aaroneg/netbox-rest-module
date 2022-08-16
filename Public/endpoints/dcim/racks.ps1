@@ -23,7 +23,7 @@ function New-NBRack {
 		[Parameter(Mandatory=$true,Position=2)][int]$locationID,
 		[Parameter(Mandatory=$false)][object]$Connection=$Script:Connection
 	)
-	$PostObject=[NBRack]::New($name,$site,$location)
+	$PostObject=[NBRack]::New($name,$siteID,$locationID)
 	$restParams=@{
 		Method = 'Post'
 		URI = "$($Connection.ApiBaseURL)/$RacksAPIPath/"
