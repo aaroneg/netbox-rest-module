@@ -37,7 +37,7 @@ function Get-APIItemByName {
 		[parameter(Mandatory = $true)][string]$value
     )
 	Write-Verbose "[$($MyInvocation.MyCommand.Name)] Attempting to find item named '$Name'."
-	Get-APIItemByQuery -apiConnection $apiConnection -field 'name' -value $value -RelativePath $RelativePath
+	(Get-APIItemByQuery -apiConnection $apiConnection -field 'name__ie' -value $value -RelativePath $RelativePath).results
 }
 
 function Get-ApiItemByID {
