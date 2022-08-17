@@ -45,6 +45,15 @@ function Get-NBDevicePlatformByID {
 	Get-ApiItemByID -apiConnection $Connection -RelativePath $DevicePlatformAPIPath -id $id
 }
 
+function Get-NBDevicePlatformByName {
+	[CmdletBinding()]
+	param (
+		[Parameter(Mandatory=$false)][object]$Connection=$Script:Connection,
+		[Parameter(Mandatory=$true,Position=0)][string]$name
+	)
+	Get-ApiItemByName -apiConnection $Connection -RelativePath $DevicePlatformAPIPath -value $name
+}
+
 function Find-NBDevicePlatformsContainingName {
 	[CmdletBinding()]
 	param (

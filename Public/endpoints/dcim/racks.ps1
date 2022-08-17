@@ -51,6 +51,14 @@ function Get-NBRackByID {
 	Get-ApiItemByID -apiConnection $Connection -RelativePath $RacksAPIPath -id $id
 }
 
+function Get-NBRackByName {
+	[CmdletBinding()]
+	param (
+		[Parameter(Mandatory=$false)][object]$Connection=$Script:Connection,
+		[Parameter(Mandatory=$true,Position=0)][string]$name
+	)
+	Get-ApiItemByName -apiConnection $Connection -RelativePath $RacksAPIPath -value $name
+}
 
 function Find-NBRacksContainingName {
 	[CmdletBinding()]

@@ -43,6 +43,15 @@ function Get-NBVRFByID {
 	Get-ApiItemByID -apiConnection $Connection -RelativePath $VRFsApiPath -id $id
 }
 
+function Get-NBVRFByName {
+	[CmdletBinding()]
+	param (
+		[Parameter(Mandatory=$false)][object]$Connection=$Script:Connection,
+		[Parameter(Mandatory=$true,Position=0)][string]$name
+	)
+	Get-ApiItemByName -apiConnection $Connection -RelativePath $VRFsApiPath -value $name
+}
+
 function Find-NBVRFsContainingName {
 	[CmdletBinding()]
 	param (
