@@ -43,13 +43,13 @@ function Get-NBContactByID {
 	Get-ApiItemByID -apiConnection $Connection -RelativePath $ContactsAPIPath -id $id
 }
 
-function Find-NBContactsByName {
+function Find-NBContactsContainingName {
 	[CmdletBinding()]
 	param (
 		[Parameter(Mandatory=$false)][object]$Connection=$Script:Connection,
 		[Parameter(Mandatory=$true,Position=1)][string]$name
 	)
-	Find-ApiItemsByName -apiConnection $Connection -RelativePath $ContactsAPIPath -name $name
+	Find-ApiItemsContainingName -apiConnection $Connection -RelativePath $ContactsAPIPath -name $name
 }
 
 function Set-NBContact {

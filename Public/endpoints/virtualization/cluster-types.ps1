@@ -45,13 +45,13 @@ function Get-NBVMClusterTypeByID {
 	Get-ApiItemByID -apiConnection $Connection -RelativePath $VirtualizationClusterTypesAPIPath -id $id
 }
 
-function Find-NBVMClusterTypesByName {
+function Find-NBVMClusterTypesContainingName {
 	[CmdletBinding()]
 	param (
 		[Parameter(Mandatory=$false)][object]$Connection=$Script:Connection,
 		[Parameter(Mandatory=$true,Position=1)][string]$name
 	)
-	Find-ApiItemsByName -apiConnection $Connection -RelativePath $VirtualizationClusterTypesAPIPath -name $name
+	Find-ApiItemsContainingName -apiConnection $Connection -RelativePath $VirtualizationClusterTypesAPIPath -name $name
 }
 
 function Set-NBVMClusterType {

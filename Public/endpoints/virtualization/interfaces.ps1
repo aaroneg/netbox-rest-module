@@ -47,13 +47,13 @@ function Get-NBVMInterfaceByID {
 	Get-ApiItemByID -apiConnection $Connection -RelativePath $VirtualizationInterfaceAPIPath -id $id
 }
 
-function Find-NBVMInterfacesByName {
+function Find-NBVMInterfacesContainingName {
 	[CmdletBinding()]
 	param (
 		[Parameter(Mandatory=$false)][object]$Connection=$Script:Connection,
 		[Parameter(Mandatory=$true,Position=1)][string]$name
 	)
-	Find-ApiItemsByName -apiConnection $Connection -RelativePath $VirtualizationInterfaceAPIPath -name $name
+	Find-ApiItemsContainingName -apiConnection $Connection -RelativePath $VirtualizationInterfaceAPIPath -name $name
 }
 
 function Set-NBVMInterface {

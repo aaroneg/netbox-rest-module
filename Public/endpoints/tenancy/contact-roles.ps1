@@ -45,13 +45,13 @@ function Get-NBContactRoleByID {
 	Get-ApiItemByID -apiConnection $Connection -RelativePath $ContactRolesAPIPath -id $id
 }
 
-function Find-NBContactRolesByName {
+function Find-NBContactRolesContainingName {
 	[CmdletBinding()]
 	param (
 		[Parameter(Mandatory=$false)][object]$Connection=$Script:Connection,
 		[Parameter(Mandatory=$true,Position=1)][string]$name
 	)
-	Find-ApiItemsByName -apiConnection $Connection -RelativePath $ContactRolesAPIPath -name $name
+	Find-ApiItemsContainingName -apiConnection $Connection -RelativePath $ContactRolesAPIPath -name $name
 }
 
 function Set-NBContactRole {

@@ -46,13 +46,13 @@ function Get-NBVLANByID {
 	Get-ApiItemByID -apiConnection $Connection -RelativePath $VLANsAPIPath -id $id
 }
 
-function Find-NBVLANsByName {
+function Find-NBVLANsContainingName {
 	[CmdletBinding()]
 	param (
 		[Parameter(Mandatory=$false)][object]$Connection=$Script:Connection,
 		[Parameter(Mandatory=$true,Position=1)][string]$name
 	)
-	Find-ApiItemsByName -apiConnection $Connection -RelativePath $VLANsAPIPath -name $name
+	Find-ApiItemsContainingName -apiConnection $Connection -RelativePath $VLANsAPIPath -name $name
 }
 
 function Set-NBVLAN {

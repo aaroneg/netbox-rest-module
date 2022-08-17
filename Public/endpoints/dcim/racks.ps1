@@ -52,13 +52,13 @@ function Get-NBRackByID {
 }
 
 
-function Find-NBRacksByName {
+function Find-NBRacksContainingName {
 	[CmdletBinding()]
 	param (
 		[Parameter(Mandatory=$false)][object]$Connection=$Script:Connection,
 		[Parameter(Mandatory=$true,Position=1)][string]$name
 	)
-	Find-ApiItemsByName -apiConnection $Connection -RelativePath $RacksAPIPath -name $name
+	Find-ApiItemsContainingName -apiConnection $Connection -RelativePath $RacksAPIPath -name $name
 }
 
 function Set-NBRack {

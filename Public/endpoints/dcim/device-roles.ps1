@@ -49,13 +49,13 @@ function Get-NBDeviceRoleByID {
 	Get-ApiItemByID -apiConnection $Connection -RelativePath $DeviceRolesAPIPath -id $id
 }
 
-function Find-NBDeviceRolesByName {
+function Find-NBDeviceRolesContainingName {
 	[CmdletBinding()]
 	param (
 		[Parameter(Mandatory=$false)][object]$Connection=$Script:Connection,
 		[Parameter(Mandatory=$true,Position=1)][string]$name
 	)
-	Find-ApiItemsByName -apiConnection $Connection -RelativePath $DeviceRolesAPIPath -name $name
+	Find-ApiItemsContainingName -apiConnection $Connection -RelativePath $DeviceRolesAPIPath -name $name
 }
 
 function Set-NBDeviceRole {

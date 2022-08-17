@@ -52,13 +52,13 @@ function Get-NBSiteByID {
 	Get-ApiItemByID -apiConnection $Connection -RelativePath $SitesAPIPath -id $id
 }
 
-function Find-NBSitesByName {
+function Find-NBSitesContainingName {
 	[CmdletBinding()]
 	param (
 		[Parameter(Mandatory=$false)][object]$Connection=$Script:Connection,
 		[Parameter(Mandatory=$true,Position=1)][string]$name
 	)
-	Find-ApiItemsByName -apiConnection $Connection -RelativePath $SitesAPIPath -name $name
+	Find-ApiItemsContainingName -apiConnection $Connection -RelativePath $SitesAPIPath -name $name
 }
 
 function Set-NBSite {

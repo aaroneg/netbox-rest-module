@@ -46,13 +46,13 @@ function Get-NBRegionByID {
 }
 
 
-function Find-NBRegionsByName {
+function Find-NBRegionsContainingName {
 	[CmdletBinding()]
 	param (
 		[Parameter(Mandatory=$false)][object]$Connection=$Script:Connection,
 		[Parameter(Mandatory=$true,Position=1)][string]$name
 	)
-	Find-ApiItemsByName -apiConnection $Connection -RelativePath $regionsAPIPath -name $name
+	Find-ApiItemsContainingName -apiConnection $Connection -RelativePath $regionsAPIPath -name $name
 }
 
 function Set-NBRegion {

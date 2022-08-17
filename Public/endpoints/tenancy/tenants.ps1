@@ -45,13 +45,13 @@ function Get-NBTenantByID {
 	Get-ApiItemByID -apiConnection $Connection -RelativePath $TenantsAPIPath -id $id
 }
 
-function Find-NBTenantsByName {
+function Find-NBTenantsContainingName {
 	[CmdletBinding()]
 	param (
 		[Parameter(Mandatory=$false)][object]$Connection=$Script:Connection,
 		[Parameter(Mandatory=$true,Position=1)][string]$name
 	)
-	Find-ApiItemsByName -apiConnection $Connection -RelativePath $TenantsAPIPath -name $name
+	Find-ApiItemsContainingName -apiConnection $Connection -RelativePath $TenantsAPIPath -name $name
 }
 
 function Set-NBTenant {

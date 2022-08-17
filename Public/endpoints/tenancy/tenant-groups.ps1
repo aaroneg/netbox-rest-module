@@ -45,13 +45,13 @@ function Get-NBTenantGroupByID {
 	Get-ApiItemByID -apiConnection $Connection -RelativePath $TenantGroupsAPIPath -id $id
 }
 
-function Find-NBTenantGroupsByName {
+function Find-NBTenantGroupsContainingName {
 	[CmdletBinding()]
 	param (
 		[Parameter(Mandatory=$false)][object]$Connection=$Script:Connection,
 		[Parameter(Mandatory=$true,Position=1)][string]$name
 	)
-	Find-ApiItemsByName -apiConnection $Connection -RelativePath $TenantGroupsAPIPath -name $name
+	Find-ApiItemsContainingName -apiConnection $Connection -RelativePath $TenantGroupsAPIPath -name $name
 }
 
 function Set-NBTenantGroups {

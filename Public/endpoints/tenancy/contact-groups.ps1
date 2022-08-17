@@ -45,13 +45,13 @@ function Get-NBContactGroupByID {
 	Get-ApiItemByID -apiConnection $Connection -RelativePath $ContactGroupsAPIPath -id $id
 }
 
-function Find-NBContactGroupsByName {
+function Find-NBContactGroupsContainingName {
 	[CmdletBinding()]
 	param (
 		[Parameter(Mandatory=$false)][object]$Connection=$Script:Connection,
 		[Parameter(Mandatory=$true,Position=1)][string]$name
 	)
-	Find-ApiItemsByName -apiConnection $Connection -RelativePath $ContactGroupsAPIPath -name $name
+	Find-ApiItemsContainingName -apiConnection $Connection -RelativePath $ContactGroupsAPIPath -name $name
 }
 
 function Set-NBContactGroup {

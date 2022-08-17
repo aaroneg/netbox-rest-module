@@ -51,13 +51,13 @@ function Get-NBLocationByID {
 }
 
 
-function Find-NBLocationsByName {
+function Find-NBLocationsContainingName {
 	[CmdletBinding()]
 	param (
 		[Parameter(Mandatory=$false)][object]$Connection=$Script:Connection,
 		[Parameter(Mandatory=$true,Position=1)][string]$name
 	)
-	Find-ApiItemsByName -apiConnection $Connection -RelativePath $LocationsAPIPath -name $name
+	Find-ApiItemsContainingName -apiConnection $Connection -RelativePath $LocationsAPIPath -name $name
 }
 
 function Set-NBLocation {

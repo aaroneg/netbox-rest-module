@@ -1,12 +1,13 @@
-function Find-ApiItemsByName {
-    [CmdletBinding()]
+function Get-APIItemByQuery {
+	[CmdletBinding()]
     Param(
         [parameter(Mandatory = $false)][object]$apiConnection = $Script:Connection,
         [parameter(Mandatory = $true)][string]$RelativePath,
-        [parameter(Mandatory = $true)][string]$Name
+        [parameter(Mandatory = $true)][string]$field,
+		[parameter(Mandatory = $true)][string]$value
     )
 	$QueryArguments= @{
-		name__ic = $Name
+		$field = $value
 	}
 	$ArgumentString= New-ArgumentString $QueryArguments
     $restParams = @{
@@ -14,9 +15,30 @@ function Find-ApiItemsByName {
         URI                  = "$($Connection.ApiBaseURL)/$RelativePath/?$ArgumentString"
         SkipCertificateCheck = $apiConnection.SkipCertificateCheck
     }
-    (Invoke-CustomRequest $restParams -Connection $Connection).results
+	Write-Verbose "[$($MyInvocation.MyCommand.Name)] Making API search call using '$field' looking for '$value'."
+    Invoke-CustomRequest $restParams -Connection $Connection
+}
+function Find-ApiItemsContainingName {
+    [CmdletBinding()]
+    Param(
+        [parameter(Mandatory = $false)][object]$apiConnection = $Script:Connection,
+        [parameter(Mandatory = $true)][string]$RelativePath,
+        [parameter(Mandatory = $true)][string]$Name
+    )
+	Write-Verbose "[$($MyInvocation.MyCommand.Name)] Attempting to find items containing '$Name'."
+    Get-APIItemByQuery -apiConnection $apiConnection -field 'name__ic' -value $value -RelativePath $RelativePath
 }
 
+function Get-APIItemByName {
+	[CmdletBinding()]
+    Param(
+        [parameter(Mandatory = $false)][object]$apiConnection = $Script:Connection,
+        [parameter(Mandatory = $true)][string]$RelativePath,
+		[parameter(Mandatory = $true)][string]$value
+    )
+	Write-Verbose "[$($MyInvocation.MyCommand.Name)] Attempting to find item named '$Name'."
+	Get-APIItemByQuery -apiConnection $apiConnection -field 'name' -value $value -RelativePath $RelativePath
+}
 
 function Get-ApiItemByID {
     [CmdletBinding()]
