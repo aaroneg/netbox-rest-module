@@ -7,6 +7,7 @@ This module will not cover all endpoints in netbox, but I will accept PRs if you
 ## Development patterns
 
 /Private - a few helper functions to cut down on code repetition
+
 /Public/endpoints/*/*.ps1 - functions specific to each division and endpoint
 
 Most functions to directly manipulate an item in netbox will use the functions defined in /Private/api-items.ps1.
