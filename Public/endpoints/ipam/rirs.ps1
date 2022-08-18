@@ -1,28 +1,26 @@
-Class NBASN {
-	[string]$asn
-	[string]$rir
+Class NBRIR {
+	[string]$name
+	[string]$slug
 	# Constructor
-	NBASN(
-		[string]$asn,
-		[string]$rir
+	NBRIR(
+		[string]$name
 	){
-		$this.asn = $asn
-		$this.rir = $rir
+		$this.name = $name
+		$this.slug = makeSlug -name $name
 	}
 }
-$ASNsAPIPath="ipam/asns"
+$RIRsAPIPath="ipam/rirs"
 
-function New-NBASN {
+function New-NBRIR {
 	[CmdletBinding()]
 	param (
-		[Parameter(Mandatory=$true,Position=0)][string]$asn,
-		[Parameter(Mandatory=$true,Position=0)][string]$rir,
+		[Parameter(Mandatory=$true,Position=0)][string]$name,
 		[Parameter(Mandatory=$false)][object]$Connection=$Script:Connection
 	)
-	$PostObject=[NBASN]::New($asn)
+	$PostObject=[NBRIR]::New($name)
 	$restParams=@{
 		Method = 'Post'
-		URI = "$($Connection.ApiBaseURL)/$ASNsAPIPath/"
+		URI = "$($Connection.ApiBaseURL)/$RIRsAPIPath/"
 		body = $PostObject|ConvertTo-Json -Depth 50
 	}
 	Write-Verbose $PostObject|ConvertTo-Json -Depth 50
@@ -30,48 +28,48 @@ function New-NBASN {
 	$PostObject
 }
 
-function Get-NBASNs {
+function Get-NBRIRs {
 	[CmdletBinding()]
 	param (
 		[Parameter(Mandatory=$false)][object]$Connection=$Script:Connection
 	)
-	Get-ApiItems -apiConnection $Connection -RelativePath $ASNsAPIPath
+	Get-ApiItems -apiConnection $Connection -RelativePath $RIRsAPIPath
 }
 
-function Get-NBASNByID {
+function Get-NBRIRByID {
 	[CmdletBinding()]
 	param (
 		[Parameter(Mandatory=$false)][object]$Connection=$Script:Connection,
 		[Parameter(Mandatory=$true,Position=0)][int]$id
 	)
-	Get-ApiItemByID -apiConnection $Connection -RelativePath $ASNsAPIPath -id $id
+	Get-ApiItemByID -apiConnection $Connection -RelativePath $RIRsAPIPath -id $id
 }
 
-function Get-NBASNByName {
+function Get-NBRIRByName {
 	[CmdletBinding()]
 	param (
 		[Parameter(Mandatory=$false)][object]$Connection=$Script:Connection,
-		[Parameter(Mandatory=$true,Position=0)][string]$asn
+		[Parameter(Mandatory=$true,Position=0)][string]$name
 	)
-	Get-ApiItemByName -apiConnection $Connection -RelativePath $ASNsAPIPath -value $asn
+	Get-ApiItemByName -apiConnection $Connection -RelativePath $RIRsAPIPath -value $name
 }
 
-function Find-NBASNsContainingName {
+function Find-NBRIRsContainingName {
 	[CmdletBinding()]
 	param (
 		[Parameter(Mandatory=$false)][object]$Connection=$Script:Connection,
-		[Parameter(Mandatory=$true,Position=1)][string]$asn
+		[Parameter(Mandatory=$true,Position=1)][string]$name
 	)
-	Find-ApiItemsContainingName -apiConnection $Connection -RelativePath $ASNsAPIPath -name $asn
+	Find-ApiItemsContainingName -apiConnection $Connection -RelativePath $RIRsAPIPath -name $name
 }
 
-function Set-NBASN {
+function Set-NBRIR {
 	[CmdletBinding()]
 	param (
 		[Parameter(Mandatory=$false)][object]$Connection=$Script:Connection,
 		[Parameter(Mandatory=$true,Position=0)][int]$id,
 		[Parameter(Mandatory=$true,Position=1)][string]
-			[ValidateSet('asn','rir','tenant','description')]
+			[ValidateSet('name','slug','is_private','description')]
 			$key,
 		[Parameter(Mandatory=$true,Position=2)][string]$value
 	)
@@ -84,13 +82,13 @@ function Set-NBASN {
 	}
 	$restParams=@{
 		Method = 'Patch'
-		URI = "$($Connection.ApiBaseURL)/$ASNsAPIPath/$id/"
+		URI = "$($Connection.ApiBaseURL)/$RIRsAPIPath/$id/"
 		body = $update | ConvertTo-Json -Depth 50
 	}
 	(Invoke-CustomRequest -restParams $restParams -Connection $Connection)
 }
 
-function Remove-NBASN {
+function Remove-NBRIR {
 	[CmdletBinding()]
 	param (
 		[Parameter(Mandatory=$false)][object]$Connection=$Script:Connection,
@@ -98,7 +96,7 @@ function Remove-NBASN {
 	)
 	$restParams=@{
 		Method = 'Delete'
-		URI = "$($Connection.ApiBaseURL)/$ASNsAPIPath/$id/"
+		URI = "$($Connection.ApiBaseURL)/$RIRsAPIPath/$id/"
 		body = $update | ConvertTo-Json -Depth 50
 	}
 	(Invoke-CustomRequest -restParams $restParams -Connection $Connection)
