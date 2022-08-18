@@ -26,7 +26,7 @@ function Find-ApiItemsContainingName {
         [parameter(Mandatory = $true)][string]$Name
     )
 	Write-Verbose "[$($MyInvocation.MyCommand.Name)] Attempting to find items containing '$Name'."
-    Get-APIItemByQuery -apiConnection $apiConnection -field 'name__ic' -value $value -RelativePath $RelativePath
+    Get-APIItemByQuery -apiConnection $apiConnection -field 'name__ic' -value $Name -RelativePath $RelativePath
 }
 
 function Get-APIItemByName {
