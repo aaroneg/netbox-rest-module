@@ -65,7 +65,7 @@ function Find-NBLocationsContainingName {
 		[Parameter(Mandatory=$false)][object]$Connection=$Script:Connection,
 		[Parameter(Mandatory=$true,Position=1)][string]$name
 	)
-	Find-ApiItemsContainingName -apiConnection $Connection -RelativePath $LocationsAPIPath -name $name
+	(Find-ApiItemsContainingName -apiConnection $Connection -RelativePath $LocationsAPIPath -name $name).results
 }
 
 function Set-NBLocation {
