@@ -4,6 +4,8 @@
 
 This module will not cover all endpoints in netbox, but I will accept PRs if you're willing to match the code style.
 
+For example, it does not currently handle parent/child device relationships beyond being able to say that the device is a parent or child object, it will not create the relationship.
+
 ## Development patterns
 
 /Private - a few helper functions to cut down on code repetition
