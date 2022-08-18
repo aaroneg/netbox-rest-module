@@ -1,1 +1,24 @@
 # Netbox-Rest-Module
+
+## Scope
+
+This module will not cover all endpoints in netbox, but I will accept PRs if you're willing to match the code style.
+
+## Development patterns
+
+/Private - a few helper functions to cut down on code repetition
+/Public/endpoints/*/*.ps1 - functions specific to each division and endpoint
+
+Most functions to directly manipulate an item in netbox will use the functions defined in /Private/api-items.ps1.
+
+## Usage
+
+We offer a few basic commands for most objects:
+
+* New-Thing : Has mandatory parameters based on what netbox requires as of Netbox 3.2.8, unless the parameter is nullable.
+* Get-Things : No mandatory parameters
+* Get-ThingByID : Requires the ID of the thing you're requesting
+* Get-ThingByName : Requires the name of the thing you're requesting and is not case-sensitive
+* Find-ThingsContainingName : Looks for all things containing the characters you specify.
+* Set-Thing: Takes an object id, key, and value to set on the object in question
+* Remove-Thing: Removes an object based on ID
