@@ -1,13 +1,21 @@
 Class NBVLAN {
 	[int]$vid
 	[string]$name
+	[string]$status
+	[int]$site
+	# [int]$group
+	[int]$tenant
+	# [int]$role
+	# [string]$description
 	# Constructor
 	NBVLAN(
 		[int]$vid,
-		[string]$name
+		[string]$name,
+		[string]$status
 	){
 		$this.vid = $vid
 		$this.name = $name
+		$this.status = $status
 	}
 }
 $VLANsAPIPath="ipam/vlans"
@@ -16,9 +24,29 @@ function New-NBVLAN {
 	[CmdletBinding()]
 	param (
 		[Parameter(Mandatory=$true,Position=0)][string]$name,
+		[Parameter(Mandatory=$true,Position=1)][int]$vid,
+		[Parameter(Mandatory=$true,Position=2)]
+			[ValidateSet('active','reserved','deprecated')]
+			[string]$status,
+		[Parameter(Mandatory=$false)][int]$siteID,
+		[Parameter(Mandatory=$false)][int]$groupID,
+		[Parameter(Mandatory=$false)][int]$tenantID,
+		[Parameter(Mandatory=$false)][int]$roleID,
+		[Parameter(Mandatory=$false)][string]$description,
+		# [Parameter(Mandatory=$false)][string]$siteName,
+		# [Parameter(Mandatory=$false)][string]$groupName,
+		# [Parameter(Mandatory=$false)][string]$tenantName,
+		# [Parameter(Mandatory=$false)][string]$roleName,
 		[Parameter(Mandatory=$false)][object]$Connection=$Script:Connection
 	)
-	$PostObject=[NBVLAN]::New($vid,$name)
+	$PostObject=[NBVLAN]::New($vid,$name,$status)
+	if($siteID) {$PostObject.site = $siteID}
+	if($groupID) {
+		$PostObject | Add-Member -MemberType NoteProperty -Name group -Value $groupID 
+	}
+	if($tenantID) {$PostObject.tenant = $tenantID}
+	if($roleID) {$PostObject.role = $roleID}
+	if($description) {$PostObject.description = $description}
 	$restParams=@{
 		Method = 'Post'
 		URI = "$($Connection.ApiBaseURL)/$VLANsAPIPath/"
