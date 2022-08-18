@@ -28,9 +28,9 @@ function New-NBDevice {
 		[Parameter(Mandatory=$true,Position=1)][int]$device_typeID,
 		[Parameter(Mandatory=$true,Position=2)][int]$device_roleID,
 		[Parameter(Mandatory=$true,Position=3)][int]$siteID,
-		[Parameter(Mandatory=$true,Position=4)][string]
-			[ValidateSet('front','rear')]
-			$face,
+		# [Parameter(Mandatory=$true,Position=4)][string]
+		# 	[ValidateSet('front','rear')]
+		# 	$face,
 		[Parameter(Mandatory=$false)][object]$Connection=$Script:Connection
 	)
 	$PostObject=[NBDevice]::New($name,$device_typeID,$device_roleID,$siteID,$face)
