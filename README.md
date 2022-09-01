@@ -25,3 +25,7 @@ We offer a few basic commands for most objects:
 * Find-ThingsContainingName : Looks for all things containing the characters you specify.
 * Set-Thing: Takes an object id, key, and value to set on the object in question
 * Remove-Thing: Removes an object based on ID
+
+You can get a full listing of currently supported commands using `get-command -module netbox-rest-module`.
+
+If something isn't on the list that you need, and you're willing to put in the effort to make it work, I will happily accept PRs that match the existing style. Most of these .ps1 files are copy/pasteable with minor alterations for basic functionality - just find another endpoint that's similar and dive in.
