@@ -6,10 +6,10 @@ Class NBIPAddress {
 		[string]$address
 
 	){
-		$this.start_address = $address
+		$this.address = $address
 	}
 }
-$IPAddressAPIPath="ipam/ip-ranges"
+$IPAddressAPIPath="ipam/ip-addresses"
 
 function New-NBIPAddress {
 	[CmdletBinding()]
@@ -28,7 +28,7 @@ function New-NBIPAddress {
 	$PostObject
 }
 
-function Get-NBIPAddresss {
+function Get-NBIPAddresses {
 	[CmdletBinding()]
 	param (
 		[Parameter(Mandatory=$false)][object]$Connection=$Script:Connection
@@ -61,8 +61,7 @@ function Set-NBIPAddress {
 		[Parameter(Mandatory=$false)][object]$Connection=$Script:Connection,
 		[Parameter(Mandatory=$true,Position=0)][int]$id,
 		[Parameter(Mandatory=$true,Position=1)][string]
-			[ValidateSet('address','vrf','tenant','status','role','assigned_object_type','assigned_object_id',
-			'nat_inside','dns_name','description')]
+			[ValidateSet('address','vrf','tenant','status','role','nat_inside','dns_name','description')]
 			$key,
 		[Parameter(Mandatory=$true,Position=2)][string]$value
 	)
@@ -76,7 +75,27 @@ function Set-NBIPAddress {
 	}
 	(Invoke-CustomRequest -restParams $restParams -Connection $Connection)
 }
-
+function Set-NBIPAddressParent {
+	[CmdletBinding()]
+	param (
+		[Parameter(Mandatory=$false)][object]$Connection=$Script:Connection,
+		[Parameter(Mandatory=$true,Position=0)][int]$id,
+		[Parameter(Mandatory=$true,Position=1)][string]
+			[ValidateSet('dcim.interface','virtualization.vminterface')]
+			$InterFaceType,
+		[Parameter(Mandatory=$true,Position=2)][string]$interfaceID
+	)
+	$update=@{
+		assigned_object_type = "$InterFaceType"
+		assigned_object_id = $interfaceID
+	}
+	$restParams=@{
+		Method = 'Patch'
+		URI = "$($Connection.ApiBaseURL)/$IPAddressAPIPath/$id/"
+		body = $update | ConvertTo-Json -Depth 50
+	}
+	(Invoke-CustomRequest -restParams $restParams -Connection $Connection)
+}
 function Remove-NBIPAddress {
 	[CmdletBinding()]
 	param (
