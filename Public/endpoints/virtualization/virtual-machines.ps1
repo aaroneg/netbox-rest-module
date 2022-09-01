@@ -53,7 +53,7 @@ function Get-NBVMByName {
 		[Parameter(Mandatory=$false)][object]$Connection=$Script:Connection,
 		[Parameter(Mandatory=$true,Position=0)][string]$name
 	)
-	Get-APIItemByName -apiConnection $Connection -RelativePath $VirtualizationVMsAPIPath -id $id
+	Get-APIItemByName -apiConnection $Connection -RelativePath $VirtualizationVMsAPIPath -value $name
 }
 
 function Find-NBVMsContainingName {
