@@ -28,14 +28,12 @@ function Test-NBConnection {
 		$NBConnection=$Script:Connection
 	}
 
-	$restParams=@{
-		Method = 'Get'
-		Uri = "$($NBConnection.ApiBaseUrl)/"
-	}
-	Invoke-CustomRequest -restparams $restParams -Connection $NBConnection
+	"Connection OK`nNetbox Version: "+(Get-NBStatus -Connection $NBConnection)."netbox-version"
 }
 
 function Get-NBCurrentConnection {
 	"Default Netbox Connection:"
 	$Script:Connection
 }
+
+Export-ModuleMember -Function "*-*"
