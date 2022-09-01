@@ -47,6 +47,15 @@ function Get-NBVMByID {
 	Get-ApiItemByID -apiConnection $Connection -RelativePath $VirtualizationVMsAPIPath -id $id
 }
 
+function Get-NBVMByName {
+	[CmdletBinding()]
+	param (
+		[Parameter(Mandatory=$false)][object]$Connection=$Script:Connection,
+		[Parameter(Mandatory=$true,Position=0)][string]$name
+	)
+	Get-APIItemByName -apiConnection $Connection -RelativePath $VirtualizationVMsAPIPath -id $id
+}
+
 function Find-NBVMsContainingName {
 	[CmdletBinding()]
 	param (

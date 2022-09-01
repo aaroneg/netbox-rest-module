@@ -45,6 +45,15 @@ function Get-NBVMClusterGroupByID {
 	Get-ApiItemByID -apiConnection $Connection -RelativePath $VirtualizationClusterGroupsAPIPath -id $id
 }
 
+function Get-NBVMClusterGroupByName {
+	[CmdletBinding()]
+	param (
+		[Parameter(Mandatory=$false)][object]$Connection=$Script:Connection,
+		[Parameter(Mandatory=$true,Position=0)][string]$name
+	)
+	Get-ApiItemByName -apiConnection $Connection -RelativePath $VirtualizationClusterGroupsAPIPath -id $id
+}
+
 function Find-NBVMClusterGroupsContainingName {
 	[CmdletBinding()]
 	param (
