@@ -102,3 +102,5 @@ function Remove-NBLocation {
 	}
 	(Invoke-CustomRequest -restParams $restParams -Connection $Connection)
 }
+
+Export-ModuleMember -Function "*-*"

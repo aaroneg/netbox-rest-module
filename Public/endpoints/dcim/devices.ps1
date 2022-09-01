@@ -115,3 +115,5 @@ function Remove-NBDevice {
 	}
 	(Invoke-CustomRequest -restParams $restParams -Connection $Connection)
 }
+
+Export-ModuleMember -Function "*-*"

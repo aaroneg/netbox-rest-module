@@ -96,3 +96,5 @@ function Remove-NBIPRange {
 	}
 	(Invoke-CustomRequest -restParams $restParams -Connection $Connection)
 }
+
+Export-ModuleMember -Function "*-*"

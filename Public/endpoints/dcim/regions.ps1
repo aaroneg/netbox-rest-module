@@ -101,3 +101,5 @@ function Remove-NBRegion {
 	}
 	(Invoke-CustomRequest -restParams $restParams -Connection $Connection)
 }
+
+Export-ModuleMember -Function "*-*"

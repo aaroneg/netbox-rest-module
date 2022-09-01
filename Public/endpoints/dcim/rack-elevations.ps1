@@ -12,3 +12,6 @@ function Get-NBRackElevation {
 	}
 	(Invoke-CustomRequest -restParams $restParams -Connection $Connection).results
 }
+
+
+Export-ModuleMember -Function "*-*"

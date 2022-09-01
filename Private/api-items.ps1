@@ -71,5 +71,3 @@ function Get-ApiItems {
 	# # (Invoke-CustomRequest -restParams $restParams -Connection $Connection).results
     (Invoke-CustomRequest $restParams -Connection $apiConnection).results
 }
-
-#Export-ModuleMember -Function "*-*"

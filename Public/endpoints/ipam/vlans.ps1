@@ -127,3 +127,5 @@ function Remove-NBVLAN {
 	}
 	(Invoke-CustomRequest -restParams $restParams -Connection $Connection)
 }
+
+Export-ModuleMember -Function "*-*"

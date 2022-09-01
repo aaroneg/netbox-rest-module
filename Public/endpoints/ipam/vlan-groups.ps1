@@ -98,3 +98,5 @@ function Remove-NBVlanGroup {
 	}
 	(Invoke-CustomRequest -restParams $restParams -Connection $Connection)
 }
+
+Export-ModuleMember -Function "*-*"

@@ -101,3 +101,5 @@ function Remove-NBRIR {
 	}
 	(Invoke-CustomRequest -restParams $restParams -Connection $Connection)
 }
+
+Export-ModuleMember -Function "*-*"
