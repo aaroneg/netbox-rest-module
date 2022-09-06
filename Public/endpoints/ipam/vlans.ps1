@@ -33,10 +33,6 @@ function New-NBVLAN {
 		[Parameter(Mandatory=$false)][int]$tenantID,
 		[Parameter(Mandatory=$false)][int]$roleID,
 		[Parameter(Mandatory=$false)][string]$description,
-		# [Parameter(Mandatory=$false)][string]$siteName,
-		# [Parameter(Mandatory=$false)][string]$groupName,
-		# [Parameter(Mandatory=$false)][string]$tenantName,
-		# [Parameter(Mandatory=$false)][string]$roleName,
 		[Parameter(Mandatory=$false)][object]$Connection=$Script:Connection
 	)
 	$PostObject=[NBVLAN]::New($vid,$name,$status)
@@ -72,6 +68,15 @@ function Get-NBVLANByID {
 		[Parameter(Mandatory=$true,Position=0)][int]$id
 	)
 	Get-ApiItemByID -apiConnection $Connection -RelativePath $VLANsAPIPath -id $id
+}
+
+function Get-NBVLANByVID {
+	[CmdletBinding()]
+	param (
+		[Parameter(Mandatory=$false)][object]$Connection=$Script:Connection,
+		[Parameter(Mandatory=$true,Position=0)][int]$vid
+	)
+	(Get-APIItemByQuery -apiConnection $Connection -RelativePath $VLANsAPIPath -field vid -value $vid).results
 }
 
 function Get-NBVLANByName {

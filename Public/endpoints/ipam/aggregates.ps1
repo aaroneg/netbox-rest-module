@@ -1,24 +1,28 @@
-Class NBWirelessLan {
-	[string]$ssid
+Class NBAggregate {
+	[string]$prefix
+	[string]$rir
 	# Constructor
-	NBWirelessLan(
-		[string]$ssid
+	NBAggregate(
+		[string]$prefix,
+		[string]$rir
 	){
-		$this.ssid = $ssid
+		$this.prefix = $prefix
+		$this.rir = $rir
 	}
 }
-$NBWirelessLanAPIPath="wireless/wireless-lans"
+$NBAggregateAPIPath="ipam/aggregates"
 
-function New-NBWirelessLan {
+function New-NBAggregate {
 	[CmdletBinding()]
 	param (
-		[Parameter(Mandatory=$true,Position=0)][string]$ssid,
+		[Parameter(Mandatory=$true,Position=0)][string]$prefix,
+		[Parameter(Mandatory=$true,Position=1)][string]$rirID,
 		[Parameter(Mandatory=$false)][object]$Connection=$Script:Connection
 	)
-	$PostObject=[NBWirelessLan]::New($SSID)
+	$PostObject=[NBAggregate]::New($prefix,$rirID)
 	$restParams=@{
 		Method = 'Post'
-		URI = "$($Connection.ApiBaseURL)/$NBWirelessLanAPIPath/"
+		URI = "$($Connection.ApiBaseURL)/$NBAggregateAPIPath/"
 		body = $PostObject|ConvertTo-Json -Depth 50
 	}
 	Write-Verbose $PostObject|ConvertTo-Json -Depth 50
@@ -26,54 +30,58 @@ function New-NBWirelessLan {
 	$PostObject
 }
 
-function Get-NBWirelessLans {
+function Get-NBAggregates {
 	[CmdletBinding()]
 	param (
 		[Parameter(Mandatory=$false)][object]$Connection=$Script:Connection
 	)
-	Get-ApiItems -apiConnection $Connection -RelativePath $NBWirelessLanAPIPath
+	Get-ApiItems -apiConnection $Connection -RelativePath $NBAggregateAPIPath
 }
 
-function Get-NBWirelessLanByID {
+function Get-NBAggregateByID {
 	[CmdletBinding()]
 	param (
 		[Parameter(Mandatory=$false)][object]$Connection=$Script:Connection,
 		[Parameter(Mandatory=$true,Position=0)][int]$id
 	)
-	Get-ApiItemByID -apiConnection $Connection -RelativePath $NBWirelessLanAPIPath -id $id
+	Get-ApiItemByID -apiConnection $Connection -RelativePath $NBAggregateAPIPath -id $id
 }
 
-function Get-NBWirelessLanBySSID {
+function Get-NBAggregateByPrefix {
 	[CmdletBinding()]
 	param (
 		[Parameter(Mandatory=$false)][object]$Connection=$Script:Connection,
-		[Parameter(Mandatory=$true,Position=0)][string]$SSID
+		[Parameter(Mandatory=$true,Position=0)][string]$prefix
 	)
-	Get-APIItemByQuery -apiConnection $Connection -RelativePath $NBWirelessLanAPIPath -field ssid -value $SSID
+	Get-APIItemByQuery -apiConnection $Connection -RelativePath $NBAggregateAPIPath -field prefix -value $prefix
 }
 
-function Set-NBWirelessLan {
+function Set-NBAggregate {
 	[CmdletBinding()]
 	param (
 		[Parameter(Mandatory=$false)][object]$Connection=$Script:Connection,
 		[Parameter(Mandatory=$true,Position=0)][int]$id,
 		[Parameter(Mandatory=$true,Position=1)][string]
-			[ValidateSet('ssid','description','group','vlan','tenant','auth_type','auth_cipher','auth_psk')]
+			[ValidateSet('prefix','rir','tenant','date_added','description')]
 			$key,
 		[Parameter(Mandatory=$true,Position=2)][string]$value
 	)
+	switch($key){
+		'slug' {$value=makeSlug -name $value}
+		default {}
+	}
 	$update=@{
 		$key = $value
 	}
 	$restParams=@{
 		Method = 'Patch'
-		URI = "$($Connection.ApiBaseURL)/$NBWirelessLanAPIPath/$id/"
+		URI = "$($Connection.ApiBaseURL)/$NBAggregateAPIPath/$id/"
 		body = $update | ConvertTo-Json -Depth 50
 	}
 	(Invoke-CustomRequest -restParams $restParams -Connection $Connection)
 }
 
-function Remove-NBWirelessLan {
+function Remove-NBAggregate {
 	[CmdletBinding()]
 	param (
 		[Parameter(Mandatory=$false)][object]$Connection=$Script:Connection,
@@ -81,7 +89,7 @@ function Remove-NBWirelessLan {
 	)
 	$restParams=@{
 		Method = 'Delete'
-		URI = "$($Connection.ApiBaseURL)/$NBWirelessLanAPIPath/$id/"
+		URI = "$($Connection.ApiBaseURL)/$NBAggregateAPIPath/$id/"
 		body = $update | ConvertTo-Json -Depth 50
 	}
 	(Invoke-CustomRequest -restParams $restParams -Connection $Connection)
