@@ -55,7 +55,6 @@ function New-NBVM {
 		URI = "$($Connection.ApiBaseURL)/$VirtualizationVMsAPIPath/"
 		body = $PostJson
 	}
-	Write-Verbose $PostObject|ConvertTo-Json -Depth 50
 	$PostObject=Invoke-CustomRequest -restParams $restParams -Connection $Connection
 	$PostObject
 }
