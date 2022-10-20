@@ -1,29 +1,39 @@
-Class NBVMCluster {
-	[string]$name
-	[int]$type
-	# Constructor
-	NBVMCluster(
-		[string]$name,
-		[int]$type
-	){
-		$this.name = $name
-		$this.type = $type
-	}
-}
 $VirtualizationClustersAPIPath="virtualization/clusters"
 
 function New-NBVMCluster {
+	<#
+	.SYNOPSIS
+	Creates a new virtual machine cluster object
+	.PARAMETER name
+	Name of the object
+	.PARAMETER type
+	ID of the type object
+	.PARAMETER group
+	ID of the group object
+	.PARAMETER tenant
+	ID of the tenant object
+	.PARAMETER site
+	ID of the site object
+	.PARAMETER comments
+	Any comments you would like to add
+	.PARAMETER Connection
+	Connection object to use
+	#>
 	[CmdletBinding()]
 	param (
 		[Parameter(Mandatory=$true,Position=0)][string]$name,
-		[Parameter(Mandatory=$true,Position=1)][int]$typeID,
+		[Parameter(Mandatory=$true,Position=1)][int]$type,
+		[Parameter(Mandatory=$false)][int]$group,
+		[Parameter(Mandatory=$false)][int]$tenant,
+		[Parameter(Mandatory=$false)][int]$site,
+		[Parameter(Mandatory=$false)][int]$comments,
 		[Parameter(Mandatory=$false)][object]$Connection=$Script:Connection
 	)
-	$PostObject=[NBVMCluster]::New($name,$typeID)
+	$PostJson = createPostJson -Fields ($PSBoundParameters.GetEnumerator())
 	$restParams=@{
 		Method = 'Post'
 		URI = "$($Connection.ApiBaseURL)/$VirtualizationClustersAPIPath/"
-		body = $PostObject|ConvertTo-Json -Depth 50
+		body = $PostJson
 	}
 	Write-Verbose $PostObject|ConvertTo-Json -Depth 50
 	$PostObject=Invoke-CustomRequest -restParams $restParams -Connection $Connection
