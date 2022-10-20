@@ -1,29 +1,29 @@
-Class NBVMClusterGroup {
-	[string]$name
-	[string]$slug
-	# Constructor
-	NBVMClusterGroup(
-		[string]$name
-	){
-		$this.name = $name
-		$this.slug = makeSlug -name $name
-	}
-}
 $VirtualizationClusterGroupsAPIPath="virtualization/cluster-groups"
 
 function New-NBVMClusterGroup {
+	<#
+	.SYNOPSIS
+	Add a new VM Cluster Group
+	.PARAMETER name
+	This parameter will be used both directly and to create an appropriate slug.
+	.PARAMETER description
+	Any description you'd like to add
+	.PARAMETER Connection
+	Connection object to use
+	#>
 	[CmdletBinding()]
 	param (
 		[Parameter(Mandatory=$true,Position=0)][string]$name,
+		[Parameter(Mandatory=$false)][string]$description,
 		[Parameter(Mandatory=$false)][object]$Connection=$Script:Connection
 	)
-	$PostObject=[NBVMClusterGroup]::New($name)
+	$PSBoundParameters['slug']=makeSlug -name $name
+	$PostJson = createPostJson -Fields ($PSBoundParameters.GetEnumerator())
 	$restParams=@{
 		Method = 'Post'
 		URI = "$($Connection.ApiBaseURL)/$VirtualizationClusterGroupsAPIPath/"
-		body = $PostObject|ConvertTo-Json -Depth 50
+		body = $PostJson
 	}
-	Write-Verbose $PostObject|ConvertTo-Json -Depth 50
 	$PostObject=Invoke-CustomRequest -restParams $restParams -Connection $Connection
 	$PostObject
 }
