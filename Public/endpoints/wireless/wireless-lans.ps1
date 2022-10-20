@@ -9,9 +9,9 @@ function New-NBWirelessLan {
 	.PARAMETER description
 	Any description you'd like to add
 	.PARAMETER group
-	This is the *group object ID*, which you should obtain before running this command with `Get-NBWirelessLanGroupByName`
+	Group object ID
 	.PARAMETER vlan
-	This is the *vlan object ID*, not the actual vlan number. You can obtain this ID with `Get-NBVLANByName` or `Get-NBVLANByVID`
+	VLAN object ID
 	.PARAMETER auth_type
 	Authentication type
 	.PARAMETER auth_cipher

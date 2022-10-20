@@ -6,19 +6,19 @@ function New-NBVM {
 	.PARAMETER name
 	The name of the virtual machine 
 	.PARAMETER cluster
-	The ID of the vm cluster where the object should be housed. Use `Get-NBVMClusterByName` to obtain this.
+	The ID of the vm cluster object
 	.PARAMETER status
 	The status of the new vm
 	.PARAMETER role
-	You can obtain this ID using `Get-NBDeviceRoleByName`
+	Role object ID
 	.PARAMETER tenant
-	You can obtain this ID using `Get-NBTenantByName`
+	Tenant object ID
 	.PARAMETER platform 
-	You can obtain this ID using `Get-NBDevicePlatformByName`
+	Platform object ID
 	.PARAMETER primary_ip4
-	You can obtain this ID using `Get-NBIPAddressByName`
+	IPv4 object ID
 	.PARAMETER primary_ip6
-	You can obtain this ID using `Get-NBIPAddressByName`
+	IPv6 object ID
 	.PARAMETER vcpus
 	Number of vCPUs assigned to this VM
 	.PARAMETER memory

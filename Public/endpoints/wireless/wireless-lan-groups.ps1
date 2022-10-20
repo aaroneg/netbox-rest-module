@@ -6,7 +6,7 @@ function New-NBWirelessLanGroup {
 	.PARAMETER name
 	This parameter will be used both directly and to create an appropriate slug.
 	.PARAMETER parent
-	This is the parent group object id. You get obtain this id using `Get-NBWirelessLanGroupByName`
+	Parent object group ID
 	.PARAMETER description
 	Any description you'd like to add
 	.PARAMETER Connection
