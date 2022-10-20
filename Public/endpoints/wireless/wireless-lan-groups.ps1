@@ -1,27 +1,30 @@
-Class NBWirelessLanGroup {
-	[string]$name
-	[string]$slug
-	# Constructor
-	NBWirelessLanGroup(
-		[string]$name
-	){
-		$this.name = $name
-		$this.slug = makeSlug -name $name
-	}
-}
 $NBWirelessLanGroupAPIPath="wireless/wireless-lan-groups"
-
 function New-NBWirelessLanGroup {
+	<#
+	.SYNOPSIS
+	Adds a new wireless lan group to Netbox
+	.PARAMETER name
+	This parameter will be used both directly and to create an appropriate slug.
+	.PARAMETER parent
+	This is the parent group object id. You get obtain this id using `Get-NBWirelessLanGroupByName`
+	.PARAMETER description
+	Any description you'd like to add
+	.PARAMETER Connection
+	Connection object to use
+	#>
 	[CmdletBinding()]
 	param (
 		[Parameter(Mandatory=$true,Position=0)][string]$name,
+		[Parameter(Mandatory=$false)][int]$parent,
+		[Parameter(Mandatory=$false)][string]$description,
 		[Parameter(Mandatory=$false)][object]$Connection=$Script:Connection
 	)
-	$PostObject=[NBWirelessLanGroup]::New($name)
+	$PSBoundParameters['slug']=makeSlug -name $name
+	$PostJson = createPostJson -Fields ($PSBoundParameters.GetEnumerator())
 	$restParams=@{
 		Method = 'Post'
 		URI = "$($Connection.ApiBaseURL)/$NBWirelessLanGroupAPIPath/"
-		body = $PostObject|ConvertTo-Json -Depth 50
+		body = $PostJson
 	}
 	Write-Verbose $PostObject|ConvertTo-Json -Depth 50
 	$PostObject=Invoke-CustomRequest -restParams $restParams -Connection $Connection
