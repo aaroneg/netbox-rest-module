@@ -1,29 +1,25 @@
-Class NBWirelessLan {
-	[string]$ssid
-	# Constructor
-	NBWirelessLan(
-		[string]$ssid
-	){
-		$this.ssid = $ssid
-	}
-}
 $NBWirelessLanAPIPath="wireless/wireless-lans"
 
 function New-NBWirelessLan {
 	[CmdletBinding()]
 	param (
 		[Parameter(Mandatory=$true,Position=0)][string]$ssid,
+		[Parameter(Mandatory=$false)][string]$description,
+		[Parameter(Mandatory=$false)][int]$group,
+		[Parameter(Mandatory=$false)][int]$vlan,
+		[Parameter(Mandatory=$false)][string]$auth_type,
+		[Parameter(Mandatory=$false)][string]$auth_cipher,
+		[Parameter(Mandatory=$false)][string]$auth_psk,
 		[Parameter(Mandatory=$false)][object]$Connection=$Script:Connection
 	)
-	$PostObject=[NBWirelessLan]::New($SSID)
+	$PSBoundParameters['vlan']=(Get-NBVLANByVID -Connection $Connection -vid $vlan).id
+	$PostJson = createPostJson -Fields ($PSBoundParameters.GetEnumerator())
 	$restParams=@{
 		Method = 'Post'
 		URI = "$($Connection.ApiBaseURL)/$NBWirelessLanAPIPath/"
-		body = $PostObject|ConvertTo-Json -Depth 50
+		body = $PostJson
 	}
-	Write-Verbose $PostObject|ConvertTo-Json -Depth 50
-	$PostObject=Invoke-CustomRequest -restParams $restParams -Connection $Connection
-	$PostObject
+	Invoke-CustomRequest -restParams $restParams -Connection $Connection
 }
 
 function Get-NBWirelessLans {

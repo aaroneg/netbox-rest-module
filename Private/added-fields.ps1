@@ -1,12 +1,14 @@
-function createObjectWithAddedFields {
+function createPostJson {
 	[CmdletBinding()]
 	param (
-		[Parameter(Mandatory = $True, Position = 0)][System.Object]$CurrentObject,
-		[Parameter(Mandatory = $True, Position = 1)][hashtable]$AddedFields
+		[Parameter(Mandatory = $True, Position = 0)][object]$Fields
 	)
-	$AddedFields | ForEach-Object {
+	$CurrentObject=New-Object -TypeName System.Object
+	$Fields | ForEach-Object {
+		$_.key | Out-Host
+		$_.value | Out-Host
 		$CurrentObject | Add-Member -MemberType NoteProperty -Name $_.key -Value $_.value
 	}
-	$CurrentObject
+	createJson($CurrentObject)
 }
 function createJson ($Object) { $Object | ConvertTo-Json -Depth 50 }
