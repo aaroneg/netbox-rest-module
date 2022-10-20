@@ -9,6 +9,24 @@ function New-NBVM {
 	The ID of the vm cluster where the object should be housed. Use `Get-NBVMClusterByName` to obtain this.
 	.PARAMETER status
 	The status of the new vm
+	.PARAMETER role
+	You can obtain this ID using `Get-NBDeviceRoleByName`
+	.PARAMETER tenant
+	You can obtain this ID using `Get-NBTenantByName`
+	.PARAMETER platform 
+	You can obtain this ID using `Get-NBDevicePlatformByName`
+	.PARAMETER primary_ip4
+	You can obtain this ID using `Get-NBIPAddressByName`
+	.PARAMETER primary_ip6
+	You can obtain this ID using `Get-NBIPAddressByName`
+	.PARAMETER vcpus
+	Number of vCPUs assigned to this VM
+	.PARAMETER memory
+	Memory measured in MB
+	.PARAMETER disk
+	Disk space measured in GB
+	.PARAMETER comments
+	Any comments you would like to add
 	.PARAMETER Connection
 	Connection object to use
 	#>
@@ -19,6 +37,16 @@ function New-NBVM {
 		[Parameter(Mandatory=$false)][string]
 		[ValidateSet('offline','active','planned','staged','failed', 'decommissioning')]
 		$status,
+		[Parameter(Mandatory=$false)][int]$role,
+		[Parameter(Mandatory=$false)][int]$tenant,
+		[Parameter(Mandatory=$false)][int]$platform,
+		[Parameter(Mandatory=$false)][int]$primary_ip4,
+		[Parameter(Mandatory=$false)][int]$primary_ip6,
+		[Parameter(Mandatory=$false)][int]$vcpus,
+		[Parameter(Mandatory=$false)][int]$memory,
+		[Parameter(Mandatory=$false)][int]$disk,
+		[Parameter(Mandatory=$false)][string]$comments,
+		[Parameter(Mandatory=$false)][string]$local_context_data,
 		[Parameter(Mandatory=$false)][object]$Connection=$Script:Connection
 	)
 	$PostJson = createPostJson -Fields ($PSBoundParameters.GetEnumerator())
