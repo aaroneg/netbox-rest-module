@@ -40,11 +40,6 @@ function New-NBWirelessLan {
 		$auth_psk,
 		[Parameter(Mandatory=$false)][object]$Connection=$Script:Connection
 	)
-
-	# It's probably not a good practice to make this too smart - the function should reflect the API as best it can, but it is 
-	# certainly confusing that both the vlan and the vlan id are ints, and it's not immediately clear whether it's asking for 
-	# the vlan number or the vlan ID.
-	#	$PSBoundParameters['vlan']=(Get-NBVLANByVID -Connection $Connection -vid $vlan).id
 	$PostJson = createPostJson -Fields ($PSBoundParameters.GetEnumerator())
 	$restParams=@{
 		Method = 'Post'
