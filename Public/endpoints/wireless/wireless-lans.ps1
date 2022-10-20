@@ -1,18 +1,50 @@
 $NBWirelessLanAPIPath="wireless/wireless-lans"
 
 function New-NBWirelessLan {
+	<#
+	.SYNOPSIS
+	Adds a new wireless lan object to Netbox
+	.PARAMETER ssid
+	The SSID of the wireless LAN
+	.PARAMETER description
+	Any description you'd like to add
+	.PARAMETER group
+	This is the *group object ID*, which you should obtain before running this command with `Get-NBWirelessLanGroupByName`
+	.PARAMETER vlan
+	This is the *vlan object ID*, not the actual vlan number. You can obtain this ID with `Get-NBVLANByName` or `Get-NBVLANByVID`
+	.PARAMETER auth_type
+	Authentication type
+	.PARAMETER auth_cipher
+	Authentication cipher
+	.PARAMETER auth_psk
+	Authentication pre-shared key
+	.PARAMETER Connection
+	Connection object to use
+	#>
 	[CmdletBinding()]
 	param (
 		[Parameter(Mandatory=$true,Position=0)][string]$ssid,
 		[Parameter(Mandatory=$false)][string]$description,
 		[Parameter(Mandatory=$false)][int]$group,
 		[Parameter(Mandatory=$false)][int]$vlan,
-		[Parameter(Mandatory=$false)][string]$auth_type,
-		[Parameter(Mandatory=$false)][string]$auth_cipher,
-		[Parameter(Mandatory=$false)][string]$auth_psk,
+		[Parameter(Mandatory=$false)][string]
+		[ValidateSet('open','wep','wpa-personal','wpa-enterprise')]
+		# Authentication Type
+		$auth_type,
+		[Parameter(Mandatory=$false)][string]
+		[ValidateSet('auto','tkip','aes')]
+		# Authentication Cipher
+		$auth_cipher,
+		[Parameter(Mandatory=$false)][string]
+		# Authentication pre-shared key, if applicable. maxlength: 64
+		$auth_psk,
 		[Parameter(Mandatory=$false)][object]$Connection=$Script:Connection
 	)
-	$PSBoundParameters['vlan']=(Get-NBVLANByVID -Connection $Connection -vid $vlan).id
+
+	# It's probably not a good practice to make this too smart - the function should reflect the API as best it can, but it is 
+	# certainly confusing that both the vlan and the vlan id are ints, and it's not immediately clear whether it's asking for 
+	# the vlan number or the vlan ID.
+	#	$PSBoundParameters['vlan']=(Get-NBVLANByVID -Connection $Connection -vid $vlan).id
 	$PostJson = createPostJson -Fields ($PSBoundParameters.GetEnumerator())
 	$restParams=@{
 		Method = 'Post'
