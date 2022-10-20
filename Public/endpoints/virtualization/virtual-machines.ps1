@@ -1,29 +1,31 @@
-Class NBVM {
-	[string]$name
-	[int]$cluster
-	# Constructor
-	NBVM(
-		[string]$name,
-		[int]$cluster
-	){
-		$this.name = $name
-		$this.cluster = $cluster
-	}
-}
 $VirtualizationVMsAPIPath="virtualization/virtual-machines"
-
 function New-NBVM {
+	<#
+	.SYNOPSIS
+	Adds a new virtual machine object to Netbox
+	.PARAMETER name
+	The name of the virtual machine 
+	.PARAMETER cluster
+	The ID of the vm cluster where the object should be housed. Use `Get-NBVMClusterByName` to obtain this.
+	.PARAMETER status
+	The status of the new vm
+	.PARAMETER Connection
+	Connection object to use
+	#>
 	[CmdletBinding()]
 	param (
 		[Parameter(Mandatory=$true,Position=0)][string]$name,
-		[Parameter(Mandatory=$true,Position=1)][int]$clusterID,
+		[Parameter(Mandatory=$true,Position=1)][int]$cluster,
+		[Parameter(Mandatory=$false)][string]
+		[ValidateSet('offline','active','planned','staged','failed', 'decommissioning')]
+		$status,
 		[Parameter(Mandatory=$false)][object]$Connection=$Script:Connection
 	)
-	$PostObject=[NBVM]::New($name,$clusterID)
+	$PostJson = createPostJson -Fields ($PSBoundParameters.GetEnumerator())
 	$restParams=@{
 		Method = 'Post'
 		URI = "$($Connection.ApiBaseURL)/$VirtualizationVMsAPIPath/"
-		body = $PostObject|ConvertTo-Json -Depth 50
+		body = $PostJson
 	}
 	Write-Verbose $PostObject|ConvertTo-Json -Depth 50
 	$PostObject=Invoke-CustomRequest -restParams $restParams -Connection $Connection
