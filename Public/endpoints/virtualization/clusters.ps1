@@ -27,16 +27,17 @@ function New-NBVMCluster {
 		[Parameter(Mandatory=$false)][int]$tenant,
 		[Parameter(Mandatory=$false)][int]$site,
 		[Parameter(Mandatory=$false)][int]$comments,
+		[Parameter(Mandatory=$false)][string]$status="active",
 		[Parameter(Mandatory=$false)][object]$Connection=$Script:Connection
 	)
+	if (!($PSBoundParameters.ContainsKey('status'))) {$PSBoundParameters.add('status', $status)}
 	$PostJson = createPostJson -Fields ($PSBoundParameters.GetEnumerator())
 	$restParams=@{
 		Method = 'Post'
 		URI = "$($Connection.ApiBaseURL)/$VirtualizationClustersAPIPath/"
 		body = $PostJson
 	}
-	Write-Verbose $PostObject|ConvertTo-Json -Depth 50
-	$PostObject=Invoke-CustomRequest -restParams $restParams -Connection $Connection
+	$PostObject= Invoke-CustomRequest -restParams $restParams -Connection $Connection
 	$PostObject
 }
 
