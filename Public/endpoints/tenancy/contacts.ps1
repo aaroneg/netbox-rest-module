@@ -36,14 +36,17 @@ function New-NBContact {
 		[Parameter(Mandatory=$false)][string]$comments,
 		[Parameter(Mandatory=$false)][object]$Connection=$Script:Connection
 	)
-	$PostObject=[NBContact]::New($name)
+	$PostJson = createPostJson -Fields ($PSBoundParameters.GetEnumerator())
 	$restParams=@{
 		Method = 'Post'
 		URI = "$($Connection.ApiBaseURL)/$ContactsAPIPath/"
-		body = $PostObject|ConvertTo-Json -Depth 50
+		body = $PostJson
 	}
-	Write-Verbose $PostObject|ConvertTo-Json -Depth 50
+	
 	$PostObject=Invoke-CustomRequest -restParams $restParams -Connection $Connection
+	if ($PostObject.message) {
+		throw $PostObject.message
+	}
 	$PostObject
 }
 

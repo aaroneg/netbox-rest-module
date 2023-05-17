@@ -39,7 +39,7 @@ function New-NBDevice {
 		URI = "$($Connection.ApiBaseURL)/$DevicesAPIPath/"
 		body = $PostObject|ConvertTo-Json -Depth 50
 	}
-	Write-Verbose $PostObject|ConvertTo-Json -Depth 50
+	
 	$PostObject=Invoke-CustomRequest -restParams $restParams -Connection $Connection
 	$PostObject
 }

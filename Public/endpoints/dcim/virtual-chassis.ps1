@@ -21,7 +21,7 @@ function New-NBVirtualChassis {
 		URI = "$($Connection.ApiBaseURL)/$NBVirtualChassisAPIPath/"
 		body = $PostObject|ConvertTo-Json -Depth 50
 	}
-	Write-Verbose $PostObject|ConvertTo-Json -Depth 50
+	
 	$PostObject=Invoke-CustomRequest -restParams $restParams -Connection $Connection
 	$PostObject
 }

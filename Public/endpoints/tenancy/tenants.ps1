@@ -30,8 +30,10 @@ function New-NBTenant {
 		URI = "$($Connection.ApiBaseURL)/$TenantsAPIPath/"
 		body = $PostJson
 	}
-	Write-Verbose $PostObject|ConvertTo-Json -Depth 50
 	$PostObject=Invoke-CustomRequest -restParams $restParams -Connection $Connection
+	if ($PostObject.message) {
+		throw $PostObject.message
+	}
 	$PostObject
 }
 

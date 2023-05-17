@@ -17,14 +17,18 @@ function New-NBIPAddress {
 		[Parameter(Mandatory=$true,Position=0)][string]$address,
 		[Parameter(Mandatory=$false)][object]$Connection=$Script:Connection
 	)
+	Write-Verbose "[$($MyInvocation.MyCommand.Name)]"
 	$PostObject=[NBIPAddress]::New($address)
 	$restParams=@{
 		Method = 'Post'
 		URI = "$($Connection.ApiBaseURL)/$IPAddressAPIPath/"
 		body = $PostObject|ConvertTo-Json -Depth 50
 	}
-	Write-Verbose $PostObject|ConvertTo-Json -Depth 50
+	
 	$PostObject=Invoke-CustomRequest -restParams $restParams -Connection $Connection
+	if ($PostObject.message) {
+		throw $PostObject.message
+	}
 	$PostObject
 }
 
@@ -33,6 +37,7 @@ function Get-NBIPAddresses {
 	param (
 		[Parameter(Mandatory=$false)][object]$Connection=$Script:Connection
 	)
+	Write-Verbose "[$($MyInvocation.MyCommand.Name)]"
 	Get-ApiItems -apiConnection $Connection -RelativePath $IPAddressAPIPath
 }
 
@@ -42,6 +47,7 @@ function Get-NBIPAddressByID {
 		[Parameter(Mandatory=$false)][object]$Connection=$Script:Connection,
 		[Parameter(Mandatory=$true,Position=0)][int]$id
 	)
+	Write-Verbose "[$($MyInvocation.MyCommand.Name)]"
 	Get-ApiItemByID -apiConnection $Connection -RelativePath $IPAddressAPIPath -id $id
 }
 
@@ -51,6 +57,7 @@ function Get-NBIPAddressByName {
 		[Parameter(Mandatory=$false)][object]$Connection=$Script:Connection,
 		[Parameter(Mandatory=$true,Position=0)][string]$name
 	)
+	Write-Verbose "[$($MyInvocation.MyCommand.Name)]"
 	Get-ApiItemByName -apiConnection $Connection -RelativePath $IPAddressAPIPath -value $name
 }
 
@@ -65,6 +72,7 @@ function Set-NBIPAddress {
 			$key,
 		[Parameter(Mandatory=$true,Position=2)][string]$value
 	)
+	Write-Verbose "[$($MyInvocation.MyCommand.Name)]"
 	$update=@{
 		$key = $value
 	}
@@ -83,11 +91,12 @@ function Set-NBIPAddressParent {
 		[Parameter(Mandatory=$true,Position=1)][string]
 			[ValidateSet('dcim.interface','virtualization.vminterface')]
 			$InterFaceType,
-		[Parameter(Mandatory=$true,Position=2)][string]$interfaceID
+		[Parameter(Mandatory=$true,Position=2)][string]$interface
 	)
+	Write-Verbose "[$($MyInvocation.MyCommand.Name)]"
 	$update=@{
 		assigned_object_type = "$InterFaceType"
-		assigned_object_id = $interfaceID
+		assigned_object_id = $interface
 	}
 	$restParams=@{
 		Method = 'Patch'
@@ -102,6 +111,7 @@ function Remove-NBIPAddress {
 		[Parameter(Mandatory=$false)][object]$Connection=$Script:Connection,
 		[Parameter(Mandatory=$true,Position=0)][int]$id
 	)
+	Write-Verbose "[$($MyInvocation.MyCommand.Name)]"
 	$restParams=@{
 		Method = 'Delete'
 		URI = "$($Connection.ApiBaseURL)/$IPAddressAPIPath/$id/"

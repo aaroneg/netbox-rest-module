@@ -23,7 +23,7 @@ function New-NBSiteGroup {
 		URI = "$($Connection.ApiBaseURL)/$SiteGroupsAPIPath/"
 		body = $PostObject|ConvertTo-Json -Depth 50
 	}
-	Write-Verbose $PostObject|ConvertTo-Json -Depth 50
+	
 	$PostObject=Invoke-CustomRequest -restParams $restParams -Connection $Connection
 	$PostObject
 }
