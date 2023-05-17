@@ -32,6 +32,9 @@ function New-NBSite {
 	}
 	
 	$PostObject=Invoke-CustomRequest -restParams $restParams -Connection $Connection
+	if ($PostObject.message) {
+		throw $PostObject.message
+	}
 	$PostObject
 }
 

@@ -32,6 +32,9 @@ function New-NBDeviceInterface {
 	$postJSON = $PostObject|ConvertTo-Json -Depth 50
 	Write-Verbose $postJSON
 	$PostObject=Invoke-CustomRequest -restParams $restParams -Connection $Connection
+	if ($PostObject.message) {
+		throw $PostObject.message
+	}
 	$PostObject
 }
 

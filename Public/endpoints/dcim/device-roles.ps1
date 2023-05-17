@@ -28,6 +28,9 @@ function New-NBDeviceRole {
 		body = $PostObject|ConvertTo-Json -Depth 50
 	}
 	$PostObject=Invoke-CustomRequest -restParams $restParams -Connection $Connection
+	if ($PostObject.message) {
+		throw $PostObject.message
+	}
 	$PostObject
 }
 
