@@ -27,7 +27,6 @@ function New-NBDeviceRole {
 		URI = "$($Connection.ApiBaseURL)/$DeviceRolesAPIPath/"
 		body = $PostObject|ConvertTo-Json -Depth 50
 	}
-	Write-Verbose $PostObject|ConvertTo-Json -Depth 50
 	$PostObject=Invoke-CustomRequest -restParams $restParams -Connection $Connection
 	$PostObject
 }

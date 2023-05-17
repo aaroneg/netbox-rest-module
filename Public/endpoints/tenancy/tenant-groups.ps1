@@ -28,7 +28,6 @@ function New-NBTenantGroup {
 		URI = "$($Connection.ApiBaseURL)/$TenantGroupsAPIPath/"
 		body = $PostJson
 	}
-	Write-Verbose $PostObject|ConvertTo-Json -Depth 50
 	$PostObject=Invoke-CustomRequest -restParams $restParams -Connection $Connection
 	$PostObject
 }
