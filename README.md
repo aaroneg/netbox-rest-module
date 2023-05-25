@@ -16,6 +16,8 @@ Most functions to directly manipulate an item in netbox will use the functions d
 
 ## Usage
 
+> This module is only tested with PowerShell 7
+
 We offer a few basic commands for most objects:
 
 * New-Thing : Has mandatory parameters based on what netbox requires as of Netbox 3.2.8, unless the parameter is nullable.
