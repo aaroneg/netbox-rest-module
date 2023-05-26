@@ -1,27 +1,25 @@
-Class NBRIR {
-	[string]$name
-	[string]$slug
-	# Constructor
-	NBRIR(
-		[string]$name
-	){
-		$this.name = $name
-		$this.slug = makeSlug -name $name
-	}
-}
 $RIRsAPIPath="ipam/rirs"
 
 function New-NBRIR {
+	<#
+	.SYNOPSIS
+	Creates a new RIR
+	.PARAMETER name
+	RIR Name
+	.PARAMETER Connection
+	Connection object to use
+	#>
 	[CmdletBinding()]
 	param (
 		[Parameter(Mandatory=$true,Position=0)][string]$name,
 		[Parameter(Mandatory=$false)][object]$Connection=$Script:Connection
 	)
-	$PostObject=[NBRIR]::New($name)
+	$PSBoundParameters['slug']=makeSlug -name $name
+	$PostJson = createPostJson -Fields ($PSBoundParameters.GetEnumerator())
 	$restParams=@{
 		Method = 'Post'
 		URI = "$($Connection.ApiBaseURL)/$RIRsAPIPath/"
-		body = $PostObject|ConvertTo-Json -Depth 50
+		body = $PostJson
 	}
 	
 	$PostObject=Invoke-CustomRequest -restParams $restParams -Connection $Connection
