@@ -1,14 +1,3 @@
-Class NBVMClusterType {
-	[string]$name
-	[string]$slug
-	# Constructor
-	NBVMClusterType(
-		[string]$name
-	){
-		$this.name = $name
-		$this.slug = makeSlug -name $name
-	}
-}
 $VirtualizationClusterTypesAPIPath="virtualization/cluster-types"
 
 function New-NBVMClusterType {
@@ -25,9 +14,11 @@ function New-NBVMClusterType {
 	[CmdletBinding()]
 	param (
 		[Parameter(Mandatory=$true,Position=0)][string]$name,
+		[Parameter(Mandatory=$false)][string]$slug,
 		[Parameter(Mandatory=$false)][string]$description,
 		[Parameter(Mandatory=$false)][object]$Connection=$Script:Connection
 	)
+	if (!($PSBoundParameters.ContainsKey('slug'))) {$PSBoundParameters.add('slug', (makeSlug -name $PSBoundParameters['name']))}
 	$PSBoundParameters['slug']=makeSlug -name $name
 	$PostJson = createPostJson -Fields ($PSBoundParameters.GetEnumerator())
 	$restParams=@{
