@@ -1,27 +1,25 @@
-Class NBIPAMRole {
-	[string]$name
-	[string]$slug
-	# Constructor
-	NBIPAMRole(
-		[string]$name
-	){
-		$this.name = $name
-		$this.slug = makeSlug -name $name
-	}
-}
 $IPAMRolesAPIPath="ipam/roles"
 
 function New-NBIPAMRole {
+	<#
+	.SYNOPSIS
+	Creates a new IPAM role
+	.PARAMETER name
+	Name of role
+	.PARAMETER Connection
+	Connection object to use
+	#>
 	[CmdletBinding()]
 	param (
 		[Parameter(Mandatory=$true,Position=0)][string]$name,
 		[Parameter(Mandatory=$false)][object]$Connection=$Script:Connection
 	)
-	$PostObject=[NBIPAMRole]::New($name)
+	$PSBoundParameters['slug']=makeSlug -name $name
+	$PostJson = createPostJson -Fields ($PSBoundParameters.GetEnumerator())
 	$restParams=@{
 		Method = 'Post'
 		URI = "$($Connection.ApiBaseURL)/$IPAMRolesAPIPath/"
-		body = $PostObject|ConvertTo-Json -Depth 50
+		body = $PostJson
 	}
 	
 	$PostObject=Invoke-CustomRequest -restParams $restParams -Connection $Connection

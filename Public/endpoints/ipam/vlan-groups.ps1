@@ -1,6 +1,14 @@
 $vlangroupsAPIPath="ipam/vlan-groups"
 
 function New-NBVlanGroup {
+	<#
+	.SYNOPSIS
+	Add a new vlan group
+	.PARAMETER name
+	vlan group name
+	.PARAMETER Connection
+	Connection object
+	#>
 	[CmdletBinding()]
 	param (
 		[Parameter(Mandatory=$true,Position=0)][string]$name,
