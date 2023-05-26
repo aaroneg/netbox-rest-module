@@ -26,7 +26,7 @@ function New-NBVMCluster {
 		[Parameter(Mandatory=$false)][int]$group,
 		[Parameter(Mandatory=$false)][int]$tenant,
 		[Parameter(Mandatory=$false)][int]$site,
-		[Parameter(Mandatory=$false)][int]$comments,
+		[Parameter(Mandatory=$false)][string]$comments,
 		[Parameter(Mandatory=$false)][string]$status="active",
 		[Parameter(Mandatory=$false)][object]$Connection=$Script:Connection
 	)
