@@ -46,7 +46,11 @@ function New-NBWirelessLan {
 		URI = "$($Connection.ApiBaseURL)/$NBWirelessLanAPIPath/"
 		body = $PostJson
 	}
-	Invoke-CustomRequest -restParams $restParams -Connection $Connection
+	$PostObject=Invoke-CustomRequest -restParams $restParams -Connection $Connection
+	if ($PostObject.message) {
+		throw $PostObject.message
+	}
+	$PostObject
 }
 
 function Get-NBWirelessLans {
