@@ -69,7 +69,7 @@ function Set-NBLocation {
 		[Parameter(Mandatory=$false)][object]$Connection=$Script:Connection,
 		[Parameter(Mandatory=$true,Position=0)][int]$id,
 		[Parameter(Mandatory=$true,Position=1)][string]
-			[ValidateSet('name','slug','site','parent','tenant','description')]
+			[ValidateSet('name','slug','site','parent','status','tenant','description')]
 			$key,
 		[Parameter(Mandatory=$true,Position=2)][string]$value
 	)
