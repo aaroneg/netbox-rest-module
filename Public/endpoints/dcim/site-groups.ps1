@@ -1,29 +1,20 @@
-Class NBSiteGroup {
-	[string]$name
-	[string]$slug
-	# Constructor
-	NBSiteGroup(
-		[string]$name
-	){
-		$this.name = $name
-		$this.slug = makeSlug -name $name
-	}
-}
 $SiteGroupsAPIPath="dcim/site-groups"
 
 function New-NBSiteGroup {
 	[CmdletBinding()]
 	param (
 		[Parameter(Mandatory=$true,Position=0)][string]$name,
+		[Parameter(Mandatory=$false)][int]$parent,
+		[Parameter(Mandatory=$false)][string]$description,
 		[Parameter(Mandatory=$false)][object]$Connection=$Script:Connection
 	)
-	$PostObject=[NBsiteGroup]::New($name)
+	$PSBoundParameters['slug']=makeSlug -name $name
+	$PostJson = createPostJson -Fields ($PSBoundParameters.GetEnumerator())
 	$restParams=@{
 		Method = 'Post'
 		URI = "$($Connection.ApiBaseURL)/$SiteGroupsAPIPath/"
-		body = $PostObject|ConvertTo-Json -Depth 50
+		body = $PostJson
 	}
-	
 	$PostObject=Invoke-CustomRequest -restParams $restParams -Connection $Connection
 	if ($PostObject.message) {
 		throw $PostObject.message

@@ -1,18 +1,14 @@
-Class NBVirtualChassis {
-	[string]$name
-	# Constructor
-	NBVirtualChassis(
-		[string]$name
-	){
-		$this.name = $name
-	}
-}
-$NBVirtualChassisAPIPath="dcim/sites"
+
+$NBVirtualChassisAPIPath="dcim/virtual-chassis"
 
 function New-NBVirtualChassis {
 	[CmdletBinding()]
 	param (
 		[Parameter(Mandatory=$true,Position=0)][string]$name,
+		[Parameter(Mandatory=$false)][string]$domain,
+		[Parameter(Mandatory=$false)][int]$master,
+		[Parameter(Mandatory=$false)][string]$description,
+		[Parameter(Mandatory=$false)][string]$comments,
 		[Parameter(Mandatory=$false)][object]$Connection=$Script:Connection
 	)
 	$PostObject=[NBVirtualChassis]::New($name)
@@ -71,7 +67,7 @@ function Set-NBVirtualChassis {
 		[Parameter(Mandatory=$false)][object]$Connection=$Script:Connection,
 		[Parameter(Mandatory=$true,Position=0)][int]$id,
 		[Parameter(Mandatory=$true,Position=1)][string]
-			[ValidateSet('name','domain','master')]
+			[ValidateSet('name','domain','master','description','comments')]
 			$key,
 		[Parameter(Mandatory=$true,Position=2)][string]$value
 	)

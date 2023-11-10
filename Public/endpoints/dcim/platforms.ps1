@@ -1,27 +1,20 @@
-Class NBDevicePlatform {
-	[string]$name
-	[string]$slug
-	# Constructor
-	NBDevicePlatform(
-		[string]$name
-	){
-		$this.name = $name
-		$this.slug = makeSlug -name $name
-	}
-}
 $DevicePlatformAPIPath="dcim/platforms"
 
 function New-NBDevicePlatform {
 	[CmdletBinding()]
 	param (
 		[Parameter(Mandatory=$true,Position=0)][string]$name,
+		[Parameter(Mandatory=$false)][int]$manufacturer,
+		[Parameter(Mandatory=$false)][int]$config_template,
+		[Parameter(Mandatory=$false)][string]$description,
 		[Parameter(Mandatory=$false)][object]$Connection=$Script:Connection
 	)
-	$PostObject=[NBDevicePlatform]::New($name)
+	$PSBoundParameters['slug']=makeSlug -name $name
+	$PostJson = createPostJson -Fields ($PSBoundParameters.GetEnumerator())
 	$restParams=@{
 		Method = 'Post'
 		URI = "$($Connection.ApiBaseURL)/$DevicePlatformAPIPath/"
-		body = $PostObject|ConvertTo-Json -Depth 50
+		body = $PostJson
 	}
 	
 	$PostObject=Invoke-CustomRequest -restParams $restParams -Connection $Connection

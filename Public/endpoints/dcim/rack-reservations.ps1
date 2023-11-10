@@ -1,43 +1,30 @@
-# Class NBRackReservation {
-# 	[int]$rack
-# 	[string]$units
-# 	[array]$user
-# 	[string]$description
-# 	# Constructor
-# 	NBRackReservation(
-# 		[int]$rack,
-# 		[array]$units,
-# 		[int]$user,
-# 		[string]$description
-
-# 	){
-# 		$this.rack = $rack
-# 		$this.units = $units
-# 		$this.user = $user
-# 		$this.description = $description
-# 	}
-# }
 $RackReservationsAPIPath="dcim/rack-reservations"
 
-# function New-NBRackReservation {
-# 	[CmdletBinding()]
-# 	param (
-# 		[Parameter(Mandatory=$true,Position=0)][int]$rackid,
-# 		[Parameter(Mandatory=$true,Position=1)][array]$units,
-# 		[Parameter(Mandatory=$true,Position=3)][int]$user,
-# 		[Parameter(Mandatory=$true,Position=4)][string]$description,
-# 		[Parameter(Mandatory=$false)][object]$Connection=$Script:Connection
-# 	)
-# 	$PostObject=[NBRackReservation]::New($rackid,$units,$user,$description)
-# 	$restParams=@{
-# 		Method = 'Post'
-# 		URI = "$($Connection.ApiBaseURL)/$RackReservationsAPIPath/"
-# 		body = $PostObject|ConvertTo-Json -Depth 50
-# 	}
-# 	$PostObject|ConvertTo-Json -Depth 50
-# 	$PostObject=Invoke-CustomRequest -restParams $restParams -Connection $Connection
-# 	$PostObject
-# }
+function New-NBRackReservation {
+	[CmdletBinding()]
+	param (
+		[Parameter(Mandatory=$true,Position=0)][int]$rack,
+		[Parameter(Mandatory=$true,Position=1)]
+			[ValidateRange(0,32767)]
+			[int]$units,
+		[Parameter(Mandatory=$true,Position=3)][int]$user,
+		[Parameter(Mandatory=$false)][int]$tenant,
+		[Parameter(Mandatory=$true,Position=4)][string]$description,
+		[Parameter(Mandatory=$false)][int]$comments,
+		[Parameter(Mandatory=$false)][object]$Connection=$Script:Connection
+	)
+	$PostJson = createPostJson -Fields ($PSBoundParameters.GetEnumerator())
+	$restParams=@{
+		Method = 'Post'
+		URI = "$($Connection.ApiBaseURL)/$RackReservationsAPIPath/"
+		body = $PostJson
+	}
+	$PostObject=Invoke-CustomRequest -restParams $restParams -Connection $Connection
+	if ($PostObject.message) {
+		throw $PostObject.message
+	}
+	$PostObject
+}
 
 function Get-NBRackReservations {
 	[CmdletBinding()]
@@ -62,7 +49,7 @@ function Set-NBRackReservation {
 		[Parameter(Mandatory=$false)][object]$Connection=$Script:Connection,
 		[Parameter(Mandatory=$true,Position=0)][int]$id,
 		[Parameter(Mandatory=$true,Position=1)][string]
-			[ValidateSet('name','slug','status','region','group','tenant','facility','time_zone','description','physical_address','shipping_address','latitude','longitude','comments')]
+			[ValidateSet('rack','units','user','tenant','description','comments')]
 			$key,
 		[Parameter(Mandatory=$true,Position=2)][string]$value
 	)

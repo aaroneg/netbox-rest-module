@@ -1,20 +1,24 @@
-Class NBIPAddress {
-	[string]$address
 
-	# Constructor
-	NBIPAddress(
-		[string]$address
-
-	){
-		$this.address = $address
-	}
-}
 $IPAddressAPIPath="ipam/ip-addresses"
 
 function New-NBIPAddress {
 	[CmdletBinding()]
 	param (
 		[Parameter(Mandatory=$true,Position=0)][string]$address,
+		[Parameter(Mandatory=$false)][int]$vrf,
+		[Parameter(Mandatory=$false)][int]$tenant,
+		[Parameter(Mandatory=$false)]
+			[ValidateSet('active','reserved','deprecated','dhcp','slaac')]
+			[string]$status,
+		[Parameter(Mandatory=$false)]
+			[ValidateSet('loopback','secondary','anycast','vip','vrrp','hsrp','glbp','carp')]
+			[string]$role,
+		[Parameter(Mandatory=$false)][string]$assigned_object_type,
+		[Parameter(Mandatory=$false)][int]$assigned_object_id,
+		[Parameter(Mandatory=$false)][int]$nat_inside,
+		[Parameter(Mandatory=$false)][string]$dns_name,
+		[Parameter(Mandatory=$false)][string]$description,
+		[Parameter(Mandatory=$false)][string]$comments,
 		[Parameter(Mandatory=$false)][object]$Connection=$Script:Connection
 	)
 	Write-Verbose "[$($MyInvocation.MyCommand.Name)]"

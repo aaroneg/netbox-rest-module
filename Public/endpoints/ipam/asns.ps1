@@ -1,29 +1,20 @@
-Class NBASN {
-	[string]$asn
-	[string]$rir
-	# Constructor
-	NBASN(
-		[string]$asn,
-		[string]$rir
-	){
-		$this.asn = $asn
-		$this.rir = $rir
-	}
-}
 $ASNsAPIPath="ipam/asns"
 
 function New-NBASN {
 	[CmdletBinding()]
 	param (
-		[Parameter(Mandatory=$true,Position=0)][string]$asn,
-		[Parameter(Mandatory=$true,Position=0)][string]$rir,
+		[Parameter(Mandatory=$true,Position=0)][int]$asn,
+		[Parameter(Mandatory=$true,Position=0)][int]$rir,
+		[Parameter(Mandatory=$true,Position=0)][int]$tenant,
+		[Parameter(Mandatory=$false)][string]$description,
+		[Parameter(Mandatory=$false)][string]$comments,
 		[Parameter(Mandatory=$false)][object]$Connection=$Script:Connection
 	)
-	$PostObject=[NBASN]::New($asn)
+	$PostJson = createPostJson -Fields ($PSBoundParameters.GetEnumerator())
 	$restParams=@{
 		Method = 'Post'
 		URI = "$($Connection.ApiBaseURL)/$ASNsAPIPath/"
-		body = $PostObject|ConvertTo-Json -Depth 50
+		body = $PostJson
 	}
 	
 	$PostObject=Invoke-CustomRequest -restParams $restParams -Connection $Connection

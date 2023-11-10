@@ -1,32 +1,24 @@
-Class NBLocation {
-	[string]$name
-	[string]$slug
-	[int]$site
-
-	# Constructor
-	NBLocation(
-		[string]$name,
-		[int]$site
-	){
-		$this.name = $name
-		$this.slug = makeSlug -name $name
-		$this.site = $site
-	}
-}
 $LocationsAPIPath="dcim/locations"
 
 function New-NBLocation {
 	[CmdletBinding()]
 	param (
 		[Parameter(Mandatory=$true,Position=0)][string]$name,
-		[Parameter(Mandatory=$true,Position=1)][int]$siteID,
+		[Parameter(Mandatory=$true,Position=1)][int]$site,
+		[Parameter(Mandatory=$false)][int]$parent,
+		[Parameter(Mandatory=$false)]
+			[ValidateSet('planned','staging','active','decommissioning','retired')]
+			[string]$status,
+		[Parameter(Mandatory=$false)][int]$tenant,
+		[Parameter(Mandatory=$false)][string]$description,
 		[Parameter(Mandatory=$false)][object]$Connection=$Script:Connection
 	)
-	$PostObject=[NBLocation]::New($name,$siteID)
+	$PSBoundParameters['slug']=makeSlug -name $name
+	$PostJson = createPostJson -Fields ($PSBoundParameters.GetEnumerator())
 	$restParams=@{
 		Method = 'Post'
 		URI = "$($Connection.ApiBaseURL)/$LocationsAPIPath/"
-		body = $PostObject|ConvertTo-Json -Depth 50
+		body = $PostJson
 	}
 	
 	$PostObject=Invoke-CustomRequest -restParams $restParams -Connection $Connection

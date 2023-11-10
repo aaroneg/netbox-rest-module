@@ -1,29 +1,27 @@
-Class NBDeviceInterface {
-	[string]$name
-	[string]$type
-
-	# Constructor
-	NBDeviceInterface(
-		[string]$name,
-		[string]$type
-	){
-		$this.name = $name
-		$this.type = $type
-	}
-}
 $NBDeviceInterfaceAPIPath="dcim/interfaces"
 
 function New-NBDeviceInterface {
 	[CmdletBinding()]
 	param (
+		[Parameter(Mandatory=$true,Position=2)][int]$device,	
+		[Parameter(Mandatory=$false)][int]$module,	
 		[Parameter(Mandatory=$true,Position=0)][string]$name,
+		[Parameter(Mandatory=$false)][string]$label,
 		[Parameter(Mandatory=$true,Position=1)][string]$type,
-		[Parameter(Mandatory=$true,Position=2)][int]$deviceID,
+		[Parameter(Mandatory=$false)][bool]$enabled,
+		[Parameter(Mandatory=$false)][int]$parent,
+		[Parameter(Mandatory=$false)][int]$bridge,
+		[Parameter(Mandatory=$false)][int]$lag,
+		[Parameter(Mandatory=$false)][int]$mtu,
+		[Parameter(Mandatory=$false)][string]$mac_address,
+		[Parameter(Mandatory=$false)][int]$speed,
+		[Parameter(Mandatory=$false)][string]$duplex,
+		[Parameter(Mandatory=$false)][string]$wwn,
+		[Parameter(Mandatory=$false)][bool]$mgmt_only,
+		[Parameter(Mandatory=$false)][string]$description,
 		[Parameter(Mandatory=$false)][object]$Connection=$Script:Connection
 	)
-	$PostObject=[NBDeviceInterface]::New($name,$type)
-	if ($deviceID) { $PostObject | Add-Member -MemberType NoteProperty -Name device -Value $deviceID }
-
+	$PostJson = createPostJson -Fields ($PSBoundParameters.GetEnumerator())
 	$restParams=@{
 		Method = 'Post'
 		URI = "$($Connection.ApiBaseURL)/$NBDeviceInterfaceAPIPath/"

@@ -19,9 +19,14 @@ $IPRangesAPIPath="ipam/ip-ranges"
 function New-NBIPRange {
 	[CmdletBinding()]
 	param (
-		[Parameter(Mandatory=$true,Position=0)][string]$startAddress,
-		[Parameter(Mandatory=$true,Position=1)][string]$endAddress,
+		[Parameter(Mandatory=$true,Position=0)][string]$start_address,
+		[Parameter(Mandatory=$true,Position=1)][string]$end_address,
 		[Parameter(Mandatory=$true,Position=2)][string][ValidateSet('active','reserved','deprecated')]$status,
+		[Parameter(Mandatory=$false)][int]$vrf,
+		[Parameter(Mandatory=$false)][int]$tenant,
+		[Parameter(Mandatory=$false)][int]$role,
+		[Parameter(Mandatory=$false)][string]$description,
+		[Parameter(Mandatory=$false)][string]$comments,
 		[Parameter(Mandatory=$false)][object]$Connection=$Script:Connection
 	)
 	$PostObject=[NBIPRange]::New($startAddress,$endAddress,$status)
