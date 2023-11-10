@@ -19,6 +19,14 @@ function New-NBDeviceInterface {
 		[Parameter(Mandatory=$false)][string]$wwn,
 		[Parameter(Mandatory=$false)][bool]$mgmt_only,
 		[Parameter(Mandatory=$false)][string]$description,
+		[Parameter(Mandatory=$false)][string]$mode,
+		[Parameter(Mandatory=$false)][string]$rf_role,
+		[Parameter(Mandatory=$false)][string]$rf_channel,
+		[Parameter(Mandatory=$false)][string]$poe_mode,
+		[Parameter(Mandatory=$false)][string]$poe_type,
+		[Parameter(Mandatory=$false)][int]$rf_channel_frequency,
+		[Parameter(Mandatory=$false)][int]$rf_channel_width,
+		[Parameter(Mandatory=$false)][int]$tx_power,
 		[Parameter(Mandatory=$false)][object]$Connection=$Script:Connection
 	)
 	$PostJson = createPostJson -Fields ($PSBoundParameters.GetEnumerator())
