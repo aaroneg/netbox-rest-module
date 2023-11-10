@@ -1,32 +1,34 @@
-Class NBDeviceType {
-	[int]$manufacturer
-	[string]$model
-	[string]$slug
-
-	# Constructor
-	NBDeviceType(
-		[int]$manufacturer,
-		[string]$model
-	){
-		$this.manufacturer = $manufacturer
-		$this.model = $model
-		$this.slug = makeSlug -name $model
-	}
-}
 $deviceTypesPath="dcim/device-types"
 
 function New-NBDeviceType {
 	[CmdletBinding()]
 	param (
-		[Parameter(Mandatory=$true,Position=0)][int]$manufacturerID,
+		[Parameter(Mandatory=$true,Position=0)][int]$manufacturer,
+		[Parameter(Mandatory=$false)][int]$default_platform,
 		[Parameter(Mandatory=$true,Position=1)][string]$model,
+		[Parameter(Mandatory=$true,Position=1)][string]$part_number,
+		[Parameter(Mandatory=$false)][int]$u_height,
+		[Parameter(Mandatory=$false)][bool]$is_full_depth,
+		[Parameter(Mandatory=$true,Position=1)][string]$subdevice_role,
+		[Parameter(Mandatory=$true,Position=1)]
+			[ValidateSet('front-to-rear','rear-to-front','left-to-right','right-to-left','side-to-rear','passive','mixed')]
+			[string]$airflow,
+		[Parameter(Mandatory=$false)][int]$weight,
+		[Parameter(Mandatory=$false)]
+			[ValidateSet('kg','g','lb','oz')]
+			[string]$weight_unit,
+		[Parameter(Mandatory=$false)][string]$front_image,
+		[Parameter(Mandatory=$false)][string]$rear_image,
+		[Parameter(Mandatory=$false)][string]$description,
+		[Parameter(Mandatory=$false)][string]$comments,
 		[Parameter(Mandatory=$false)][object]$Connection=$Script:Connection
 	)
-	$PostObject=[NBDeviceType]::New($manufacturerID,$model)
+	$PSBoundParameters['slug']=makeSlug -name $name
+	$PostJson = createPostJson -Fields ($PSBoundParameters.GetEnumerator())
 	$restParams=@{
 		Method = 'Post'
 		URI = "$($Connection.ApiBaseURL)/$deviceTypesPath/"
-		body = $PostObject|ConvertTo-Json -Depth 50
+		body = $PostJson
 	}
 	$PostObject=Invoke-CustomRequest -restParams $restParams -Connection $Connection
 	if ($PostObject.message) {

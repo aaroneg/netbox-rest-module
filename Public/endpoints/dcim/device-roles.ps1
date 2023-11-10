@@ -1,17 +1,4 @@
-Class NBDeviceRole {
-	[string]$name
-	[string]$color
-	[string]$slug
-	# Constructor
-	NBDeviceRole(
-		[string]$name,
-		[string]$color
-	){
-		$this.name = $name
-		$this.color = $color
-		$this.slug = makeSlug -name $name
-	}
-}
+
 $DeviceRolesAPIPath="dcim/device-roles"
 
 function New-NBDeviceRole {
@@ -21,11 +8,11 @@ function New-NBDeviceRole {
 		[Parameter(Mandatory=$true,Position=1)][string]$color,
 		[Parameter(Mandatory=$false)][object]$Connection=$Script:Connection
 	)
-	$PostObject=[NBDeviceRole]::New($name,$color)
+	$PostJson = createPostJson -Fields ($PSBoundParameters.GetEnumerator())
 	$restParams=@{
 		Method = 'Post'
 		URI = "$($Connection.ApiBaseURL)/$DeviceRolesAPIPath/"
-		body = $PostObject|ConvertTo-Json -Depth 50
+		body = $PostJson
 	}
 	$PostObject=Invoke-CustomRequest -restParams $restParams -Connection $Connection
 	if ($PostObject.message) {
