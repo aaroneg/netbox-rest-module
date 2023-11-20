@@ -176,18 +176,8 @@ function Get-NBCurrentConnection {
 	$Script:Connection
 }
 
-Export-ModuleMember -Function "*-*"
+
 #EndRegion '.\Public\apiConnection.ps1' 40
-#Region '.\Public\endpoints\circuits\circuit-terminations.ps1' 0
-#EndRegion '.\Public\endpoints\circuits\circuit-terminations.ps1' 1
-#Region '.\Public\endpoints\circuits\circuit-types.ps1' 0
-#EndRegion '.\Public\endpoints\circuits\circuit-types.ps1' 1
-#Region '.\Public\endpoints\circuits\circuits.ps1' 0
-#EndRegion '.\Public\endpoints\circuits\circuits.ps1' 1
-#Region '.\Public\endpoints\circuits\provider-networks.ps1' 0
-#EndRegion '.\Public\endpoints\circuits\provider-networks.ps1' 1
-#Region '.\Public\endpoints\circuits\providers.ps1' 0
-#EndRegion '.\Public\endpoints\circuits\providers.ps1' 1
 #Region '.\Public\endpoints\dcim\device-roles.ps1' 0
 
 $DeviceRolesAPIPath="dcim/device-roles"
@@ -286,7 +276,7 @@ function Remove-NBDeviceRole {
 	(Invoke-CustomRequest -restParams $restParams -Connection $Connection)
 }
 
-Export-ModuleMember -Function "*-*"
+
 #EndRegion '.\Public\endpoints\dcim\device-roles.ps1' 99
 #Region '.\Public\endpoints\dcim\device-types.ps1' 0
 $deviceTypesPath="dcim/device-types"
@@ -403,7 +393,7 @@ function Remove-NBDeviceType {
 	(Invoke-CustomRequest -restParams $restParams -Connection $Connection)
 }
 
-Export-ModuleMember -Function "*-*"
+
 #EndRegion '.\Public\endpoints\dcim\device-types.ps1' 116
 #Region '.\Public\endpoints\dcim\devices.ps1' 0
 $DevicesAPIPath="dcim/devices"
@@ -534,7 +524,7 @@ function Remove-NBDevice {
 	(Invoke-CustomRequest -restParams $restParams -Connection $Connection)
 }
 
-Export-ModuleMember -Function "*-*"
+
 #EndRegion '.\Public\endpoints\dcim\devices.ps1' 130
 #Region '.\Public\endpoints\dcim\interfaces.ps1' 0
 $NBDeviceInterfaceAPIPath="dcim/interfaces"
@@ -656,7 +646,7 @@ function Remove-NBDeviceInterface {
 }
 
 
-Export-ModuleMember -Function "*-*"
+
 #EndRegion '.\Public\endpoints\dcim\interfaces.ps1' 121
 #Region '.\Public\endpoints\dcim\locations.ps1' 0
 $LocationsAPIPath="dcim/locations"
@@ -759,7 +749,7 @@ function Remove-NBLocation {
 	(Invoke-CustomRequest -restParams $restParams -Connection $Connection)
 }
 
-Export-ModuleMember -Function "*-*"
+
 #EndRegion '.\Public\endpoints\dcim\locations.ps1' 102
 #Region '.\Public\endpoints\dcim\manufacturers.ps1' 0
 $ManufacturerAPIPath="dcim/manufacturers"
@@ -860,7 +850,7 @@ function Remove-NBManufacturer {
 	(Invoke-CustomRequest -restParams $restParams -Connection $Connection)
 }
 
-Export-ModuleMember -Function "*-*"
+
 #EndRegion '.\Public\endpoints\dcim\manufacturers.ps1' 100
 #Region '.\Public\endpoints\dcim\platforms.ps1' 0
 $DevicePlatformAPIPath="dcim/platforms"
@@ -963,7 +953,7 @@ function Remove-NBDevicePlatform {
 	(Invoke-CustomRequest -restParams $restParams -Connection $Connection)
 }
 
-Export-ModuleMember -Function "*-*"
+
 #EndRegion '.\Public\endpoints\dcim\platforms.ps1' 102
 #Region '.\Public\endpoints\dcim\rack-elevations.ps1' 0
 $RacksAPIPath="dcim/racks"
@@ -982,7 +972,7 @@ function Get-NBRackElevation {
 }
 
 
-Export-ModuleMember -Function "*-*"
+
 #EndRegion '.\Public\endpoints\dcim\rack-elevations.ps1' 18
 #Region '.\Public\endpoints\dcim\rack-reservations.ps1' 0
 $RackReservationsAPIPath="dcim/rack-reservations"
@@ -1069,7 +1059,7 @@ function Remove-NBRackReservation {
 	(Invoke-CustomRequest -restParams $restParams -Connection $Connection)
 }
 
-Export-ModuleMember -Function "*-*"
+
 #EndRegion '.\Public\endpoints\dcim\rack-reservations.ps1' 86
 #Region '.\Public\endpoints\dcim\rack-roles.ps1' 0
 $RackRolesAPIPath="dcim/rack-roles"
@@ -1171,7 +1161,7 @@ function Remove-NBRackRole {
 	(Invoke-CustomRequest -restParams $restParams -Connection $Connection)
 }
 
-Export-ModuleMember -Function "*-*"
+
 #EndRegion '.\Public\endpoints\dcim\rack-roles.ps1' 101
 #Region '.\Public\endpoints\dcim\racks.ps1' 0
 $RacksAPIPath="dcim/racks"
@@ -1303,7 +1293,7 @@ function Remove-NBRack {
 	(Invoke-CustomRequest -restParams $restParams -Connection $Connection)
 }
 
-Export-ModuleMember -Function "*-*"
+
 #EndRegion '.\Public\endpoints\dcim\racks.ps1' 131
 #Region '.\Public\endpoints\dcim\regions.ps1' 0
 $regionsAPIPath="dcim/regions"
@@ -1405,7 +1395,7 @@ function Remove-NBRegion {
 	(Invoke-CustomRequest -restParams $restParams -Connection $Connection)
 }
 
-Export-ModuleMember -Function "*-*"
+
 #EndRegion '.\Public\endpoints\dcim\regions.ps1' 101
 #Region '.\Public\endpoints\dcim\site-groups.ps1' 0
 $SiteGroupsAPIPath="dcim/site-groups"
@@ -1506,7 +1496,7 @@ function Remove-NBSiteGroup {
 	(Invoke-CustomRequest -restParams $restParams -Connection $Connection)
 }
 
-Export-ModuleMember -Function "*-*"
+
 #EndRegion '.\Public\endpoints\dcim\site-groups.ps1' 100
 #Region '.\Public\endpoints\dcim\sites.ps1' 0
 $SitesAPIPath="dcim/sites"
@@ -1621,7 +1611,7 @@ function Remove-NBSite {
 	(Invoke-CustomRequest -restParams $restParams -Connection $Connection)
 }
 
-Export-ModuleMember -Function "*-*"
+
 #EndRegion '.\Public\endpoints\dcim\sites.ps1' 114
 #Region '.\Public\endpoints\dcim\virtual-chassis.ps1' 0
 
@@ -1726,7 +1716,7 @@ function Remove-NBVirtualChassis {
 	(Invoke-CustomRequest -restParams $restParams -Connection $Connection)
 }
 
-Export-ModuleMember -Function "*-*"
+
 #EndRegion '.\Public\endpoints\dcim\virtual-chassis.ps1' 104
 #Region '.\Public\endpoints\ipam\aggregates.ps1' 0
 $NBAggregateAPIPath="ipam/aggregates"
@@ -1821,7 +1811,7 @@ function Remove-NBAggregate {
 	(Invoke-CustomRequest -restParams $restParams -Connection $Connection)
 }
 
-Export-ModuleMember -Function "*-*"
+
 #EndRegion '.\Public\endpoints\ipam\aggregates.ps1' 94
 #Region '.\Public\endpoints\ipam\asns.ps1' 0
 $ASNsAPIPath="ipam/asns"
@@ -1924,7 +1914,7 @@ function Remove-NBASN {
 	(Invoke-CustomRequest -restParams $restParams -Connection $Connection)
 }
 
-Export-ModuleMember -Function "*-*"
+
 #EndRegion '.\Public\endpoints\ipam\asns.ps1' 102
 #Region '.\Public\endpoints\ipam\ip-addresses.ps1' 0
 
@@ -2053,7 +2043,7 @@ function Remove-NBIPAddress {
 	(Invoke-CustomRequest -restParams $restParams -Connection $Connection)
 }
 
-Export-ModuleMember -Function "*-*"
+
 #EndRegion '.\Public\endpoints\ipam\ip-addresses.ps1' 128
 #Region '.\Public\endpoints\ipam\ip-ranges.ps1' 0
 Class NBIPRange {
@@ -2163,7 +2153,7 @@ function Remove-NBIPRange {
 	(Invoke-CustomRequest -restParams $restParams -Connection $Connection)
 }
 
-Export-ModuleMember -Function "*-*"
+
 #EndRegion '.\Public\endpoints\ipam\ip-ranges.ps1' 109
 #Region '.\Public\endpoints\ipam\prefixes.ps1' 0
 $PrefixesAPIPath="ipam/prefixes"
@@ -2252,7 +2242,7 @@ function Remove-NBPrefix {
 	(Invoke-CustomRequest -restParams $restParams -Connection $Connection)
 }
 
-Export-ModuleMember -Function "*-*"
+
 #EndRegion '.\Public\endpoints\ipam\prefixes.ps1' 88
 #Region '.\Public\endpoints\ipam\rirs.ps1' 0
 $RIRsAPIPath="ipam/rirs"
@@ -2360,7 +2350,7 @@ function Remove-NBRIR {
 	(Invoke-CustomRequest -restParams $restParams -Connection $Connection)
 }
 
-Export-ModuleMember -Function "*-*"
+
 #EndRegion '.\Public\endpoints\ipam\rirs.ps1' 107
 #Region '.\Public\endpoints\ipam\roles.ps1' 0
 $IPAMRolesAPIPath="ipam/roles"
@@ -2465,7 +2455,7 @@ function Remove-NBIPAMRole {
 	(Invoke-CustomRequest -restParams $restParams -Connection $Connection)
 }
 
-Export-ModuleMember -Function "*-*"
+
 #EndRegion '.\Public\endpoints\ipam\roles.ps1' 104
 #Region '.\Public\endpoints\ipam\vlan-groups.ps1' 0
 $vlangroupsAPIPath="ipam/vlan-groups"
@@ -2569,7 +2559,7 @@ function Remove-NBVlanGroup {
 	(Invoke-CustomRequest -restParams $restParams -Connection $Connection)
 }
 
-Export-ModuleMember -Function "*-*"
+
 #EndRegion '.\Public\endpoints\ipam\vlan-groups.ps1' 103
 #Region '.\Public\endpoints\ipam\vlans.ps1' 0
 $VLANsAPIPath="ipam/vlans"
@@ -2708,7 +2698,7 @@ function Remove-NBVLAN {
 	(Invoke-CustomRequest -restParams $restParams -Connection $Connection)
 }
 
-Export-ModuleMember -Function "*-*"
+
 #EndRegion '.\Public\endpoints\ipam\vlans.ps1' 138
 #Region '.\Public\endpoints\ipam\vrfs.ps1' 0
 
@@ -2827,7 +2817,7 @@ function Remove-NBVRF {
 	(Invoke-CustomRequest -restParams $restParams -Connection $Connection)
 }
 
-Export-ModuleMember -Function "*-*"
+
 #EndRegion '.\Public\endpoints\ipam\vrfs.ps1' 118
 #Region '.\Public\endpoints\status\status.ps1' 0
 $StatusAPIPath="status"
@@ -2845,7 +2835,7 @@ function Get-NBStatus {
 }
 
 
-Export-ModuleMember -Function "*-*"
+
 #EndRegion '.\Public\endpoints\status\status.ps1' 17
 #Region '.\Public\endpoints\tenancy\contact-groups.ps1' 0
 $ContactGroupsAPIPath="tenancy/contact-groups"
@@ -2942,7 +2932,7 @@ function Remove-NBContactGroup {
 	(Invoke-CustomRequest -restParams $restParams -Connection $Connection)
 }
 
-Export-ModuleMember -Function "*-*"
+
 #EndRegion '.\Public\endpoints\tenancy\contact-groups.ps1' 96
 #Region '.\Public\endpoints\tenancy\contact-roles.ps1' 0
 $ContactRolesAPIPath="tenancy/contact-roles"
@@ -3052,7 +3042,7 @@ function Remove-NBContactRole {
 	(Invoke-CustomRequest -restParams $restParams -Connection $Connection)
 }
 
-Export-ModuleMember -Function "*-*"
+
 #EndRegion '.\Public\endpoints\tenancy\contact-roles.ps1' 109
 #Region '.\Public\endpoints\tenancy\contacts.ps1' 0
 
@@ -3182,7 +3172,7 @@ function Remove-NBContact {
 	(Invoke-CustomRequest -restParams $restParams -Connection $Connection)
 }
 
-Export-ModuleMember -Function "*-*"
+
 #EndRegion '.\Public\endpoints\tenancy\contacts.ps1' 129
 #Region '.\Public\endpoints\tenancy\tenant-groups.ps1' 0
 
@@ -3296,7 +3286,7 @@ function Remove-NBTenantGroup {
 	(Invoke-CustomRequest -restParams $restParams -Connection $Connection)
 }
 
-Export-ModuleMember -Function "*-*"
+
 #EndRegion '.\Public\endpoints\tenancy\tenant-groups.ps1' 113
 #Region '.\Public\endpoints\tenancy\tenants.ps1' 0
 $TenantsAPIPath="tenancy/tenants"
@@ -3412,7 +3402,7 @@ function Remove-NBTenant {
 	(Invoke-CustomRequest -restParams $restParams -Connection $Connection)
 }
 
-Export-ModuleMember -Function "*-*"
+
 #EndRegion '.\Public\endpoints\tenancy\tenants.ps1' 115
 #Region '.\Public\endpoints\users\users.ps1' 0
 $UsersAPIPath="users/users"
@@ -3443,7 +3433,7 @@ function Get-NBUserByName {
 	Get-ApiItemByName -apiConnection $Connection -RelativePath $UsersAPIPath -value $name
 }
 
-Export-ModuleMember -Function "*-*"
+
 #EndRegion '.\Public\endpoints\users\users.ps1' 30
 #Region '.\Public\endpoints\virtualization\cluster-groups.ps1' 0
 $VirtualizationClusterGroupsAPIPath="virtualization/cluster-groups"
@@ -3553,7 +3543,7 @@ function Remove-NBVMClusterGroup {
 	(Invoke-CustomRequest -restParams $restParams -Connection $Connection)
 }
 
-Export-ModuleMember -Function "*-*"
+
 #EndRegion '.\Public\endpoints\virtualization\cluster-groups.ps1' 109
 #Region '.\Public\endpoints\virtualization\cluster-types.ps1' 0
 $VirtualizationClusterTypesAPIPath="virtualization/cluster-types"
@@ -3664,7 +3654,7 @@ function Remove-NBVMClusterType {
 	(Invoke-CustomRequest -restParams $restParams -Connection $Connection)
 }
 
-Export-ModuleMember -Function "*-*"
+
 #EndRegion '.\Public\endpoints\virtualization\cluster-types.ps1' 110
 #Region '.\Public\endpoints\virtualization\clusters.ps1' 0
 $VirtualizationClustersAPIPath="virtualization/clusters"
@@ -3783,7 +3773,7 @@ function Remove-NBVMCluster {
 	(Invoke-CustomRequest -restParams $restParams -Connection $Connection)
 }
 
-Export-ModuleMember -Function "*-*"
+
 #EndRegion '.\Public\endpoints\virtualization\clusters.ps1' 118
 #Region '.\Public\endpoints\virtualization\interfaces.ps1' 0
 $VirtualizationInterfaceAPIPath="virtualization/interfaces"
@@ -3918,7 +3908,7 @@ function Remove-NBVMInterface {
 	(Invoke-CustomRequest -restParams $restParams -Connection $Connection)
 }
 
-Export-ModuleMember -Function "*-*"
+
 #EndRegion '.\Public\endpoints\virtualization\interfaces.ps1' 134
 #Region '.\Public\endpoints\virtualization\virtual-machines.ps1' 0
 $VirtualizationVMsAPIPath="virtualization/virtual-machines"
@@ -4056,7 +4046,7 @@ function Remove-NBVM {
 	(Invoke-CustomRequest -restParams $restParams -Connection $Connection)
 }
 
-Export-ModuleMember -Function "*-*"
+
 #EndRegion '.\Public\endpoints\virtualization\virtual-machines.ps1' 137
 #Region '.\Public\endpoints\wireless\wireless-lan-groups.ps1' 0
 $NBWirelessLanGroupAPIPath="wireless/wireless-lan-groups"
@@ -4165,7 +4155,7 @@ function Remove-NBWirelessLanGroup {
 	(Invoke-CustomRequest -restParams $restParams -Connection $Connection)
 }
 
-Export-ModuleMember -Function "*-*"
+
 #EndRegion '.\Public\endpoints\wireless\wireless-lan-groups.ps1' 108
 #Region '.\Public\endpoints\wireless\wireless-lans.ps1' 0
 $NBWirelessLanAPIPath="wireless/wireless-lans"
@@ -4284,5 +4274,21 @@ function Remove-NBWirelessLan {
 	(Invoke-CustomRequest -restParams $restParams -Connection $Connection)
 }
 
-Export-ModuleMember -Function "*-*"
+
 #EndRegion '.\Public\endpoints\wireless\wireless-lans.ps1' 118
+#Region '.\Public\Test-NBConnection.ps1' 0
+function Test-NBConnection {
+	[CmdletBinding()]
+	param (
+		[Parameter(ValueFromPipeline=$true,Mandatory=$false,Position=0)][object]$NBConnection=$Script:Connection
+	)
+	Write-Verbose "[$($MyInvocation.MyCommand.Name)] Trying to connect"
+	try {
+		"Connection OK`nNetbox Version: "+(Get-NBStatus -Connection $NBConnection)."netbox-version"
+	}
+	catch {
+		write-error "failed"
+		$NBConnection
+	}
+}
+#EndRegion '.\Public\Test-NBConnection.ps1' 15

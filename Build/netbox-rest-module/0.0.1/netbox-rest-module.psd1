@@ -9,7 +9,7 @@
 @{
 
 # Script module or binary module file associated with this manifest.
-# RootModule = ''
+RootModule = 'netbox-rest-module.psm1'
 
 # Version number of this module.
 ModuleVersion = '0.0.1'
@@ -69,7 +69,7 @@ Copyright = '(c) Aaron Glenn. All rights reserved.'
 # NestedModules = @()
 
 # Functions to export from this module, for best performance, do not use wildcards and do not delete the entry, use an empty array if there are no functions to export.
-FunctionsToExport = @('circuit-terminations','circuit-types','circuits','provider-networks','providers','device-roles','device-types','devices','interfaces','locations','manufacturers','platforms','rack-elevations','rack-reservations','rack-roles','racks','regions','site-groups','sites','virtual-chassis','aggregates','asns','ip-addresses','ip-ranges','prefixes','rirs','roles','vlan-groups','vlans','vrfs','status','contact-groups','contact-roles','contacts','tenant-groups','tenants','users','cluster-groups','cluster-types','clusters','interfaces','virtual-machines','wireless-lan-groups','wireless-lans','apiConnection')
+FunctionsToExport = @('device-roles','device-types','devices','interfaces','locations','manufacturers','platforms','rack-elevations','rack-reservations','rack-roles','racks','regions','site-groups','sites','virtual-chassis','aggregates','asns','ip-addresses','ip-ranges','prefixes','rirs','roles','vlan-groups','vlans','vrfs','status','contact-groups','contact-roles','contacts','tenant-groups','tenants','users','cluster-groups','cluster-types','clusters','interfaces','virtual-machines','wireless-lan-groups','wireless-lans','apiConnection','Test-NBConnection')
 
 # Cmdlets to export from this module, for best performance, do not use wildcards and do not delete the entry, use an empty array if there are no cmdlets to export.
 CmdletsToExport = @()
