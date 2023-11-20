@@ -19,11 +19,11 @@ function New-NBSite {
 		[Parameter(Mandatory=$false)][object]$Connection=$Script:Connection
 	)
 	$PSBoundParameters['slug']=makeSlug -name $name
-	$PostObject=[NBsite]::New($name,$status)
+	$PostJson = createPostJson -Fields ($PSBoundParameters.GetEnumerator())
 	$restParams=@{
 		Method = 'Post'
 		URI = "$($Connection.ApiBaseURL)/$SitesAPIPath/"
-		body = $PostObject|ConvertTo-Json -Depth 50
+		body = $PostJson
 	}
 	
 	$PostObject=Invoke-CustomRequest -restParams $restParams -Connection $Connection

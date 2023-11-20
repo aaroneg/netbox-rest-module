@@ -34,11 +34,11 @@ function New-NBRack {
 		[Parameter(Mandatory=$false)][string]$comments,
 		[Parameter(Mandatory=$false)][object]$Connection=$Script:Connection
 	)
-	$PostObject=[NBRack]::New($name,$siteID,$locationID)
+	$PostJson = createPostJson -Fields ($PSBoundParameters.GetEnumerator())
 	$restParams=@{
 		Method = 'Post'
 		URI = "$($Connection.ApiBaseURL)/$RacksAPIPath/"
-		body = $PostObject|ConvertTo-Json -Depth 50
+		body = $PostJson
 	}
 	
 	$PostObject=Invoke-CustomRequest -restParams $restParams -Connection $Connection
