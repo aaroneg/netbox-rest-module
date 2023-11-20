@@ -9,7 +9,7 @@
 @{
 
 # Script module or binary module file associated with this manifest.
-# RootModule = ''
+RootModule = 'netbox-rest-module.psm1'
 
 # Version number of this module.
 ModuleVersion = '0.0.1'
@@ -30,7 +30,7 @@ CompanyName = 'Unknown'
 Copyright = '(c) Aaron Glenn. All rights reserved.'
 
 # Description of the functionality provided by this module
-# Description = ''
+Description = 'Powershell module for interacting with Netbox'
 
 # Minimum version of the PowerShell engine required by this module
 # PowerShellVersion = ''
