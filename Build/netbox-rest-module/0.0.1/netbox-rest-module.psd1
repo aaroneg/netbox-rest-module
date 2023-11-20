@@ -69,7 +69,7 @@ Copyright = '(c) Aaron Glenn. All rights reserved.'
 # NestedModules = @()
 
 # Functions to export from this module, for best performance, do not use wildcards and do not delete the entry, use an empty array if there are no functions to export.
-FunctionsToExport = @()
+FunctionsToExport = @('circuit-terminations','circuit-types','circuits','provider-networks','providers','device-roles','device-types','devices','interfaces','locations','manufacturers','platforms','rack-elevations','rack-reservations','rack-roles','racks','regions','site-groups','sites','virtual-chassis','aggregates','asns','ip-addresses','ip-ranges','prefixes','rirs','roles','vlan-groups','vlans','vrfs','status','contact-groups','contact-roles','contacts','tenant-groups','tenants','users','cluster-groups','cluster-types','clusters','interfaces','virtual-machines','wireless-lan-groups','wireless-lans','apiConnection')
 
 # Cmdlets to export from this module, for best performance, do not use wildcards and do not delete the entry, use an empty array if there are no cmdlets to export.
 CmdletsToExport = @()
@@ -129,4 +129,3 @@ PrivateData = @{
 # DefaultCommandPrefix = ''
 
 }
-
