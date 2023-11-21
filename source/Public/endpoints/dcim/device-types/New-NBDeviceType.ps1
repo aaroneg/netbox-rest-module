@@ -4,11 +4,11 @@ function New-NBDeviceType {
 		[Parameter(Mandatory=$true,Position=0)][int]$manufacturer,
 		[Parameter(Mandatory=$false)][int]$default_platform,
 		[Parameter(Mandatory=$true,Position=1)][string]$model,
-		[Parameter(Mandatory=$true,Position=1)][string]$part_number,
+		[Parameter(Mandatory=$false)][string]$part_number,
 		[Parameter(Mandatory=$false)][int]$u_height,
 		[Parameter(Mandatory=$false)][bool]$is_full_depth,
-		[Parameter(Mandatory=$true,Position=1)][string]$subdevice_role,
-		[Parameter(Mandatory=$true,Position=1)]
+		[Parameter(Mandatory=$false)][string]$subdevice_role,
+		[Parameter(Mandatory=$false)]
 			[ValidateSet('front-to-rear','rear-to-front','left-to-right','right-to-left','side-to-rear','passive','mixed')]
 			[string]$airflow,
 		[Parameter(Mandatory=$false)][int]$weight,
@@ -21,8 +21,10 @@ function New-NBDeviceType {
 		[Parameter(Mandatory=$false)][string]$comments,
 		[Parameter(Mandatory=$false)][object]$Connection=$Script:Connection
 	)
-	$PSBoundParameters['slug']=makeSlug -name $name
+	$PSBoundParameters['slug']=makeSlug -name $model
 	$PostJson = createPostJson -Fields ($PSBoundParameters.GetEnumerator())
+	Write-Verbose "[$($MyInvocation.MyCommand.Name)] Running"
+	Write-Verbose $PostJson
 	$restParams=@{
 		Method = 'Post'
 		URI = "$($Connection.ApiBaseURL)/$deviceTypesPath/"
