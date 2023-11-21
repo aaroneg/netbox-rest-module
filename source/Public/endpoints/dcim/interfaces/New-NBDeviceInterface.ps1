@@ -31,10 +31,9 @@ function New-NBDeviceInterface {
 	$restParams=@{
 		Method = 'Post'
 		URI = "$($Connection.ApiBaseURL)/$NBDeviceInterfaceAPIPath/"
-		body = $PostObject|ConvertTo-Json -Depth 50
+		body = $PostJson
 	}
-	$postJSON = $PostObject|ConvertTo-Json -Depth 50
-	Write-Verbose $postJSON
+	Write-Verbose $PostJson
 	$PostObject=Invoke-CustomRequest -restParams $restParams -Connection $Connection
 	if ($PostObject.message) {
 		throw $PostObject.message
