@@ -1,16 +1,13 @@
-function Set-NBVMInterface {
+function Set-NBVMInterfaceTaggedVLANs {
 	[CmdletBinding()]
 	param (
 		[Parameter(Mandatory=$false)][object]$Connection=$Script:Connection,
 		[Parameter(Mandatory=$true,Position=0)][int]$id,
-		[Parameter(Mandatory=$true,Position=1)][string]
-			[ValidateSet('virtual_machine','name','enabled','parent','bridge','mtu','mac_address','description',
-			'mode','untagged_vlan','vrf','untagged_vlan')]
-			$key,
-		[Parameter(Mandatory=$true,Position=2)][string]$value
+		[Parameter(Mandatory=$true,Position=1)][int[]]$tagged_vlans
+
 	)
 	$update=@{
-		$key = $value
+		tagged_vlans = $tagged_vlans
 	}
 	$restParams=@{
 		Method = 'Patch'

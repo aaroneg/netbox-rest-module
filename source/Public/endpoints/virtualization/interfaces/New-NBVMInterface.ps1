@@ -41,6 +41,7 @@ function New-NBVMInterface {
 		[ValidateSet('access','tagged','tagged-all')]
 		$mode,
 		[Parameter(Mandatory=$false)][int]$untagged_vlan,
+		[Parameter(Mandatory=$false)][int[]]$tagged_vlans,
 		[Parameter(Mandatory=$false)][int]$vrf,
 		[Parameter(Mandatory=$false)][object]$Connection=$Script:Connection
 	)
