@@ -14,6 +14,10 @@ function New-NBVRF {
 	Description
 	.PARAMETER comments
 	Comments
+	.PARAMETER import_targets
+	An array of IDs of route targets
+	.PARAMETER export_targets
+	An array of IDs of route targets
 	.PARAMETER Connection
 	Connection object
 	#>
@@ -25,6 +29,8 @@ function New-NBVRF {
 		[Parameter(Mandatory=$false)][bool]$enforce_unique,
 		[Parameter(Mandatory=$false)][string]$description,
 		[Parameter(Mandatory=$false)][string]$comments,
+		[Parameter(Mandatory=$false)][int[]]$import_targets,
+		[Parameter(Mandatory=$false)][int[]]$export_targets,
 		[Parameter(Mandatory=$false)][object]$Connection=$Script:Connection
 	)
 	$PostJson = createPostJson -Fields ($PSBoundParameters.GetEnumerator())
