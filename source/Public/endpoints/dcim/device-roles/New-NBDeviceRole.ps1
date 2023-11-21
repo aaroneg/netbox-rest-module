@@ -5,6 +5,7 @@ function New-NBDeviceRole {
 		[Parameter(Mandatory=$true,Position=1)][string]$color,
 		[Parameter(Mandatory=$false)][object]$Connection=$Script:Connection
 	)
+	$PSBoundParameters['slug']=makeSlug -name $name
 	$PostJson = createPostJson -Fields ($PSBoundParameters.GetEnumerator())
 	$restParams=@{
 		Method = 'Post'
