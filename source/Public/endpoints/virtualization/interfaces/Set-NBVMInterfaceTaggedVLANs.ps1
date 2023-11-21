@@ -15,5 +15,4 @@ function Set-NBVMInterfaceTaggedVLANs {
 		body = $update | ConvertTo-Json -Depth 50
 	}
 	(Invoke-CustomRequest -restParams $restParams -Connection $Connection)
-
 }
