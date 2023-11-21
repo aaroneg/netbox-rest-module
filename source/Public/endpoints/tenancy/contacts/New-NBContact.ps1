@@ -16,6 +16,8 @@ function New-NBContact {
 	Address
 	.PARAMETER link
 	Link
+	.PARAMETER description
+	A description of the object.
 	.PARAMETER comments
 	Any comments you'd like to add
 	.PARAMETER Connection
@@ -30,6 +32,7 @@ function New-NBContact {
 		[Parameter(Mandatory=$false)][string]$email,
 		[Parameter(Mandatory=$false)][string]$address,
 		[Parameter(Mandatory=$false)][string]$link,
+		[Parameter(Mandatory=$false)][string]$description,
 		[Parameter(Mandatory=$false)][string]$comments,
 		[Parameter(Mandatory=$false)][object]$Connection=$Script:Connection
 	)

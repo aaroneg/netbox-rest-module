@@ -42,8 +42,8 @@ function New-NBVM {
 		[Parameter(Mandatory=$true,Position=0)][string]$name,
 		[Parameter(Mandatory=$false,Position=1)][int]$cluster,
 		[Parameter(Mandatory=$false)][string]
-		[ValidateSet('offline','active','planned','staged','failed', 'decommissioning')]
-		$status,
+			[ValidateSet('offline','active','planned','staged','failed', 'decommissioning')]
+			$status,
 		[Parameter(Mandatory=$false)][int]$site,
 		[Parameter(Mandatory=$false)][int]$device,
 		[Parameter(Mandatory=$false)][int]$role,

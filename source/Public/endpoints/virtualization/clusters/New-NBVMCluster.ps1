@@ -8,10 +8,14 @@ function New-NBVMCluster {
 	ID of the type object
 	.PARAMETER group
 	ID of the group object
+	.PARAMETER status
+	Any of the allowed lifecycle status options for this object
 	.PARAMETER tenant
 	ID of the tenant object
 	.PARAMETER site
 	ID of the site object
+	.PARAMETER description
+	A description of the object
 	.PARAMETER comments
 	Any comments you would like to add
 	.PARAMETER Connection
@@ -24,8 +28,11 @@ function New-NBVMCluster {
 		[Parameter(Mandatory=$false)][int]$group,
 		[Parameter(Mandatory=$false)][int]$tenant,
 		[Parameter(Mandatory=$false)][int]$site,
+		[Parameter(Mandatory=$false)][string]$description,
 		[Parameter(Mandatory=$false)][string]$comments,
-		[Parameter(Mandatory=$false)][string]$status="active",
+		[Parameter(Mandatory=$false)][string]
+			[ValidateSet('planned','staging','active','decommissioning','offline')]
+			$status="active",
 		[Parameter(Mandatory=$false)][object]$Connection=$Script:Connection
 	)
 	if (!($PSBoundParameters.ContainsKey('status'))) {$PSBoundParameters.add('status', $status)}
