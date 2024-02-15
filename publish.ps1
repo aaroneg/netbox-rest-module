@@ -1,12 +1,20 @@
-del F:\nuget\netbox-rest-module.0.0.1.nupkg
-del "C:\Users\Aaron\Documents\powershell\modules\netbox-rest-module" -Recurse -Force 
+try {Get-PSRepository 'LocalPSRepo' -ErrorAction Stop} 
+catch {
+	$registerPSRepositorySplat = @{
+		Name = 'LocalPSRepo'
+		SourceLocation = '\\localhost\nuget'
+		ScriptSourceLocation = '\\localhost\nuget'
+		InstallationPolicy = 'Trusted'
+	}
+	Register-PSRepository @registerPSRepositorySplat
+}
 # Publish to a file share repo - the NuGet API key must be a non-blank string
 $publishModuleSplat = @{
-    Path = 'F:\git\netbox-rest-module\Build\netbox-rest-module'
+    Path = "$PSScriptRoot\Build\netbox-rest-module\0.0.1"
     Repository = 'LocalPsRepo'
     NuGetApiKey = 'AnyStringWillDo'
 }
-Publish-Module @publishModuleSplat -Force 
+Publish-Module @publishModuleSplat -Force -Verbose -Debug
 install-module netbox-rest-module -Scope CurrentUser -Force
 
 
