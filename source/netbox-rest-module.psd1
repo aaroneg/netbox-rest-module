@@ -24,7 +24,7 @@ GUID = 'e4dcb0e6-7e22-4b8a-95ba-501a45eb4af8'
 Author = 'Aaron Glenn'
 
 # Company or vendor of this module
-CompanyName = 'Unknown'
+CompanyName = 'N/A'
 
 # Copyright statement for this module
 Copyright = '(c) Aaron Glenn. All rights reserved.'
