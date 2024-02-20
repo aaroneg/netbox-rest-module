@@ -8,7 +8,7 @@ function New-NBDevice {
 		[Parameter(Mandatory=$true,Position=0)][string]$name,
 		[Parameter(Mandatory=$true,Position=1)][int]$device_type,
 		[Parameter(Mandatory=$true,Position=2)][int]$role,
-		[Parameter(Mandatory=$true,Position=3)][int]$tenant,
+		[Parameter(Mandatory=$false,Position=3)][int]$tenant,
 		[Parameter(Mandatory=$false)][int]$platform,
 		[Parameter(Mandatory=$false)][string]$serial,
 		[Parameter(Mandatory=$false)][string]$asset_tag,
