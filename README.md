@@ -1,5 +1,10 @@
 # Netbox-Rest-Module
 
+## Installing
+
+`install-module netbox-rest-module`
+
+
 ## Scope
 
 This module will not cover all endpoints in netbox, but I will accept PRs if you're willing to match the code style.
@@ -16,7 +21,7 @@ Most functions to directly manipulate an item in netbox will use the functions d
 
 ## Usage
 
-> This module is only tested with PowerShell 7
+> This module is only tested with PowerShell 7 but it'll probably work with Windows Powershell
 
 We offer a few basic commands for most objects:
 
