@@ -10,7 +10,7 @@ function Invoke-CustomRequest {
 	}
 	Write-Verbose "[$($MyInvocation.MyCommand.Name)] Making API call."
 	try {
-		$result = Invoke-RestMethod @restParams -Headers $headers -SkipCertificateCheck
+		$result = Invoke-RestMethod @restParams -Headers $headers -SkipCertificateCheck:$Connection.SkipCertificateCheck
 	}
 	catch {
 		if ($_.ErrorDetails.Message) {
