@@ -4,7 +4,7 @@ function Set-NBDevice {
 		[Parameter(Mandatory=$false)][object]$Connection=$Script:Connection,
 		[Parameter(Mandatory=$true,Position=0)][int]$id,
 		[Parameter(Mandatory=$true,Position=1)][string]
-			[ValidateSet('name','device_type','device_role','tenant','platform','serial','asset_tag','site',
+			[ValidateSet('name','device_type','role','tenant','platform','serial','asset_tag','site',
 				'location','rack','position','face','parent_device','status','airflow','primary_ipv4',
 				'primary_ipv6','cluster','virtual_chassis','vc_position','vc_priority','comments')]
 			$key,
