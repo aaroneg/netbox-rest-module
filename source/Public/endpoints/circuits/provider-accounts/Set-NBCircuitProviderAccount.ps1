@@ -4,12 +4,15 @@ function Set-NBCircuitProviderAccount {
 		[Parameter(Mandatory=$false)][object]$Connection=$Script:Connection,
 		[Parameter(Mandatory=$true,Position=0)][int]$id,
 		[Parameter(Mandatory=$true,Position=1)][string]
-			[ValidateSet('name','account','description','provider')]
+			[ValidateSet('name','account','description','provider','tags')]
 			$key,
-		[Parameter(Mandatory=$true,Position=2)][string]$value
+		[Parameter(Mandatory=$true,Position=2,
+			HelpMessage="A valid value for the attribute you want to change. If the expected value is an array, like for tags, pass it as '1,2' or whatever the ids of the tags you wish to set are."
+		)][string]$value
 	)
 	switch($key){
 		'slug' {$value=makeSlug -name $value}
+		'tags' {[array]$value=$value.Split(',')}
 		default {}
 	}
 	$update=@{
