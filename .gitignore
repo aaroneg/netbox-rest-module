@@ -1,3 +1,4 @@
 Build/*
 Build/netbox-rest-module/0.0.1/netbox-rest-module.psd1
 Build/netbox-rest-module/0.0.1/netbox-rest-module.psm1
+config.xml
