@@ -42,9 +42,12 @@ $NBWirelessLinkAPIPath="wireless/wireless-links"
 # 0.0.5
 $NBTagsAPIPath="extras/tags"
 $NBObjectTypesAPIPath="extras/object-types"
-$NBCircuitsAPIPath="circuits/circuits"
-$NBCircuitTerminationsAPIPath="circuits/circuit-terminations"
-$NBCircuitTypesAPIPath="circuits/circuit-types"
 $NBCircuitProvidersAPIPath="circuits/providers"
 $NBCircuitProviderNetworksAPIPath="circuits/provider-networks"
 $NBCircuitProviderAccountsAPIPath="circuits/provider-accounts"
+$NBCircuitTypesAPIPath="circuits/circuit-types"
+$NBCircuitsAPIPath="circuits/circuits"
+
+# 0.0.6
+
+$NBCircuitTerminationsAPIPath="circuits/circuit-terminations"

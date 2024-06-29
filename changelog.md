@@ -11,6 +11,7 @@ Target Netbox API version for 0.0.5 is `v4.0.6`.
 * Add support for Circuits/ProviderAccounts
 * Add support for Circuits/ProviderNetworks
 * Add support for Circuits/CircuitTypes
+* Add support for Circuits/Circuits
 
 
 
