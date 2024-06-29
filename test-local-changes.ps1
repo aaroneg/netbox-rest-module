@@ -1,4 +1,4 @@
-
+#! /usr/bin/pwsh
 . $PSScriptRoot\version.ps1
 
 if ($IsLinux) {

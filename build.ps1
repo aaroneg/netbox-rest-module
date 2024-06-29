@@ -1,3 +1,4 @@
+#! /usr/bin/pwsh
 . $PSScriptRoot\version.ps1
 try {Import-Module ModuleBuilder -ErrorAction Stop} catch {Install-Module ModuleBuilder -Scope CurrentUser}
 #del -Recurse $PSScriptRoot\Build\

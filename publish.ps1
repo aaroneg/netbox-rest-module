@@ -1,3 +1,4 @@
+#! /usr/bin/pwsh
 . $PSScriptRoot\version.ps1
 
 $publishModuleSplat = @{

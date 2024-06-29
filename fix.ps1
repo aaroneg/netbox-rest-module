@@ -1,3 +1,4 @@
+#! /usr/bin/pwsh
 function split-file-by-function {
 	$content = gci *.ps1
 	(($content| Select-String -pattern "function").Line) | % {$_.Split(' ')[1]}|% {
