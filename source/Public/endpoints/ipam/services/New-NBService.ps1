@@ -26,13 +26,14 @@ function New-NBService {
 		[Parameter(Mandatory=$false)][int]$device,
 		[Parameter(Mandatory=$false)][int]$virtual_machine,
 		[Parameter(Mandatory=$true,Position=0)][string]$name,
-		[Parameter(Mandatory=$true,Position=1)][int[]]$ports,
+		[Parameter(Mandatory=$true,Position=1)][string[]]$ports,
 		[Parameter(Mandatory=$true,Position=2)][string]
 			[ValidateSet('tcp','udp','sctp')]
 			$protocol,
 		[Parameter(Mandatory=$false)][int[]]$ipaddresses,
 		[Parameter(Mandatory=$false)][string]$description,
 		[Parameter(Mandatory=$false)][string]$comments,
+		[Parameter(Mandatory=$false)][string[]]$tags,
 		[Parameter(Mandatory=$false)][object]$Connection=$Script:Connection
 	)
 	$PostJson = createPostJson -Fields ($PSBoundParameters.GetEnumerator())
@@ -46,5 +47,4 @@ function New-NBService {
 		throw $PostObject.message
 	}
 	$PostObject
-
 }
