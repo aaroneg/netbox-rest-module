@@ -17,6 +17,8 @@ This version aims to implement coverage of circuits and the other object types r
 * Add support for Circuits/CircuitTerminations
 * Expand IPAM/Services coverage
 * Add support for IPAM/ServiceTemplates
+* Add support for DCIM/PowerPanels
+* Add support for DCIM/PowerFeeds
 
 
 ## Previous versions
