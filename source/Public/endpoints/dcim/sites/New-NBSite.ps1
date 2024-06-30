@@ -13,8 +13,8 @@ function New-NBSite {
 		[Parameter(Mandatory=$false)][string]$description,
 		[Parameter(Mandatory=$false)][string]$physical_address,
 		[Parameter(Mandatory=$false)][string]$shipping_address,
-		[Parameter(Mandatory=$false)][int]$latitude,
-		[Parameter(Mandatory=$false)][int]$longitude,
+		[Parameter(Mandatory=$false)][double]$latitude,
+		[Parameter(Mandatory=$false)][double]$longitude,
 		[Parameter(Mandatory=$false)][string]$comments,
 		[Parameter(Mandatory=$false)][string[]]$tags,
 		[Parameter(Mandatory=$false)][object]$Connection=$Script:Connection
