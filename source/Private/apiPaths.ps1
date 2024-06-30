@@ -47,7 +47,8 @@ $NBCircuitProviderNetworksAPIPath="circuits/provider-networks"
 $NBCircuitProviderAccountsAPIPath="circuits/provider-accounts"
 $NBCircuitTypesAPIPath="circuits/circuit-types"
 $NBCircuitsAPIPath="circuits/circuits"
+$NBCircuitTerminationsAPIPath="circuits/circuit-terminations"
 
 # 0.0.6
 
-$NBCircuitTerminationsAPIPath="circuits/circuit-terminations"
+

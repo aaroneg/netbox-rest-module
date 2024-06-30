@@ -5,7 +5,8 @@ function New-NBTag {
 		[Parameter(Mandatory=$false)][string]$color,
 		[Parameter(Mandatory=$false)][string]$description,
 		[Parameter(Mandatory=$false,
-			HelpMessage="An array of strings in the format <applabel>.<model>, ex: 'vpn.tunnel','vpn.tunnelgroup' ")][string[]]$object_types,
+			HelpMessage="An array of strings in the format <applabel>.<model>, ex: 'vpn.tunnel','vpn.tunnelgroup' ")]
+			[string[]]$object_types,
 		[Parameter(Mandatory=$false)][object]$Connection=$Script:Connection
 	)
 	$PSBoundParameters['slug']=makeSlug -name $name
