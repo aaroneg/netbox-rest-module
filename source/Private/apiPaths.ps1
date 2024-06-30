@@ -49,6 +49,7 @@ $NBCircuitTypesAPIPath="circuits/circuit-types"
 $NBCircuitsAPIPath="circuits/circuits"
 $NBCircuitTerminationsAPIPath="circuits/circuit-terminations"
 
-# 0.0.6
+# 0.0.6 planning
 
-
+$NBCablesAPIPath="dcim/cables"
+$NBCableTerminationsAPIPath="dcim/cable-terminations"
