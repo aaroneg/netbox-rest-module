@@ -49,6 +49,8 @@ $NBCircuitTypesAPIPath="circuits/circuit-types"
 $NBCircuitsAPIPath="circuits/circuits"
 $NBCircuitTerminationsAPIPath="circuits/circuit-terminations"
 $NBServiceTemplatesAPIPath="ipam/service-templates"
+$NBPowerPanelsAPIPath="dcim/power-panels"
+$NBPowerFeedsAPIPath="dcim/power-feeds"
 
 # 0.0.6 planning
 
