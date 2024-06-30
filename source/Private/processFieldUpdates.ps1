@@ -4,6 +4,7 @@ function processFieldUpdates($key,$value) {
 		'tags' {[array]$value=$value.Split(',')}
 		'install_date' {$value = $value|Get-Date -Format 'yyyy-MM-dd'}
 		'termination_date' {$value = $value|Get-Date -Format 'yyyy-MM-dd'}
+		'ipaddresses' {[array]$value=$value.Split(',')}
 		default {}
 	}
 	$update=@{
