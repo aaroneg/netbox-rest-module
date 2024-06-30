@@ -6,6 +6,7 @@ function New-NBASN {
 		[Parameter(Mandatory=$true,Position=0)][int]$tenant,
 		[Parameter(Mandatory=$false)][string]$description,
 		[Parameter(Mandatory=$false)][string]$comments,
+		[Parameter(Mandatory=$false)][string[]]$tags,
 		[Parameter(Mandatory=$false)][object]$Connection=$Script:Connection
 	)
 	$PostJson = createPostJson -Fields ($PSBoundParameters.GetEnumerator())

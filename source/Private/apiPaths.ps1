@@ -48,6 +48,7 @@ $NBCircuitProviderAccountsAPIPath="circuits/provider-accounts"
 $NBCircuitTypesAPIPath="circuits/circuit-types"
 $NBCircuitsAPIPath="circuits/circuits"
 $NBCircuitTerminationsAPIPath="circuits/circuit-terminations"
+$NBServiceTemplatesAPIPath="ipam/service-templates"
 
 # 0.0.6 planning
 

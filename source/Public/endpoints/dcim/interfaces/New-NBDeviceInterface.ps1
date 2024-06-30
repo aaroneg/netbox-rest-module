@@ -25,6 +25,7 @@ function New-NBDeviceInterface {
 		[Parameter(Mandatory=$false)][int]$rf_channel_frequency,
 		[Parameter(Mandatory=$false)][int]$rf_channel_width,
 		[Parameter(Mandatory=$false)][int]$tx_power,
+		[Parameter(Mandatory=$false)][string[]]$tags,
 		[Parameter(Mandatory=$false)][object]$Connection=$Script:Connection
 	)
 	$PostJson = createPostJson -Fields ($PSBoundParameters.GetEnumerator())

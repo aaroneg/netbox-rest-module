@@ -16,6 +16,7 @@ function New-NBSite {
 		[Parameter(Mandatory=$false)][int]$latitude,
 		[Parameter(Mandatory=$false)][int]$longitude,
 		[Parameter(Mandatory=$false)][string]$comments,
+		[Parameter(Mandatory=$false)][string[]]$tags,
 		[Parameter(Mandatory=$false)][object]$Connection=$Script:Connection
 	)
 	$PSBoundParameters['slug']=makeSlug -name $name

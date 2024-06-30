@@ -6,10 +6,15 @@ function Set-NBDevice {
 		[Parameter(Mandatory=$true,Position=1)][string]
 			[ValidateSet('name','device_type','role','tenant','platform','serial','asset_tag','site',
 				'location','rack','position','face','parent_device','status','airflow','primary_ipv4',
-				'primary_ipv6','cluster','virtual_chassis','vc_position','vc_priority','comments')]
+				'primary_ipv6','cluster','virtual_chassis','vc_position','vc_priority','comments','tags')]
 			$key,
 		[Parameter(Mandatory=$true,Position=2)][string]$value
 	)
+	switch($key){
+		'slug' {$value=makeSlug -name $value}
+		'tags' {[array]$value=$value.Split(',')}
+		default {}
+	}
 	$update=@{
 		$key = $value
 	}

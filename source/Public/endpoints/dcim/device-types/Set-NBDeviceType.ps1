@@ -5,12 +5,13 @@ function Set-NBDeviceType {
 		[Parameter(Mandatory=$true,Position=0)][int]$id,
 		[Parameter(Mandatory=$true,Position=1)][string]
 			[ValidateSet('manufacturer','model','slug','part_number','u_height','is_full_depth','subdevice_role','airflow',
-			'comments')]
+			'comments','tags')]
 			$key,
 		[Parameter(Mandatory=$true,Position=2)][string]$value
 	)
 	switch($key){
 		'slug' {$value=makeSlug -name $value}
+		'tags' {[array]$value=$value.Split(',')}
 		default {}
 	}
 	$update=@{

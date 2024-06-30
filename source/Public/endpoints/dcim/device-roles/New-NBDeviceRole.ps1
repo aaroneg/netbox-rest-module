@@ -3,6 +3,7 @@ function New-NBDeviceRole {
 	param (
 		[Parameter(Mandatory=$true,Position=0)][string]$name,
 		[Parameter(Mandatory=$true,Position=1)][string]$color,
+		[Parameter(Mandatory=$false)][string[]]$tags,
 		[Parameter(Mandatory=$false)][object]$Connection=$Script:Connection
 	)
 	$PSBoundParameters['slug']=makeSlug -name $name

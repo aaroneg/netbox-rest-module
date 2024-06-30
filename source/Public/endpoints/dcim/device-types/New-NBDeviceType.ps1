@@ -19,6 +19,7 @@ function New-NBDeviceType {
 		[Parameter(Mandatory=$false)][string]$rear_image,
 		[Parameter(Mandatory=$false)][string]$description,
 		[Parameter(Mandatory=$false)][string]$comments,
+		[Parameter(Mandatory=$false)][string[]]$tags,
 		[Parameter(Mandatory=$false)][object]$Connection=$Script:Connection
 	)
 	$PSBoundParameters['slug']=makeSlug -name $model
