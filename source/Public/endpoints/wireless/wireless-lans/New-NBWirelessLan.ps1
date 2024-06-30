@@ -36,6 +36,7 @@ function New-NBWirelessLan {
 		[Parameter(Mandatory=$false)][string]
 		# Authentication pre-shared key, if applicable. maxlength: 64
 		$auth_psk,
+		[Parameter(Mandatory=$false)][string[]]$tags,
 		[Parameter(Mandatory=$false)][object]$Connection=$Script:Connection
 	)
 	$PostJson = createPostJson -Fields ($PSBoundParameters.GetEnumerator())

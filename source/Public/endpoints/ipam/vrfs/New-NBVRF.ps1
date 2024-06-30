@@ -31,6 +31,7 @@ function New-NBVRF {
 		[Parameter(Mandatory=$false)][string]$comments,
 		[Parameter(Mandatory=$false)][int[]]$import_targets,
 		[Parameter(Mandatory=$false)][int[]]$export_targets,
+		[Parameter(Mandatory=$false)][string[]]$tags,
 		[Parameter(Mandatory=$false)][object]$Connection=$Script:Connection
 	)
 	$PostJson = createPostJson -Fields ($PSBoundParameters.GetEnumerator())

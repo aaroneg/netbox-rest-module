@@ -8,6 +8,11 @@ function Set-NBVMCluster {
 			$key,
 		[Parameter(Mandatory=$true,Position=2)][string]$value
 	)
+	switch($key){
+		'slug' {$value=makeSlug -name $value}
+		'tags' {[array]$value=$value.Split(',')}
+		default {}
+	}
 	$update=@{
 		$key = $value
 	}

@@ -33,6 +33,7 @@ function New-NBVMCluster {
 		[Parameter(Mandatory=$false)][string]
 			[ValidateSet('planned','staging','active','decommissioning','offline')]
 			$status="active",
+		[Parameter(Mandatory=$false)][string[]]$tags,
 		[Parameter(Mandatory=$false)][object]$Connection=$Script:Connection
 	)
 	if (!($PSBoundParameters.ContainsKey('status'))) {$PSBoundParameters.add('status', $status)}

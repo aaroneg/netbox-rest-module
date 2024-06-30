@@ -10,6 +10,7 @@ function Set-NBTenant {
 	)
 	switch($key){
 		'slug' {$value=makeSlug -name $value}
+		'tags' {[array]$value=$value.Split(',')}
 		default {}
 	}
 	$update=@{
