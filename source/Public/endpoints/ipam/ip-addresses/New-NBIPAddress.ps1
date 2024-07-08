@@ -1,3 +1,7 @@
+<#
+.SYNOPSIS
+    Assigned Object Type could be any of several fields, but usually 'virtualization.vminterface' or 'dcim.interface'
+#>
 function New-NBIPAddress {
 	[CmdletBinding()]
 	param (
@@ -10,7 +14,9 @@ function New-NBIPAddress {
 		[Parameter(Mandatory=$false)]
 			[ValidateSet('loopback','secondary','anycast','vip','vrrp','hsrp','glbp','carp')]
 			[string]$role,
-		[Parameter(Mandatory=$false)][string]$assigned_object_type,
+		[Parameter(Mandatory=$false)]
+			[ValidateSet('virtualization.vminterface','dcim.interface')]
+			[string]$assigned_object_type,
 		[Parameter(Mandatory=$false)][int]$assigned_object_id,
 		[Parameter(Mandatory=$false)][int]$nat_inside,
 		[Parameter(Mandatory=$false)][string]$dns_name,
