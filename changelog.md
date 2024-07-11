@@ -1,4 +1,13 @@
-# Changelog 
+# Changelog
+
+## 0.0.6
+
+This release mostly refines previous functionality, though there are some new bits.
+
+* When using -verbose or -debug with any of these commands, the private functions that make the API call now generate more useful output - who called them, why, if the api rejects a call what was the reasoning it provided, and similar enhancements.
+* New CMDLETS: Get-NBIPAddressForDeviceInterface and Get-NBIPAddressForVMInterface. These do pretty much what it sounds like they do - You no longer have to get all IP addresses and do the filtering within powershell, now the API does the filtering down to just what you want, which is more performance friendly for the powershell scripter and the server running Netbox.
+* New-NBVM now uses powershell parametersets to make sure that you always supply the correct starting information since a vm has to either be tied to a site or a cluster before the API will accept it. Makes for nasty module code but save you time trying to understand the cryptic API response if you get it wrong.
+* Bugfix in Set-NBVM - some fields in the validateset were wrong, causing those fields to never ever get updated.
 
 ## 0.0.5
 

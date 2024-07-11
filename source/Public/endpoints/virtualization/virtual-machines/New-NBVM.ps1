@@ -37,30 +37,62 @@ function New-NBVM {
 	.PARAMETER Connection
 	Connection object to use
 	#>
-	[CmdletBinding()]
+	[CmdletBinding(DefaultParameterSetName = 'Cluster')]
 	param (
-		[Parameter(Mandatory=$true,Position=0)][string]$name,
-		[Parameter(Mandatory=$false,Position=1)][int]$cluster,
-		[Parameter(Mandatory=$false)][string]
+		[Parameter(Mandatory=$true,Position=0,ParameterSetName='Cluster')]
+		[Parameter(Mandatory=$true,Position=0,ParameterSetName='Site')]
+			[string]$name,
+		[Parameter(Mandatory=$true,Position=1,ParameterSetName='Cluster')]
+		[Parameter(Mandatory=$false,Position=1,ParameterSetName='Site')]
+			[int]$cluster,
+		[Parameter(Mandatory=$false,ParameterSetName='Cluster')]
+		[Parameter(Mandatory=$false,ParameterSetName='Site')]
+			[string]
 			[ValidateSet('offline','active','planned','staged','failed', 'decommissioning')]
 			$status,
-		[Parameter(Mandatory=$false)][int]$site,
-		[Parameter(Mandatory=$false)][int]$device,
-		[Parameter(Mandatory=$false)][int]$role,
-		[Parameter(Mandatory=$false)][int]$tenant,
-		[Parameter(Mandatory=$false)][int]$platform,
+		[Parameter(Mandatory=$false,ParameterSetName='Cluster')]
+		[Parameter(Mandatory=$true,ParameterSetName='Site')]
+			[int]$site,
+		[Parameter(Mandatory=$false,ParameterSetName='Cluster')]
+		[Parameter(Mandatory=$false,ParameterSetName='Site')]
+			[int]$device,
+		[Parameter(Mandatory=$false,ParameterSetName='Cluster')]
+		[Parameter(Mandatory=$false,ParameterSetName='Site')]
+			[int]$role,
+		[Parameter(Mandatory=$false,ParameterSetName='Cluster')]
+		[Parameter(Mandatory=$false,ParameterSetName='Site')]
+			[int]$tenant,
+		[Parameter(Mandatory=$false,ParameterSetName='Cluster')]
+		[Parameter(Mandatory=$false,ParameterSetName='Site')]
+			[int]$platform,
 		# Genuinely don't understand why the form asks for this on a new vm, not like there's an IP already associated
 		# that you could assign as primary
 		# [Parameter(Mandatory=$false)][int]$primary_ip4,
 		# [Parameter(Mandatory=$false)][int]$primary_ip6,
-		[Parameter(Mandatory=$false)][double]$vcpus,
-		[Parameter(Mandatory=$false)][int]$memory,
-		[Parameter(Mandatory=$false)][int]$disk,
-		[Parameter(Mandatory=$false)][string]$description,
-		[Parameter(Mandatory=$false)][string]$comments,
-		[Parameter(Mandatory=$false)][string]$local_context_data,
-		[Parameter(Mandatory=$false)][string[]]$tags,
-		[Parameter(Mandatory=$false)][object]$Connection=$Script:Connection
+		[Parameter(Mandatory=$false,ParameterSetName='Cluster')]
+		[Parameter(Mandatory=$false,ParameterSetName='Site')]
+			[double]$vcpus,
+		[Parameter(Mandatory=$false,ParameterSetName='Cluster')]
+		[Parameter(Mandatory=$false,ParameterSetName='Site')]
+				[int]$memory,
+		[Parameter(Mandatory=$false,ParameterSetName='Cluster')]
+		[Parameter(Mandatory=$false,ParameterSetName='Site')]
+			[int]$disk,
+		[Parameter(Mandatory=$false,ParameterSetName='Cluster')]
+		[Parameter(Mandatory=$false,ParameterSetName='Site')]
+			[string]$description,
+		[Parameter(Mandatory=$false,ParameterSetName='Cluster')]
+		[Parameter(Mandatory=$false,ParameterSetName='Site')]
+			[string]$comments,
+		[Parameter(Mandatory=$false,ParameterSetName='Cluster')]
+		[Parameter(Mandatory=$false,ParameterSetName='Site')]
+			[string]$local_context_data,
+		[Parameter(Mandatory=$false,ParameterSetName='Cluster')]
+		[Parameter(Mandatory=$false,ParameterSetName='Site')]
+			[string[]]$tags,
+		[Parameter(Mandatory=$false,ParameterSetName='Cluster')]
+		[Parameter(Mandatory=$false,ParameterSetName='Site')]
+			[object]$Connection=$Script:Connection
 	)
 	$PostJson = createPostJson -Fields ($PSBoundParameters.GetEnumerator())
 	$restParams=@{
