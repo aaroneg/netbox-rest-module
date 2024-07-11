@@ -8,18 +8,18 @@ function Invoke-CustomRequest {
 		Authorization = "Token $($Connection.ApiKey)"
 		"Content-Type"    = 'application/json'
 	}
-	Write-Verbose "[$($MyInvocation.MyCommand.Name)] Making API call."
+	$callstack=Get-PSCallStack
+	Write-Debug ("[$($Callstack[1].command) ⇒ $($MyInvocation.MyCommand.Name)] REST params:`n" + ($restParams|Out-String))
+	Write-Debug ("[$($Callstack[1].command) ⇒ $($MyInvocation.MyCommand.Name)] Headers:`n" + ($Headers|Out-String))
+	Write-Verbose "[$($Callstack[1].command) ⇒ $($MyInvocation.MyCommand.Name)] Making API $($restParams.Method) call to $($restParams.Uri)"
 	try {
-		$result = Invoke-RestMethod @restParams -Headers $headers -SkipCertificateCheck:$Connection.SkipCertificateCheck
+		$result = Invoke-RestMethod @restParams -Headers $headers -SkipCertificateCheck:$Connection.SkipCertificateCheck  -ResponseHeadersVariable $ResponseHeaders -StatusCodeVariable $StatusCode
 	}
 	catch {
-		if ($_.ErrorDetails.Message) {
-			$_.ErrorDetails
-			#Write-Error "Response from $($Connection.Address): $(($_.ErrorDetails.Message).message)."
-		}
-		else {
-			$_.ErrorDetails.Message
-		}
+		Write-Error ("Response from API: $($_.ErrorDetails)")
+		Write-Error ("[$($Callstack[1].command) ⇒ $($MyInvocation.MyCommand.Name)] Exception:`n" + ($_.Exception.Message|Out-String))
+		#$Global:foo = $_
 	}
 	$result
+	Write-Debug "[$($Callstack[1].command) ⇒ $($MyInvocation.MyCommand.Name)] Exiting function"
 }
