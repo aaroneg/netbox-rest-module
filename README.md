@@ -21,7 +21,7 @@ Most functions to directly manipulate an item in netbox will use the functions d
 
 ## Usage
 
-> This module is only tested with PowerShell 7 but it'll probably work with Windows Powershell
+> This module only supports PowerShell 7
 
 We offer a few basic commands for most objects:
 
