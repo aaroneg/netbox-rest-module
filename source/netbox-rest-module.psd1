@@ -15,7 +15,7 @@ RootModule = 'netbox-rest-module.psm1'
 ModuleVersion = '0.0.1'
 
 # Supported PSEditions
-# CompatiblePSEditions = @()
+CompatiblePSEditions = @('Core')
 
 # ID used to uniquely identify this module
 GUID = 'e4dcb0e6-7e22-4b8a-95ba-501a45eb4af8'
