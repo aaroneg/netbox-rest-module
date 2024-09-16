@@ -1,5 +1,11 @@
 # Changelog
 
+## 0.0.7
+
+This release clarifies that the only versions of powershell supported are the 'core' or cross-platfrom versions, not Windows Powershell 5.x, and applies changes introduced in Netbox's 4.1 API
+
+* The module's metadata now clearly specifies that it only supports the Core edition (Powershell 7+, not Windows Powershell/5.x). For a long time, it's only been built and tested with 7, but I actually tested it with 5 and it doesn't work, and trying to put in some branching logic to do things differently on 5 was an incredibly frustrating experience. If having 5.x support is important to you and you have some experience with backporting code to 5.x, I'm willing to pick it up again if you're willing to provide some code.
+
 ## 0.0.6
 
 This release mostly refines previous functionality, though there are some new bits.
