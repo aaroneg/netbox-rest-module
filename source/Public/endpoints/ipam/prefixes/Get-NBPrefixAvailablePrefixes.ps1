@@ -21,4 +21,4 @@ function Get-NBPrefixAvailablePrefixes {
 		[Parameter(Mandatory=$true,Position=0)][string]$PrefixId
 	)
 	Get-ApiItemByPath -apiConnection $Connection -Path $PrefixesAPIPath/$PrefixId/available-prefixes/
-	}
+}
