@@ -33,7 +33,7 @@ Copyright = '(c) Aaron Glenn. All rights reserved.'
 Description = 'Powershell module for interacting with Netbox'
 
 # Minimum version of the PowerShell engine required by this module
-# PowerShellVersion = ''
+#PowerShellVersion = '7'
 
 # Name of the PowerShell host required by this module
 # PowerShellHostName = ''

@@ -7,4 +7,4 @@ $publishModuleSplat = @{
 
 }
 Publish-Module @publishModuleSplat -NuGetApiKey (Read-Host -Prompt 'API Key')
-install-module netbox-rest-module -Scope CurrentUser -Force
+install-module netbox-rest-module -Scope CurrentUser -Force -Repository PSGallery
