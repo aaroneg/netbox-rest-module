@@ -6,7 +6,7 @@ function Set-NBDevice {
 		[Parameter(Mandatory=$true,Position=1)][string]
 			[ValidateSet('name','device_type','role','tenant','platform','serial','asset_tag','site',
 				'location','rack','position','face','parent_device','status','airflow','primary_ip4',
-				'primary_ip6','cluster','virtual_chassis','vc_position','vc_priority','comments','tags')]
+				'primary_ip6','primary_ip','cluster','virtual_chassis','vc_position','vc_priority','comments','tags')]
 			$key,
 		[Parameter(Mandatory=$true,Position=2)][string]$value
 	)
