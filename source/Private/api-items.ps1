@@ -55,6 +55,20 @@ function Get-ApiItemByID {
     Invoke-CustomRequest $restParams -Connection $Connection
 }
 
+function Get-ApiItemByPath {
+    [CmdletBinding()]
+    Param(
+        [parameter(Mandatory = $false)][object]$apiConnection = $Script:Connection,
+        [parameter(Mandatory = $true)][string]$Path
+    )
+    $restParams = @{
+        Method               = 'get'
+        URI                  = "$($Connection.ApiBaseURL)/$Path"
+        SkipCertificateCheck = $apiConnection.SkipCertificateCheck
+    }
+    Invoke-CustomRequest $restParams -Connection $Connection
+}
+
 
 function Get-ApiItems {
     [CmdletBinding()]
