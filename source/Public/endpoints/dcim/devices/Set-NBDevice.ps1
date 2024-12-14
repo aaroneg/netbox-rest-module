@@ -5,8 +5,8 @@ function Set-NBDevice {
 		[Parameter(Mandatory=$true,Position=0)][int]$id,
 		[Parameter(Mandatory=$true,Position=1)][string]
 			[ValidateSet('name','device_type','role','tenant','platform','serial','asset_tag','site',
-				'location','rack','position','face','parent_device','status','airflow','primary_ipv4',
-				'primary_ipv6','cluster','virtual_chassis','vc_position','vc_priority','comments','tags')]
+				'location','rack','position','face','parent_device','status','airflow','primary_ip4',
+				'primary_ip6','cluster','virtual_chassis','vc_position','vc_priority','comments','tags')]
 			$key,
 		[Parameter(Mandatory=$true,Position=2)][string]$value
 	)
@@ -16,6 +16,7 @@ function Set-NBDevice {
 		URI = "$($Connection.ApiBaseURL)/$DevicesAPIPath/$id/"
 		body = $update | ConvertTo-Json -Depth 50
 	}
+	Write-Debug $restParams.body|Out-String
 	(Invoke-CustomRequest -restParams $restParams -Connection $Connection)
 
 }
