@@ -1,6 +1,8 @@
 #! /usr/bin/pwsh
+$startDir = get-item .
+cd $PSScriptRoot
 . $PSScriptRoot\version.ps1
-
+. $PSScriptRoot\build.ps1
 if ($IsLinux) {
 	if(!(test-path $env:HOME/.local/share/powershell/Modules/netbox-rest-module/$moduleVersionTarget)) {New-Item -ItemType Directory -Path ~/.local/share/powershell/Modules/netbox-rest-module/$moduleVersionTarget}
 	Copy-Item $PSScriptRoot\Build\netbox-rest-module\$moduleVersionTarget\* ~/.local/share/powershell/Modules/netbox-rest-module/$moduleVersionTarget/
@@ -15,3 +17,5 @@ if ($IsWindows){
 remove-module netbox-rest-module
 import-module netbox-rest-module -force
 Get-Module netbox-rest-module
+cd $startDir
+. .\init.ps1
