@@ -25,8 +25,8 @@ function New-NBContact {
 	#>
 	[CmdletBinding()]
 	param (
-		[Parameter(Mandatory=$true,Position=0)][string]$name,
 		[Parameter(Mandatory=$false)][int]$group,
+		[Parameter(Mandatory=$true,Position=0)][string]$name,
 		[Parameter(Mandatory=$false)][string]$title,
 		[Parameter(Mandatory=$false)][string]$phone,
 		[Parameter(Mandatory=$false)][string]$email,
@@ -35,6 +35,7 @@ function New-NBContact {
 		[Parameter(Mandatory=$false)][string]$description,
 		[Parameter(Mandatory=$false)][string]$comments,
 		[Parameter(Mandatory=$false)][string[]]$tags,
+		[Parameter(Mandatory=$false)][hashtable]$custom_fields,
 		[Parameter(Mandatory=$false)][object]$Connection=$Script:Connection
 	)
 	$PostJson = createPostJson -Fields ($PSBoundParameters.GetEnumerator())

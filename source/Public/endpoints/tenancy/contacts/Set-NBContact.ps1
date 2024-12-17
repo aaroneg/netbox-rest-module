@@ -5,7 +5,7 @@ function Set-NBContact {
 		[Parameter(Mandatory=$true,Position=0)][int]$id,
 		[Parameter(Mandatory=$true,Position=1)][string]
 			[ValidateSet('group','name','title','phone','email','address',
-			'link','comments')]
+			'link','description','comments','tags','custom_fields')]
 			$key,
 		[Parameter(Mandatory=$true,Position=2)][string]$value
 	)
