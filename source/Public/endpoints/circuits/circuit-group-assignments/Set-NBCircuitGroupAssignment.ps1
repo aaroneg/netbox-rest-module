@@ -3,6 +3,7 @@ function Set-NBCircuitGroupAssignment {
 	param (
 		[Parameter(Mandatory=$false)][object]$Connection=$Script:Connection,
 		[Parameter(Mandatory=$true,Position=0)][int]$id,
+		# ValidateSets updated as of Netbox v4.1.8
 		[Parameter(Mandatory=$true,Position=1)][string]
 			[ValidateSet('group','circuit','priority','tags')]
 			$key,
