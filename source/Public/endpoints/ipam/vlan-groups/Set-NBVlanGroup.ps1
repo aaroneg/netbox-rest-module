@@ -4,7 +4,7 @@ function Set-NBVlanGroup {
 		[Parameter(Mandatory=$false)][object]$Connection=$Script:Connection,
 		[Parameter(Mandatory=$true,Position=0)][int]$id,
 		[Parameter(Mandatory=$true,Position=1)][string]
-			[ValidateSet('name','slug','scope_type','scope_id','min_vid','max_vid','description')]
+			[ValidateSet('name','slug','scope_type','scope_id','description','tags','custom_fields')]
 			$key,
 		[Parameter(Mandatory=$true,Position=2)][string]$value
 	)

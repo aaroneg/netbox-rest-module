@@ -4,7 +4,7 @@ function Set-NBVRF {
 		[Parameter(Mandatory=$false)][object]$Connection=$Script:Connection,
 		[Parameter(Mandatory=$true,Position=0)][int]$id,
 		[Parameter(Mandatory=$true,Position=1)][string]
-			[ValidateSet('name','rd','tenant','enforce_unique','description')]
+			[ValidateSet('name','rd','tenant','enforce_unique','description','tags','custom_fields')]
 			$key,
 		[Parameter(Mandatory=$true,Position=2)][string]$value
 	)
