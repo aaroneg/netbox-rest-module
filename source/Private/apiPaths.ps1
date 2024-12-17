@@ -60,3 +60,4 @@ $NBCablesAPIPath="dcim/cables"
 $NBCableTerminationsAPIPath="dcim/cable-terminations"
 $NBPowerOutletsAPIPath='dcim/power-outlets'
 $NBRackTypesAPIPath='dcim/rack-types'
+$NBVirtualDisksAPIPath='virtualization/virtual-disks'
