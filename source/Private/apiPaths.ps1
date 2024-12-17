@@ -58,3 +58,4 @@ $NBCircuitGroupAssignmentsAPIPath="circuits/circuit-group-assignments"
 $NBCircuitGroupsAPIPath="circuits/circuit-groups"
 $NBCablesAPIPath="dcim/cables"
 $NBCableTerminationsAPIPath="dcim/cable-terminations"
+$NBPowerOutletsAPIPath='dcim/power-outlets'
