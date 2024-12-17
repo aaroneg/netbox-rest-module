@@ -2,7 +2,9 @@
 
 ## 0.0.8
 
-This release includes some work to make custom fields work, as well as correcting a few bugs along the way that have either been wrong since they were written, or the API has drifted out of line with this code over time.
+This release includes some code to make custom fields work, as well as correcting a few bugs along the way that have either been wrong since they were written, or the API has drifted out of line with this code over time. Also introduces support for circuit groups.
+
+* Add Get/New/Remove/Set cmdlets for circuit group assignments. See `Get-Command *-NBCircuitGroupAssignment*`. This includes the ability to get all assignments for a group.
 
 ## 0.0.7
 
