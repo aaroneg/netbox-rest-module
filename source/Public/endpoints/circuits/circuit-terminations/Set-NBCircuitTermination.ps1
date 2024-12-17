@@ -4,7 +4,7 @@ function Set-NBCircuitTermination {
 		[Parameter(Mandatory=$false)][object]$Connection=$Script:Connection,
 		[Parameter(Mandatory=$true,Position=0)][int]$id,
 		[Parameter(Mandatory=$true,Position=1)][string]
-			[ValidateSet('circuit','term_side','site','provider_network','port_speed','upstream_speed','xconnect_id','pp_info','description','mark_connected','tags')]
+			[ValidateSet('circuit','term_side','site','provider_network','port_speed','upstream_speed','xconnect_id','pp_info','description','mark_connected','custom_fields','tags')]
 			$key,
 		[Parameter(Mandatory=$true,Position=2,
 			HelpMessage="A valid value for the attribute you want to change. If the expected value is an array, like for tags, pass it as '1,2' or whatever the ids of the tags you wish to set are."
