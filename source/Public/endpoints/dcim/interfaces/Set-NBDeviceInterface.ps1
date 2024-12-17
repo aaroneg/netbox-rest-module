@@ -4,9 +4,9 @@ function Set-NBDeviceInterface {
 		[Parameter(Mandatory=$false)][object]$Connection=$Script:Connection,
 		[Parameter(Mandatory=$true,Position=0)][int]$id,
 		[Parameter(Mandatory=$true,Position=1)][string]
-			[ValidateSet('name','device','module','label','type','enabled','parent','bridge','lag','mtu','mac_address','speed',
+			[ValidateSet('device','vdcs','module','name','label','type','enabled','parent','bridge','lag','mtu','mac_address','speed',
 				'duplex','wwn','mgmt_only','description','mode','rf_role','rf_channel','poe_mode','poe_type','rf_channel_frequency',
-				'rf_channel_width','tx_power','untagged_vlan','tagged_vlans','mark_connected','cable','wireless_link','vrf')]
+				'rf_channel_width','tx_power','untagged_vlan','tagged_vlans','mark_connected','wireless_lans','vrf','tags','custom_fields')]
 			$key,
 		[Parameter(Mandatory=$true,Position=2)][string]$value
 	)
