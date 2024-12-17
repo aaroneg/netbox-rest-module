@@ -26,14 +26,15 @@ function New-NBVMCluster {
 		[Parameter(Mandatory=$true,Position=0)][string]$name,
 		[Parameter(Mandatory=$true,Position=1)][int]$type,
 		[Parameter(Mandatory=$false)][int]$group,
+		[Parameter(Mandatory=$false)][string]
+			[ValidateSet('planned','staging','active','decommissioning','offline')]
+			$status="active",
 		[Parameter(Mandatory=$false)][int]$tenant,
 		[Parameter(Mandatory=$false)][int]$site,
 		[Parameter(Mandatory=$false)][string]$description,
 		[Parameter(Mandatory=$false)][string]$comments,
-		[Parameter(Mandatory=$false)][string]
-			[ValidateSet('planned','staging','active','decommissioning','offline')]
-			$status="active",
 		[Parameter(Mandatory=$false)][string[]]$tags,
+		[Parameter(Mandatory=$false)][hashtable]$custom_fields,
 		[Parameter(Mandatory=$false)][object]$Connection=$Script:Connection
 	)
 	if (!($PSBoundParameters.ContainsKey('status'))) {$PSBoundParameters.add('status', $status)}

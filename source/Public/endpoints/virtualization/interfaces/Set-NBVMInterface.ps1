@@ -5,7 +5,7 @@ function Set-NBVMInterface {
 		[Parameter(Mandatory=$true,Position=0)][int]$id,
 		[Parameter(Mandatory=$true,Position=1)][string]
 			[ValidateSet('virtual_machine','name','enabled','parent','bridge','mtu','mac_address','description',
-			'mode','untagged_vlan','vrf','untagged_vlan')]
+			'mode','untagged_vlan','tagged_vlans','vrf','tags','custom_fields')]
 			$key,
 		[Parameter(Mandatory=$true,Position=2)][string]$value
 	)
