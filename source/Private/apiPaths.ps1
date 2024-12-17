@@ -52,12 +52,9 @@ $NBServiceTemplatesAPIPath="ipam/service-templates"
 $NBPowerPanelsAPIPath="dcim/power-panels"
 $NBPowerFeedsAPIPath="dcim/power-feeds"
 
-# 0.0.6 
-
-$NBCablesAPIPath="dcim/cables"
-$NBCableTerminationsAPIPath="dcim/cable-terminations"
-
 # 0.0.8
 
 $NBCircuitGroupAssignmentsAPIPath="circuits/circuit-group-assignments"
 $NBCircuitGroupsAPIPath="circuits/circuit-groups"
+$NBCablesAPIPath="dcim/cables"
+$NBCableTerminationsAPIPath="dcim/cable-terminations"
