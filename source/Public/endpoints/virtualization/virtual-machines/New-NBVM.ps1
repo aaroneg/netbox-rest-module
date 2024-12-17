@@ -42,20 +42,22 @@ function New-NBVM {
 		[Parameter(Mandatory=$true,Position=0,ParameterSetName='Cluster')]
 		[Parameter(Mandatory=$true,Position=0,ParameterSetName='Site')]
 			[string]$name,
+		[Parameter(Mandatory=$false,ParameterSetName='Cluster')]
+		[Parameter(Mandatory=$false,ParameterSetName='Site')]
+			[ValidateSet('offline','active','planned','staged','failed', 'decommissioning')]
+			[string]$status,
+		[Parameter(Mandatory=$false,ParameterSetName='Cluster')]
+		[Parameter(Mandatory=$true,ParameterSetName='Site')]
+			[int]$site,
 		[Parameter(Mandatory=$true,Position=1,ParameterSetName='Cluster')]
 		[Parameter(Mandatory=$false,Position=1,ParameterSetName='Site')]
 			[int]$cluster,
 		[Parameter(Mandatory=$false,ParameterSetName='Cluster')]
 		[Parameter(Mandatory=$false,ParameterSetName='Site')]
-			[string]
-			[ValidateSet('offline','active','planned','staged','failed', 'decommissioning')]
-			$status,
-		[Parameter(Mandatory=$false,ParameterSetName='Cluster')]
-		[Parameter(Mandatory=$true,ParameterSetName='Site')]
-			[int]$site,
+			[int]$device,
 		[Parameter(Mandatory=$false,ParameterSetName='Cluster')]
 		[Parameter(Mandatory=$false,ParameterSetName='Site')]
-			[int]$device,
+			[string]$serial,
 		[Parameter(Mandatory=$false,ParameterSetName='Cluster')]
 		[Parameter(Mandatory=$false,ParameterSetName='Site')]
 			[int]$role,
@@ -74,7 +76,7 @@ function New-NBVM {
 			[double]$vcpus,
 		[Parameter(Mandatory=$false,ParameterSetName='Cluster')]
 		[Parameter(Mandatory=$false,ParameterSetName='Site')]
-				[int]$memory,
+			[int]$memory,
 		[Parameter(Mandatory=$false,ParameterSetName='Cluster')]
 		[Parameter(Mandatory=$false,ParameterSetName='Site')]
 			[int]$disk,
@@ -86,10 +88,16 @@ function New-NBVM {
 			[string]$comments,
 		[Parameter(Mandatory=$false,ParameterSetName='Cluster')]
 		[Parameter(Mandatory=$false,ParameterSetName='Site')]
+			[string]$config_template,			
+		[Parameter(Mandatory=$false,ParameterSetName='Cluster')]
+		[Parameter(Mandatory=$false,ParameterSetName='Site')]
 			[string]$local_context_data,
 		[Parameter(Mandatory=$false,ParameterSetName='Cluster')]
 		[Parameter(Mandatory=$false,ParameterSetName='Site')]
 			[string[]]$tags,
+		[Parameter(Mandatory=$false,ParameterSetName='Cluster')]
+		[Parameter(Mandatory=$false,ParameterSetName='Site')]
+			[hashtable]$custom_fields,
 		[Parameter(Mandatory=$false,ParameterSetName='Cluster')]
 		[Parameter(Mandatory=$false,ParameterSetName='Site')]
 			[object]$Connection=$Script:Connection
