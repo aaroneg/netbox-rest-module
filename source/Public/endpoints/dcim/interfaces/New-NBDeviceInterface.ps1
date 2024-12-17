@@ -48,7 +48,7 @@ function New-NBDeviceInterface {
 		[Parameter(Mandatory=$false)][int]$tx_power,
 		[Parameter(Mandatory=$false)][int]$untagged_vlan,
 		[Parameter(Mandatory=$false)][int[]]$tagged_vlans,
-		[Parameter(Mandatory=$false)][switch]$mark_connected,
+		[Parameter(Mandatory=$false)][bool]$mark_connected,
 		[Parameter(Mandatory=$false)][int[]]$wireless_lans,
 		[Parameter(Mandatory=$false)][int]$vrf,
 		[Parameter(Mandatory=$false)][string[]]$tags,

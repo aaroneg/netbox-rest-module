@@ -24,7 +24,7 @@ function New-NBRack {
 		[Parameter(Mandatory=$false)]
 			[ValidateSet('kg','g','lb','oz')]
 			[string]$weight_unit,
-		[Parameter(Mandatory=$false)][switch]$desc_units,
+		[Parameter(Mandatory=$false)][bool]$desc_units,
 		[Parameter(Mandatory=$false)][int]$outer_width,
 		[Parameter(Mandatory=$false)][int]$outer_depth,
 		[Parameter(Mandatory=$false)]

@@ -4,7 +4,7 @@ function Set-NBIPRange {
 		[Parameter(Mandatory=$false)][object]$Connection=$Script:Connection,
 		[Parameter(Mandatory=$true,Position=0)][int]$id,
 		[Parameter(Mandatory=$true,Position=1)][string]
-			[ValidateSet('start_address','end_address','vrf','tenant','status','role','description')]
+			[ValidateSet('start_address','end_address','vrf','tenant','status','role','description','comments','tags','custom_fields','mark_utilized')]
 			$key,
 		[Parameter(Mandatory=$true,Position=2)][string]$value
 	)

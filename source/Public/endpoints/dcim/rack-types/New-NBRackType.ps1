@@ -12,7 +12,7 @@ function New-NBRackType {
 			[int]$width,
 		[Parameter(Mandatory=$false)][int]$u_height,
 		[Parameter(Mandatory=$false)][int]$starting_unit,
-		[Parameter(Mandatory=$false)][switch]$desc_units,
+		[Parameter(Mandatory=$false)][bool]$desc_units,
 		[Parameter(Mandatory=$false)][int]$outer_width,
 		[Parameter(Mandatory=$false)][int]$outer_depth,
 		[Parameter(Mandatory=$false)]

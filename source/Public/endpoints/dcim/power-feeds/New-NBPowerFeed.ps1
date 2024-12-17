@@ -23,7 +23,7 @@ function New-NBPowerFeed {
 		[Parameter(Mandatory=$false)][int]$voltage,
 		[Parameter(Mandatory=$false)][int]$amperage,
 		[Parameter(Mandatory=$false)][int]$max_utilization,
-		[Parameter(Mandatory=$false)][switch]$mark_connected,
+		[Parameter(Mandatory=$false)][bool]$mark_connected,
 		[Parameter(Mandatory=$false)][string]$description,
 		[Parameter(Mandatory=$false)][int]$tenant,
 		[Parameter(Mandatory=$false)][string]$comments,

@@ -27,7 +27,7 @@ function New-NBPowerOutlet {
 			[ValidateSet('A','B','C')]
 			[string]$feed_leg,
 		[Parameter(Mandatory=$false)][string]$description,
-		[Parameter(Mandatory=$false)][switch]$mark_connected,
+		[Parameter(Mandatory=$false)][bool]$mark_connected,
 		[Parameter(Mandatory=$false)][string[]]$tags,
 		[Parameter(Mandatory=$false)][hashtable]$custom_fields,
 		[Parameter(Mandatory=$false)][object]$Connection=$Script:Connection
