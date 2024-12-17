@@ -5,9 +5,9 @@ function Set-NBRack {
 		[Parameter(Mandatory=$true,Position=0)][int]$id,
 		[Parameter(Mandatory=$true,Position=1)][string]
 			[ValidateSet('name','facility_id','site','location','tenant','status',
-			'role','serial','asset_tag','type','width','u_height','starting_unit',
+			'role','serial','asset_tag','rack_type','form_factor','width','u_height','starting_unit',
 			'weight','max_weight','weight_unit','desc_units','outer_width','outer_depth',
-			'outer_unit','mounting_depth','description','comments')]
+			'outer_unit','mounting_depth','airflow','description','comments','tags','custom_fields')]
 			$key,
 		[Parameter(Mandatory=$true,Position=2)][string]$value
 	)
