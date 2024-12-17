@@ -4,7 +4,7 @@ function Set-NBWirelessLan {
 		[Parameter(Mandatory=$false)][object]$Connection=$Script:Connection,
 		[Parameter(Mandatory=$true,Position=0)][int]$id,
 		[Parameter(Mandatory=$true,Position=1)][string]
-			[ValidateSet('ssid','description','group','vlan','tenant','auth_type','auth_cipher','auth_psk')]
+			[ValidateSet('ssid','description','group','status','vlan','tenant','auth_type','auth_cipher','auth_psk','comments','tags','custom_fields')]
 			$key,
 		[Parameter(Mandatory=$true,Position=2)][string]$value
 	)

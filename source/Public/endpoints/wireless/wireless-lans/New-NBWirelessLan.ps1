@@ -24,19 +24,26 @@ function New-NBWirelessLan {
 		[Parameter(Mandatory=$true,Position=0)][string]$ssid,
 		[Parameter(Mandatory=$false)][string]$description,
 		[Parameter(Mandatory=$false)][int]$group,
+		[Parameter(Mandatory=$false)][string]
+			[ValidateSet('active','reserved','disabled','deprecated')]
+			# Authentication Type
+			$status,
 		[Parameter(Mandatory=$false)][int]$vlan,
+		[Parameter(Mandatory=$false)][int]$tenant,
 		[Parameter(Mandatory=$false)][string]
-		[ValidateSet('open','wep','wpa-personal','wpa-enterprise')]
-		# Authentication Type
-		$auth_type,
+			[ValidateSet('open','wep','wpa-personal','wpa-enterprise')]
+			# Authentication Type
+			$auth_type,
 		[Parameter(Mandatory=$false)][string]
-		[ValidateSet('auto','tkip','aes')]
-		# Authentication Cipher
-		$auth_cipher,
+			[ValidateSet('auto','tkip','aes')]
+			# Authentication Cipher
+			$auth_cipher,
 		[Parameter(Mandatory=$false)][string]
-		# Authentication pre-shared key, if applicable. maxlength: 64
-		$auth_psk,
+			# Authentication pre-shared key, if applicable. maxlength: 64
+			$auth_psk,
+			[Parameter(Mandatory=$false)][string]$comments,
 		[Parameter(Mandatory=$false)][string[]]$tags,
+		[Parameter(Mandatory=$false)][hashtable]$custom_fields,
 		[Parameter(Mandatory=$false)][object]$Connection=$Script:Connection
 	)
 	$PostJson = createPostJson -Fields ($PSBoundParameters.GetEnumerator())
