@@ -1,5 +1,9 @@
 # Changelog
 
+## 0.0.8
+
+This release includes some work to make custom fields work, as well as correcting a few bugs along the way that have either been wrong since they were written, or the API has drifted out of line with this code over time.
+
 ## 0.0.7
 
 This release clarifies that the only versions of powershell supported are the 'core' or cross-platfrom versions, not Windows Powershell 5.x, and applies changes introduced in Netbox's 4.1 API
