@@ -5,7 +5,8 @@ function Set-NBRack {
 		[Parameter(Mandatory=$true,Position=0)][int]$id,
 		[Parameter(Mandatory=$true,Position=1)][string]
 			[ValidateSet('interface_a','interface_b','ssid','status','tenant','auth_type',
-						 'auth_cipher','auth_psk','description','comments')]
+						 'auth_cipher','auth_psk','distance','distance_unit','description',
+						 'comments','tags','custom_fields')]
 			$key,
 		[Parameter(Mandatory=$true,Position=2)][string]$value
 	)

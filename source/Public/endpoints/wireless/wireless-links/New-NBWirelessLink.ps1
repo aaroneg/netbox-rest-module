@@ -41,9 +41,12 @@ function New-NBWirelessLink {
 			[ValidateSet('auto','tkip','aes')]
 			$auth_cipher,
 		[Parameter(Mandatory=$false)][string]$auth_psk,
+		[Parameter(Mandatory=$false)][double]$distance,
+		[Parameter(Mandatory=$false)][ValidateSet('km','m','mi','ft')][string]$distance_unit,
 		[Parameter(Mandatory=$false)][string]$description,
 		[Parameter(Mandatory=$false)][string]$comments,
 		[Parameter(Mandatory=$false)][string[]]$tags,
+		[Parameter(Mandatory=$false)][hashtable]$custom_fields,
 		[Parameter(Mandatory=$false)][object]$Connection=$Script:Connection
 	)
 	$PostJson = createPostJson -Fields ($PSBoundParameters.GetEnumerator())
