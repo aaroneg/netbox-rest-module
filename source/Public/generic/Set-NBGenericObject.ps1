@@ -32,8 +32,8 @@ function Set-NBGenericObject {
 
 	$restParams=@{
 		Method = 'Patch'
-		URI = "$($Connection.ApiBaseURL)/$Path/"
-		body = "[$PostJson]"
+		URI = "$($Connection.ApiBaseURL)/$Path/$($InputObject.id)/"
+		body = "$PostJson"
 	}
 	
 	$PostObject=Invoke-CustomRequest -restParams $restParams -Connection $Connection
