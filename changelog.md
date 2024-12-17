@@ -2,9 +2,30 @@
 
 ## 0.0.8
 
-This release includes some code to make custom fields work, as well as correcting a few bugs along the way that have either been wrong since they were written, or the API has drifted out of line with this code over time. Also introduces support for circuit groups.
+This BIG release includes some code to make custom fields work, as well as correcting a few bugs along the way that have either been wrong since they were written, or the API has drifted out of line with this code over time. Also introduces support for circuit groups, and a few 'generic' cmdlets that let you work more directly with the API, as long as you're comfortable reading the docs.
 
-* Add Get/New/Remove/Set cmdlets for circuit group assignments. See `Get-Command *-NBCircuitGroupAssignment*`. This includes the ability to get all assignments for a group.
+* Many updates to the validation sets which power tab-completion
+* Get-NBGenericItemByID, Get-NBGenericItemByName, and Get-NBGenericItems are added for when you have the API path, need to get one or more objects, and this module doesn't have a customized command yet for that endpoint. Should make it easier to get by while you open an issue or a PR and work proceeds to implement it.
+* `Get-NBGenericItemsForParentItemByField` lets you pretty much ask for whatever you want. Example: `Get-NBGenericItemsForParentItemByField -Path 'dcim/device-bay-templates' -Field device_type_id -value 7|ft`. You can use the API docs for the `GET` method of whatever endpoint you like. `Get-NBGenericItemsForParentItemByField -Path 'dcim/device-bay-templates' -Field description__empty -value $true`. It should be very flexible if there's no more convenient cmdlet.
+* New-NBGenericObject will allow you to take an object, change a few properties, then post it back as a new object. It will automatically try to replace object fields that are hashtables that contain an `id` field to just the ID number to make the API happy. It will do the same for status fields, but it's not heavily tested - YMMV. It's only tested on new devices at the moment. You will have to make sure your changes meet the requirements of the API, but the error message will be passed directly through. More information below the list of changes.
+* `Set-NBGenericObject` will try to pass your changed object back to Netbox.
+* Several other new cmdlet sets introduced - didn't write them all down.
+* Bugfixes on New-NBDevice and Set-NBDevice
+* Some items just don't make a lot of sense to me to support - either they're very new, very annoying, or I don't have any use for them yet.
+
+Try something like:
+
+```powershell
+$deviceObj=Get-NBGenericItemByName 'dcim/devices' 'Example1'
+$deviceObj.name = 'Example2'
+New-NBGenericObject -Path 'dcim/devices' -NewItem  $deviceObj
+```
+
+```powershell
+$deviceObj=Get-NBGenericItemByName 'dcim/devices' 'Example1'
+$deviceObj.comments = 'test comment'
+Set-NBGenericObject -Path 'dcim/devices' -InputObject $deviceObj
+```
 
 ## 0.0.7
 
@@ -42,7 +63,6 @@ This version aims to implement coverage of circuits and the other object types r
 * Add support for IPAM/ServiceTemplates
 * Add support for DCIM/PowerPanels
 * Add support for DCIM/PowerFeeds
-
 
 ## Previous versions
 
