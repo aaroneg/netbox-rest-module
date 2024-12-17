@@ -6,7 +6,7 @@ function Set-NBPowerFeed {
 		[Parameter(Mandatory=$true,Position=1)][string]
 			[ValidateSet('power_panel','rack','name','status','type','supply','phase',
 				'voltage','amperage','max_utilization','mark_connected','description','tenant',
-				'comments','tags')]
+				'comments','tags','custom_fields')]
 			$key,
 		[Parameter(Mandatory=$true,Position=2)][string]$value
 	)

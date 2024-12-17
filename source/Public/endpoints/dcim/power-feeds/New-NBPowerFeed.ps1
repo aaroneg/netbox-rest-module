@@ -5,9 +5,9 @@ function New-NBPowerFeed {
 	#>
 	[CmdletBinding()]
 	param (
-		[Parameter(Mandatory=$true,Position=0)][string]$name,
 		[Parameter(Mandatory=$true,Position=1)][int]$power_panel,
 		[Parameter(Mandatory=$false)][int]$rack,
+		[Parameter(Mandatory=$true,Position=0)][string]$name,
 		[Parameter(Mandatory=$false)][string]
 			[ValidateSet('offline','active','planned','failed')]
 			$status,
@@ -28,6 +28,7 @@ function New-NBPowerFeed {
 		[Parameter(Mandatory=$false)][int]$tenant,
 		[Parameter(Mandatory=$false)][string]$comments,
 		[Parameter(Mandatory=$false)][string[]]$tags,
+		[Parameter(Mandatory=$false)][hashtable]$custom_fields,
 		[Parameter(Mandatory=$false)][object]$Connection=$Script:Connection
 	)
 	if($PSBoundParameters['mark_connected']) {$PSBoundParameters['mark_connected']=[System.Boolean]$true}

@@ -8,8 +8,10 @@ function New-NBLocation {
 			[ValidateSet('planned','staging','active','decommissioning','retired')]
 			[string]$status,
 		[Parameter(Mandatory=$false)][int]$tenant,
+		[Parameter(Mandatory=$false)][string]$facility,
 		[Parameter(Mandatory=$false)][string]$description,
 		[Parameter(Mandatory=$false)][string[]]$tags,
+		[Parameter(Mandatory=$false)][hashtable]$custom_fields,
 		[Parameter(Mandatory=$false)][object]$Connection=$Script:Connection
 	)
 	$PSBoundParameters['slug']=makeSlug -name $name
