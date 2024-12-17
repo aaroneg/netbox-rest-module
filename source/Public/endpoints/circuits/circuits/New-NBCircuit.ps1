@@ -3,8 +3,8 @@ function New-NBCircuit {
 	param (
 		[Parameter(Mandatory=$true,Position=0)][string]$cid,
 		[Parameter(Mandatory=$true,Position=1)][int]$provider,
-		[Parameter(Mandatory=$true,Position=2)][int]$type,
 		[Parameter(Mandatory=$false)][int]$provider_account,
+		[Parameter(Mandatory=$true,Position=2)][int]$type,
 		[Parameter(Mandatory=$false)][string]
 			[ValidateSet('planned','provisioning','active','offline','deprovisioning','decommissioned')]
 			$status,
@@ -15,6 +15,8 @@ function New-NBCircuit {
 		[Parameter(Mandatory=$false)][string]$description,
 		[Parameter(Mandatory=$false)][string]$comments,
 		[Parameter(Mandatory=$false)][string[]]$tags,
+		[Parameter(Mandatory=$false)][hashtable]$custom_fields,
+		# Not adding assignment support here, that's what those cmdlets are for
 		[Parameter(Mandatory=$false)][object]$Connection=$Script:Connection
 	)
 	$PSBoundParameters['slug']=makeSlug -name $name
