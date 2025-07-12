@@ -1,8 +1,12 @@
 # Changelog
 
+## 0.0.9
+
+Bugfix release, some minor improvements
+
 ## 0.0.8
 
-This BIG release includes some code to make custom fields work, as well as correcting a few bugs along the way that have either been wrong since they were written, or the API has drifted out of line with this code over time. Also introduces support for circuit groups, and a few 'generic' cmdlets that let you work more directly with the API, as long as you're comfortable reading the docs.
+This BIG release includes some code to make custom fields work, expands tags support, and implements a number of new endpoints. given the size of the changes, you may want to re-validate your scripts against your dev netbox instance.
 
 * Many updates to the validation sets which power tab-completion
 * Get-NBGenericItemByID, Get-NBGenericItemByName, and Get-NBGenericItems are added for when you have the API path, need to get one or more objects, and this module doesn't have a customized command yet for that endpoint. Should make it easier to get by while you open an issue or a PR and work proceeds to implement it.
@@ -11,6 +15,7 @@ This BIG release includes some code to make custom fields work, as well as corre
 * `Set-NBGenericObject` will try to pass your changed object back to Netbox.
 * Several other new cmdlet sets introduced - didn't write them all down.
 * Bugfixes on New-NBDevice and Set-NBDevice
+* There's a bunch more and I'm tired of typing. Just poke around.
 * Some items just don't make a lot of sense to me to support - either they're very new, very annoying, or I don't have any use for them yet.
 
 Try something like:
