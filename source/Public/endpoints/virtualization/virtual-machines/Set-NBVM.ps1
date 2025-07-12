@@ -5,7 +5,7 @@ function Set-NBVM {
 		[Parameter(Mandatory=$true,Position=0)][int]$id,
 		[Parameter(Mandatory=$true,Position=1)][string]
 			[ValidateSet('name','status','site','cluster','device','serial','role','tenant','platform','primary_ip4','primary_ip6',
-			'vcpus','memory','disk','comments','config_template','local_context_data','tags','custom_fields')]
+			'vcpus','memory','disk','comments','description','config_template','local_context_data','tags','custom_fields')]
 			$key,
 		[Parameter(Mandatory=$true,Position=2)][string]$value
 	)

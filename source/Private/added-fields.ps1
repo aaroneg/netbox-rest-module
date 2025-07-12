@@ -5,8 +5,8 @@ function createPostJson {
 	)
 	$CurrentObject=New-Object -TypeName System.Object
 	$Fields | ForEach-Object {
-		$_.key | Out-Host
-		$_.value | Out-Host
+		Write-Debug $_.key
+		Write-Debug $_.value
 		$CurrentObject | Add-Member -MemberType NoteProperty -Name $_.key -Value $_.value
 	}
 	createJson($CurrentObject)
