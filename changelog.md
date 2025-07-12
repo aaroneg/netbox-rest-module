@@ -1,6 +1,6 @@
 # Changelog
 
-## 0.0.9
+## 0.0.9 and 0.0.10
 
 Bugfix release, some minor improvements
 

@@ -1,1 +1,1 @@
-$moduleVersionTarget='0.0.9'
+$moduleVersionTarget='0.0.10'
