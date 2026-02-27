@@ -13,6 +13,8 @@ function New-NBCircuit {
 		[Parameter(Mandatory=$false)][datetime]$termination_date,
 		[Parameter(Mandatory=$false)][int]$commit_rate,
 		[Parameter(Mandatory=$false)][string]$description,
+		[Parameter(Mandatory=$false)][double]$distance,
+		[Parameter(Mandatory=$false)][string][ValidateSet('km','m','mi','ft')]$distance_unit,
 		[Parameter(Mandatory=$false)][string]$comments,
 		[Parameter(Mandatory=$false)][string[]]$tags,
 		[Parameter(Mandatory=$false)][hashtable]$custom_fields,
