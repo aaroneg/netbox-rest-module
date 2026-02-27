@@ -1,4 +1,4 @@
-function Remove-NBCircuitType {
+function Remove-NBVirtualCircuitType {
 	[CmdletBinding()]
 	param (
 		[Parameter(Mandatory=$false)][object]$Connection=$Script:Connection,

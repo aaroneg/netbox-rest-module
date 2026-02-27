@@ -1,4 +1,4 @@
-function Get-NBCircuitTypeByID {
+function Get-NBVirtualCircuitTypeByID {
 	[CmdletBinding()]
 	param (
 		[Parameter(Mandatory=$false)][object]$Connection=$Script:Connection,

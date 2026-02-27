@@ -1,4 +1,4 @@
-function Set-NBCircuitType {
+function Set-NBVirtualCircuitType {
 	[CmdletBinding()]
 	param (
 		[Parameter(Mandatory=$false)][object]$Connection=$Script:Connection,
