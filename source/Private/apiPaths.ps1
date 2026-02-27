@@ -48,7 +48,6 @@ $NBCircuitProviderAccountsAPIPath="circuits/provider-accounts"
 $NBCircuitTypesAPIPath="circuits/circuit-types"
 $NBCircuitsAPIPath="circuits/circuits"
 $NBCircuitTerminationsAPIPath="circuits/circuit-terminations"
-$NBVirtualCircuitTerminationsAPIPath="circuits/virtual-circuit-terminations"
 $NBServiceTemplatesAPIPath="ipam/service-templates"
 $NBPowerPanelsAPIPath="dcim/power-panels"
 $NBPowerFeedsAPIPath="dcim/power-feeds"
@@ -62,3 +61,7 @@ $NBCableTerminationsAPIPath="dcim/cable-terminations"
 $NBPowerOutletsAPIPath='dcim/power-outlets'
 $NBRackTypesAPIPath='dcim/rack-types'
 $NBVirtualDisksAPIPath='virtualization/virtual-disks'
+
+# 1.0.0
+
+$NBVirtualCircuitTerminationsAPIPath="circuits/virtual-circuit-terminations"
