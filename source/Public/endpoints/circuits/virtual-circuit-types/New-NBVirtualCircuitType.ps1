@@ -1,4 +1,4 @@
-function New-NBCircuitType {
+function New-NBVirtualCircuitType {
 	[CmdletBinding()]
 	param (
 		[Parameter(Mandatory=$true,Position=0)][string]$name,
