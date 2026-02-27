@@ -5,8 +5,9 @@ function Invoke-CustomRequest {
 		[Parameter(Mandatory = $True, Position = 1)][System.Object]$Connection
 	)
 	$Headers = @{
-		Authorization = "Token $($Connection.ApiKey)"
+		Authorization = "Bearer $($Connection.ApiKeyID).$($Connection.ApiKey)"
 		"Content-Type"    = 'application/json'
+		"Accept"          = 'application/json'
 	}
 	$callstack=Get-PSCallStack
 	Write-Debug ("[$($Callstack[1].command) ⇒ $($MyInvocation.MyCommand.Name)] REST params:`n" + ($restParams|Out-String))
