@@ -66,3 +66,4 @@ $NBVirtualDisksAPIPath='virtualization/virtual-disks'
 
 $NBVirtualCircuitTerminationsAPIPath="circuits/virtual-circuit-terminations"
 $NBVirtualCircuitTypessAPIPath="circuits/virtual-circuit-types"
+$NBVirtualCircuitsAPIPath="circuits/virtual-circuits"
