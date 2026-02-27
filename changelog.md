@@ -1,5 +1,11 @@
 # Changelog
 
+## 1.0.0
+
+* This release targets changes from Netbox 4.5
+* implemented (and mandated) Netbox v2 keys, thus bumping the semver major version.
+* implement GET authentication-check Get-NBAuthenticationCheck
+
 ## 0.0.9 and 0.0.10
 
 Bugfix release, some minor improvements
