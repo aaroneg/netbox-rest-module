@@ -1,4 +1,4 @@
-function New-NBDevice {
+function New-NBMacAddress {
 	<#
 	.SYNOPSIS
 	Adds a new device object to Netbox

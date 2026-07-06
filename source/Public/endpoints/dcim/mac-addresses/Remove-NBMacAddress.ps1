@@ -1,4 +1,4 @@
-function Remove-NBDevice {
+function Remove-NBMacAddress {
 	[CmdletBinding()]
 	param (
 		[Parameter(Mandatory=$false)][object]$Connection=$Script:Connection,

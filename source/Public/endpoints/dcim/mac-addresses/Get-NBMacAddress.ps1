@@ -1,4 +1,4 @@
-function Get-NBDevices {
+function Get-NBMacAddress {
 	[CmdletBinding()]
 	param (
 		[Parameter(Mandatory=$false)][object]$Connection=$Script:Connection
