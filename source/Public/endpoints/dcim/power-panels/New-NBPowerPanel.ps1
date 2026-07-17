@@ -6,10 +6,13 @@ function New-NBPowerPanel {
 	[CmdletBinding()]
 	param (
 		[Parameter(Mandatory=$true,Position=0)][int]$site,
-		[Parameter(Mandatory=$true,Position=1)][string]$name,
 		[Parameter(Mandatory=$false)][int]$location,
+		[Parameter(Mandatory=$true,Position=1)][string]$name,
 		[Parameter(Mandatory=$false)][string]$description,
+		[Parameter(Mandatory=$false)][int]$owner,
+		[Parameter(Mandatory=$false)][string]$comments,
 		[Parameter(Mandatory=$false)][string[]]$tags,
+		[Parameter(Mandatory=$false)][hashtable]$custom_fields,
 		[Parameter(Mandatory=$false)][object]$Connection=$Script:Connection
 	)
 	$PostJson = createPostJson -Fields ($PSBoundParameters.GetEnumerator())

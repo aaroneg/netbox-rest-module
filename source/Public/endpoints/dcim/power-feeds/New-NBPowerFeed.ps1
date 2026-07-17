@@ -26,6 +26,7 @@ function New-NBPowerFeed {
 		[Parameter(Mandatory=$false)][bool]$mark_connected,
 		[Parameter(Mandatory=$false)][string]$description,
 		[Parameter(Mandatory=$false)][int]$tenant,
+		[Parameter(Mandatory=$false)][int]$owner,
 		[Parameter(Mandatory=$false)][string]$comments,
 		[Parameter(Mandatory=$false)][string[]]$tags,
 		[Parameter(Mandatory=$false)][hashtable]$custom_fields,
