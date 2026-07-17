@@ -5,13 +5,15 @@ function New-NBConnection {
 		[Parameter(Mandatory=$true,Position=1)][string]$ApiKeyID,
 		[Parameter(Mandatory=$true,Position=2)][string]$ApiKey,
 		[Parameter(Mandatory=$false)][switch]$SkipCertificateCheck,
+		[Parameter(Mandatory=$false)][switch]$HttpOnly,
 		[Parameter(Mandatory=$false)][switch]$Passthru
 	)
+	if ($HttpOnly){$ConnScheme='http'} else {$ConnScheme='https'}
 	$ConnectionProperties = @{
 		Address = "$DeviceAddress"
 		ApiKeyID = $ApiKeyID
 		ApiKey = $ApiKey
-		ApiBaseUrl = "https://$($DeviceAddress)/api"
+		ApiBaseUrl = "$($ConnScheme)://$($DeviceAddress)/api"
 		SkipCertificateCheck = $SkipCertificateCheck
 	}
 	$Connection = New-Object psobject -Property $ConnectionProperties
