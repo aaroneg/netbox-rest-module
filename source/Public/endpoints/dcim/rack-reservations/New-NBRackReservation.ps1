@@ -5,9 +5,11 @@ function New-NBRackReservation {
 		[Parameter(Mandatory=$true,Position=1)]
 			[ValidateRange(0,32767)]
 			[int]$units,
+		[Parameter(Mandatory=$false)][ValidateSet('pending','active','stale')][string]$status,
 		[Parameter(Mandatory=$true,Position=3)][int]$user,
 		[Parameter(Mandatory=$false)][int]$tenant,
 		[Parameter(Mandatory=$true,Position=4)][string]$description,
+		[Parameter(Mandatory=$false)][int]$owner,
 		[Parameter(Mandatory=$false)][int]$comments,
 		[Parameter(Mandatory=$false)][string[]]$tags,
 		[Parameter(Mandatory=$false)][hashtable]$custom_fields,
