@@ -15,6 +15,7 @@ function New-NBSite {
 		[Parameter(Mandatory=$false)][string]$shipping_address,
 		[Parameter(Mandatory=$false)][double]$latitude,
 		[Parameter(Mandatory=$false)][double]$longitude,
+		[Parameter(Mandatory=$false)][int]$owner,
 		[Parameter(Mandatory=$false)][string]$comments,
 		[Parameter(Mandatory=$false)][int[]]$asns,
 		[Parameter(Mandatory=$false)][string[]]$tags,

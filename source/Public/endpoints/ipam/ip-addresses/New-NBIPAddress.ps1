@@ -21,6 +21,7 @@ function New-NBIPAddress {
 		[Parameter(Mandatory=$false)][int]$nat_inside,
 		[Parameter(Mandatory=$false)][string]$dns_name,
 		[Parameter(Mandatory=$false)][string]$description,
+		[Parameter(Mandatory=$false)][int]$owner,
 		[Parameter(Mandatory=$false)][string]$comments,
 		[Parameter(Mandatory=$false)][string[]]$tags,
 		[Parameter(Mandatory=$false)][hashtable]$custom_fields,

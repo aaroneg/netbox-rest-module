@@ -5,6 +5,7 @@ function New-NBVirtualChassis {
 		[Parameter(Mandatory=$false)][string]$domain,
 		[Parameter(Mandatory=$false)][int]$master,
 		[Parameter(Mandatory=$false)][string]$description,
+		[Parameter(Mandatory=$false)][int]$owner,
 		[Parameter(Mandatory=$false)][string]$comments,
 		[Parameter(Mandatory=$false)][string[]]$tags,
 		[Parameter(Mandatory=$false)][hashtable]$custom_fields,

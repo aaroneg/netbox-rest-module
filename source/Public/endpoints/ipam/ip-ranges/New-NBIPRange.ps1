@@ -8,9 +8,11 @@ function New-NBIPRange {
 		[Parameter(Mandatory=$true,Position=2)][string][ValidateSet('active','reserved','deprecated')]$status,
 		[Parameter(Mandatory=$false)][int]$role,
 		[Parameter(Mandatory=$false)][string]$description,
+		[Parameter(Mandatory=$false)][int]$owner,
 		[Parameter(Mandatory=$false)][string]$comments,
 		[Parameter(Mandatory=$false)][string[]]$tags,
 		[Parameter(Mandatory=$false)][hashtable]$custom_fields,
+		[Parameter(Mandatory=$false)][bool]$mark_populated,
 		[Parameter(Mandatory=$false)][bool]$mark_utilized,
 		[Parameter(Mandatory=$false)][object]$Connection=$Script:Connection
 	)

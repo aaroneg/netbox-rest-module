@@ -26,6 +26,7 @@ function New-NBRack {
 			[string]$weight_unit,
 		[Parameter(Mandatory=$false)][bool]$desc_units,
 		[Parameter(Mandatory=$false)][int]$outer_width,
+		[Parameter(Mandatory=$false)][int]$outer_height,
 		[Parameter(Mandatory=$false)][int]$outer_depth,
 		[Parameter(Mandatory=$false)]
 			[ValidateSet('mm','in')]
@@ -35,6 +36,7 @@ function New-NBRack {
 			[ValidateSet('front-to-rear','rear-to-front')]
 			[string]$airflow,
 		[Parameter(Mandatory=$false)][string]$description,
+		[Parameter(Mandatory=$false)][int]$owner,
 		[Parameter(Mandatory=$false)][string]$comments,
 		[Parameter(Mandatory=$false)][string[]]$tags,
 		[Parameter(Mandatory=$false)][hashtable]$custom_fields,
