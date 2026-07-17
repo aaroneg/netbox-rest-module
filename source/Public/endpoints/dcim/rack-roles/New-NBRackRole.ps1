@@ -4,6 +4,8 @@ function New-NBRackRole {
 		[Parameter(Mandatory=$true,Position=0)][string]$name,
 		[Parameter(Mandatory=$false)][string]$color,
 		[Parameter(Mandatory=$false)][string]$description,
+		[Parameter(Mandatory=$false)][int]$owner,
+		[Parameter(Mandatory=$false)][string]$comments,
 		[Parameter(Mandatory=$false)][string[]]$tags,
 		[Parameter(Mandatory=$false)][hashtable]$custom_fields,
 		[Parameter(Mandatory=$false)][object]$Connection=$Script:Connection
