@@ -14,6 +14,7 @@ function New-NBRackType {
 		[Parameter(Mandatory=$false)][int]$starting_unit,
 		[Parameter(Mandatory=$false)][bool]$desc_units,
 		[Parameter(Mandatory=$false)][int]$outer_width,
+		[Parameter(Mandatory=$false)][int]$outer_height,
 		[Parameter(Mandatory=$false)][int]$outer_depth,
 		[Parameter(Mandatory=$false)]
 			[ValidateSet('mm','in')]
@@ -24,6 +25,7 @@ function New-NBRackType {
 			[ValidateSet('kg','g','lb','oz')]
 			[string]$weight_unit,
 		[Parameter(Mandatory=$false)][int]$mounting_depth,
+		[Parameter(Mandatory=$false)][int]$owner,
 		[Parameter(Mandatory=$false)][string]$comments,
 		[Parameter(Mandatory=$false)][string[]]$tags,
 		[Parameter(Mandatory=$false)][hashtable]$custom_fields,
