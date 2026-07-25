@@ -68,8 +68,6 @@ function Get-ApiItemByPath {
     }
     Invoke-CustomRequest $restParams -Connection $Connection
 }
-
-
 function Get-ApiItems {
     [CmdletBinding()]
     Param(
@@ -89,4 +87,24 @@ function Get-ApiItems {
     }
 	# # (Invoke-CustomRequest -restParams $restParams -Connection $Connection).results
     (Invoke-CustomRequest $restParams -Connection $apiConnection).results
+}
+function Get-ApiItems2 {
+    [CmdletBinding()]
+    Param(
+        [parameter(Mandatory = $false)][object]$apiConnection = $Script:Connection,
+        [parameter(Mandatory = $true)][string]$RelativePath
+    )
+	$arguments = @{
+		limit = 5000
+	}
+	$argumentString=[System.Web.HttpUtility]::ParseQueryString('')
+	$arguments.GetEnumerator() | ForEach-Object {$argumentString.Add($_.Key, $_.Value)}
+	$argumentString=$argumentString.ToString()
+    $restParams = @{
+        Method               = 'get'
+        URI                  = "$($Connection.ApiBaseURL)/$RelativePath/?$argumentString"
+        SkipCertificateCheck = $apiConnection.SkipCertificateCheck
+    }
+	# # (Invoke-CustomRequest -restParams $restParams -Connection $Connection).results
+    Invoke-CustomRequest $restParams -Connection $apiConnection
 }
