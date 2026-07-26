@@ -74,3 +74,4 @@ $NBCableBundlesAPIPath="dcim/cable-bundles"
 $NBConsolePortsAPIPath="dcim/console-ports"
 $NBConsoleServerPortsAPIPath="dcim/console-server-ports"
 $NBDeviceBaysAPIPath="dcim/device-bays"
+$NBRackGroupsAPIPath='dcim/rack-groups'

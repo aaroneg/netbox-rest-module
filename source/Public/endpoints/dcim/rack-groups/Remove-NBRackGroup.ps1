@@ -11,7 +11,7 @@ The connection object to use, if not using default.
 .PARAMETER id
 ID of object to remove
 #>
-function Remove-NBRackReservation {
+function Remove-NBRackGroup {
 	[CmdletBinding()]
 	param (
 		[Parameter(Mandatory=$false)][object]$Connection=$Script:Connection,
@@ -19,7 +19,7 @@ function Remove-NBRackReservation {
 	)
 	$restParams=@{
 		Method = 'Delete'
-		URI = "$($Connection.ApiBaseURL)/$RackReservationsAPIPath/$id/"
+		URI = "$($Connection.ApiBaseURL)/$NBRackGroupsAPIPath/$id/"
 		body = $update | ConvertTo-Json -Depth 50
 	}
 	(Invoke-CustomRequest -restParams $restParams -Connection $Connection)

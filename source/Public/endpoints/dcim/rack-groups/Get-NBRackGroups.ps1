@@ -11,11 +11,11 @@ The connection object to use, if not using default.
 .NOTES
 May not return all objects, subject to API limits
 #>
-function Get-NBRackReservations {
+function Get-NBRackGroups {
 	[CmdletBinding()]
 	param (
 		[Parameter(Mandatory=$false)][object]$Connection=$Script:Connection
 	)
-	Get-ApiItems -apiConnection $Connection -RelativePath $RackReservationsAPIPath
+	Get-ApiItems -apiConnection $Connection -RelativePath $NBRackGroupsAPIPath
 
 }
