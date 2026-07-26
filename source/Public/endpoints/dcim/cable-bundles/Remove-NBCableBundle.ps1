@@ -1,4 +1,17 @@
-function Remove-NBCableTermination {
+<#
+.SYNOPSIS
+Remove object by ID
+
+.DESCRIPTION
+Remove object by ID
+
+.PARAMETER Connection
+The connection object to use, if not using default.
+
+.PARAMETER id
+ID of Object
+#>
+function Remove-NBCableBundle {
 	[CmdletBinding()]
 	param (
 		[Parameter(Mandatory=$false)][object]$Connection=$Script:Connection,
@@ -6,7 +19,7 @@ function Remove-NBCableTermination {
 	)
 	$restParams=@{
 		Method = 'Delete'
-		URI = "$($Connection.ApiBaseURL)/$NBCableTerminationsAPIPath/$id/"
+		URI = "$($Connection.ApiBaseURL)/$NBCableBundlesAPIPath/$id/"
 		body = $update | ConvertTo-Json -Depth 50
 	}
 	(Invoke-CustomRequest -restParams $restParams -Connection $Connection)

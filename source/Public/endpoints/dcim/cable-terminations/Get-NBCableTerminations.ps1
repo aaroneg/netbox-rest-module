@@ -1,3 +1,13 @@
+<#
+.SYNOPSIS
+Get objects of type
+
+.DESCRIPTION
+Get objects of type
+
+.PARAMETER Connection
+The connection object to use, if not using default.
+#>
 function Get-NBCableTerminations {
 	[CmdletBinding()]
 	param (

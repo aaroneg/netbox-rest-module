@@ -62,7 +62,7 @@ $NBPowerOutletsAPIPath='dcim/power-outlets'
 $NBRackTypesAPIPath='dcim/rack-types'
 $NBVirtualDisksAPIPath='virtualization/virtual-disks'
 
-# 0.0.10
+# 1.0.0
 
 $NBVirtualCircuitTerminationsAPIPath="circuits/virtual-circuit-terminations"
 $NBVirtualCircuitTypessAPIPath="circuits/virtual-circuit-types"
@@ -70,3 +70,4 @@ $NBVirtualCircuitsAPIPath="circuits/virtual-circuits"
 $MACAddressAPIPath="dcim/mac-addresses"
 $PowerPortAPIPath="dcim/power-ports"
 $ASNRangeAPIPath="ipam/asn-ranges"
+$NBCableBundlesAPIPath="dcim/cable-bundles"

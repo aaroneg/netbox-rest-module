@@ -1,22 +1,22 @@
 <#
 .SYNOPSIS
-Get Object by ID
+Get object by ID
 
 .DESCRIPTION
-Get Object by ID
+Get object by ID
 
 .PARAMETER Connection
 The connection object to use, if not using default.
 
 .PARAMETER id
-Object ID
+Object ID number
 #>
-function Get-NBCableByID {
+function Get-NBCableBundleByID {
 	[CmdletBinding()]
 	param (
 		[Parameter(Mandatory=$false)][object]$Connection=$Script:Connection,
 		[Parameter(Mandatory=$true,Position=0)][int]$id
 	)
-	Get-ApiItemByID -apiConnection $Connection -RelativePath $NBCablesAPIPath -id $id
+	Get-ApiItemByID -apiConnection $Connection -RelativePath $NBCableBundlesAPIPath -id $id
 
 }
