@@ -1,3 +1,34 @@
+<#
+.SYNOPSIS
+Create region object
+
+.DESCRIPTION
+Create region object
+
+.PARAMETER name
+Name
+
+.PARAMETER parent
+Object ID for parent region object, if needed
+
+.PARAMETER description
+Description
+
+.PARAMETER tags
+Array of tag IDs
+
+.PARAMETER custom_fields
+A hashtable of custom fields & IDs
+
+.PARAMETER owner
+Object ID of owner
+
+.PARAMETER comments
+Comments
+
+.PARAMETER Connection
+The connection object to use, if not using default.
+#>
 function New-NBRegion {
 	[CmdletBinding()]
 	param (
