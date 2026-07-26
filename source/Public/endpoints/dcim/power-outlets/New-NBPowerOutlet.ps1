@@ -1,3 +1,55 @@
+<#
+.SYNOPSIS
+Create Power Outlet
+
+.DESCRIPTION
+Create Power Outlet
+
+.PARAMETER device
+Object ID of parent device
+
+.PARAMETER module
+Object ID of module
+
+.PARAMETER name
+Name of object, as specified by the OS or management system
+
+.PARAMETER label
+Physical label on outlet
+
+.PARAMETER type
+Type of outlet
+
+.PARAMETER status
+Operational status of port - autocomplete enabled
+
+.PARAMETER color
+Hex code, do not prefix with '#'. ex: FFFFFF
+
+.PARAMETER power_port
+Power port object ID
+
+.PARAMETER feed_leg
+a, b, or c
+
+.PARAMETER description
+Description
+
+.PARAMETER mark_connected
+Treat outlet as connected
+
+.PARAMETER owner
+Owner object ID
+
+.PARAMETER tags
+Array of tag IDs
+
+.PARAMETER custom_fields
+A hashtable of custom fields & IDs
+
+.PARAMETER Connection
+The connection object to use, if not using default.
+#>
 function New-NBPowerOutlet {
 	[CmdletBinding()]
 	param (
