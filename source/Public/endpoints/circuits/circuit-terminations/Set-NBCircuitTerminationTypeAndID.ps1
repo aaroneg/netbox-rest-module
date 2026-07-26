@@ -11,10 +11,10 @@ Parameter description
 .PARAMETER id
 Parameter description
 
-.PARAMETER key
+.PARAMETER termination_type
 Parameter description
 
-.PARAMETER value
+.PARAMETER termination_id
 Parameter description
 #>
 function Set-NBCircuitTermination {
@@ -23,13 +23,14 @@ function Set-NBCircuitTermination {
 		[Parameter(Mandatory=$false)][object]$Connection=$Script:Connection,
 		[Parameter(Mandatory=$true,Position=0)][int]$id,
 		[Parameter(Mandatory=$true,Position=1)][string]
-			[ValidateSet('circuit','term_side','port_speed','upstream_speed','xconnect_id','pp_info','description','mark_connected','custom_fields','tags')]
-			$key,
-		[Parameter(Mandatory=$true,Position=2,
-			HelpMessage="A valid value for the attribute you want to change. If the expected value is an array, like for tags, pass it as '1,2' or whatever the ids of the tags you wish to set are."
-		)][string]$value
+			[ValidateSet('circuits.providernetwork','dcim.location','dcim.region','dcim.site','dcim.sitegroup')]
+			$termination_type,
+		[Parameter(Mandatory=$true,Position=2)][int]$termination_id
 	)
-	$update=processFieldUpdates $key $value
+	$update=@{
+		termination_type = "$member_type"
+		termination_id = $member_id
+	}
 	$restParams=@{
 		Method = 'Patch'
 		URI = "$($Connection.ApiBaseURL)/$NBCircuitTerminationsAPIPath/$id/"

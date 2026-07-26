@@ -17,6 +17,9 @@ The account identifier
 .PARAMETER description
 Any description you'd like to provide
 
+.PARAMETER owner
+Object ID for the owner
+
 .PARAMETER comments
 Any comments you'd like to provide
 
@@ -36,6 +39,7 @@ function New-NBCircuitProviderAccount {
 		[Parameter(Mandatory=$false)][string]$name,
 		[Parameter(Mandatory=$true,Position=0)][string]$account,
 		[Parameter(Mandatory=$false)][string]$description,
+		[Parameter(Mandatory=$false)][string]$owner,
 		[Parameter(Mandatory=$false)][string]$comments,
 		[Parameter(Mandatory=$false)][string[]]$tags,
 		[Parameter(Mandatory=$false)][hashtable]$custom_fields,

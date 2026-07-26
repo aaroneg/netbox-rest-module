@@ -17,6 +17,9 @@ The provider-supplied service ID
 .PARAMETER description
 A description of the object
 
+.PARAMETER owner
+Object ID for the owner
+
 .PARAMETER comments
 Any comments you have about the object
 
@@ -36,6 +39,7 @@ function New-NBCircuitProviderNetwork {
 		[Parameter(Mandatory=$true,Position=0)][string]$name,
 		[Parameter(Mandatory=$false)][string]$service_id,
 		[Parameter(Mandatory=$false)][string]$description,
+		[Parameter(Mandatory=$false)][string]$owner,
 		[Parameter(Mandatory=$false)][string]$comments,
 		[Parameter(Mandatory=$false)][string[]]$tags,
 		[Parameter(Mandatory=$false)][hashtable]$custom_fields,

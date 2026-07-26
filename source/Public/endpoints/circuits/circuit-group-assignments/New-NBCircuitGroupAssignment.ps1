@@ -33,10 +33,10 @@ function New-NBCircuitGroupAssignment {
 	[CmdletBinding()]
 	param (
 		[Parameter(Mandatory=$true,Position=0)][int]$group,
-		[Parameter(Mandatory=$true,Position=1)][int]$circuit,
+		[Parameter(Mandatory=$true,Position=1)][string][ValidateSet('circuits.circuit','circuits.virtualcircuit')]$member_type,
+		[Parameter(Mandatory=$true,Position=2)][int]$member_id,
 		[Parameter(Mandatory=$false)][string][ValidateSet('primary','secondary','tertiary','inactive')]$priority,
 		[Parameter(Mandatory=$false)][string[]]$tags,
-		[Parameter(Mandatory=$false)][hashtable]$custom_fields,
 		[Parameter(Mandatory=$false)][object]$Connection=$Script:Connection
 	)
 	$PostJson = createPostJson -Fields ($PSBoundParameters.GetEnumerator())

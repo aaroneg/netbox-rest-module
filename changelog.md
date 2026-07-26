@@ -2,9 +2,12 @@
 
 ## 1.0.0
 
-* This release targets changes from Netbox 4.5
-* implemented (and mandated) Netbox v2 keys, thus bumping the semver major version.
+* This release targets changes from Netbox 4.6
+* implemented (and mandated) Netbox v2 keys, rating the major version bump
 * implement GET authentication-check Get-NBAuthenticationCheck
+* Netbox has made pretty major changes, and this release attempts to track them.
+  * "Owner" field added to a large amount of fields
+  * Some objects now support connections to multiple field types, so the behavior change is breaking.
 
 ## 0.0.9 and 0.0.10
 

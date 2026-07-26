@@ -9,10 +9,13 @@ Create a circuit termination
 The id of the circuit
 
 .PARAMETER term_side
-The side of the connection
+The side of the connection - "A" or "Z"
 
-.PARAMETER site
-Site object ID
+.PARAMETER termination_type
+The type of object this termination attaches to
+
+.PARAMETER termination_id
+The object ID for the termination to attach to
 
 .PARAMETER provider_network
 Provider ID number
@@ -50,15 +53,18 @@ function New-NBCircuitTermination {
 		[Parameter(Mandatory=$true,Position=0)][int]$circuit,
 		[Parameter(Mandatory=$true,Position=1)][string]
 			[ValidateSet('A','Z')]
-			$term_side,		
-		[Parameter(Mandatory=$false)][int]$site,
+			$term_side,
+		[Parameter(Manda3ory=$true,Position=2)][string]
+			[ValidateSet('circuits.providernetwork','dcim.location','dcim.region','dcim.site','dcim.sitegroup')]
+			$termination_type,
+		[Parameter(Mandatory=$true,Position=3)][string]$termination_id,
 		[Parameter(Mandatory=$false)][int]$provider_network,
 		[Parameter(Mandatory=$false)][int]$port_speed,
 		[Parameter(Mandatory=$false)][int]$upstream_speed,
 		[Parameter(Mandatory=$false)][string]$xconnect_id,
 		[Parameter(Mandatory=$false)][string]$pp_info,
 		[Parameter(Mandatory=$false)][string]$description,
-		[Parameter(Mandatory=$false)][bool]$mark_connected,
+		[Parameter(Mandatory=$false)][switch]$mark_connected,
 		[Parameter(Mandatory=$false)][string[]]$tags,
 		[Parameter(Mandatory=$false)][hashtable]$custom_fields,
 		[Parameter(Mandatory=$false)][object]$Connection=$Script:Connection

@@ -11,6 +11,9 @@ The name of the circuit provider
 .PARAMETER description
 Any description you'd like to provide
 
+.PARAMETER owner
+Object ID for the owner
+
 .PARAMETER comments
 Any comments you'd like to provide
 
@@ -32,6 +35,7 @@ function New-NBCircuitProvider {
 		[Parameter(Mandatory=$true,Position=0)][string]$name,
 		# Not adding support for accounts here, you can set those on the account
 		[Parameter(Mandatory=$false)][string]$description,
+		[Parameter(Mandatory=$false)][int]$owner,
 		[Parameter(Mandatory=$false)][string]$comments,
 		[Parameter(Mandatory=$false)][string[]]$asns,
 		[Parameter(Mandatory=$false)][string[]]$tags,

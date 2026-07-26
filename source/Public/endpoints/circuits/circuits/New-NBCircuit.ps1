@@ -41,6 +41,9 @@ Number of distance units
 .PARAMETER distance_unit
 Distance unit types
 
+.PARAMETER owner
+Object ID for the owner
+
 .PARAMETER comments
 Any comments you'd like to provide
 
@@ -70,6 +73,7 @@ function New-NBCircuit {
 		[Parameter(Mandatory=$false)][string]$description,
 		[Parameter(Mandatory=$false)][double]$distance,
 		[Parameter(Mandatory=$false)][string][ValidateSet('km','m','mi','ft')]$distance_unit,
+		[Parameter(Mandatory=$false)][int]$owner,
 		[Parameter(Mandatory=$false)][string]$comments,
 		[Parameter(Mandatory=$false)][string[]]$tags,
 		[Parameter(Mandatory=$false)][hashtable]$custom_fields,
