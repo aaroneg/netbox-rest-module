@@ -1,3 +1,34 @@
+<#
+.SYNOPSIS
+Create a circuit group
+
+.DESCRIPTION
+Create a circuit group
+
+.PARAMETER name
+The name
+
+.PARAMETER description
+description
+
+.PARAMETER tenant
+Tenant object ID
+
+.PARAMETER tags
+A list of tag IDs as an array
+
+.PARAMETER custom_fields
+A hash table of custom fields
+
+.PARAMETER Connection
+The connection object to use, if not using default.
+
+.EXAMPLE
+An example
+
+.NOTES
+General notes
+#>
 function New-NBCircuitGroup {
 	[CmdletBinding()]
 	param (

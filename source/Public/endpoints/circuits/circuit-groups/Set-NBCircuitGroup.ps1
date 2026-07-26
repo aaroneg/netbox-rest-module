@@ -1,3 +1,28 @@
+<#
+.SYNOPSIS
+Short description
+
+.DESCRIPTION
+Long description
+
+.PARAMETER Connection
+The connection object to use, if not using default.
+
+.PARAMETER id
+Parameter description
+
+.PARAMETER key
+Parameter description
+
+.PARAMETER value
+Parameter description
+
+.EXAMPLE
+An example
+
+.NOTES
+General notes
+#>
 function Set-NBCircuitGroup {
 	[CmdletBinding()]
 	param (
