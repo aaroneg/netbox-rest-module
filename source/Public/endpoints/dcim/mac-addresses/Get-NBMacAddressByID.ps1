@@ -1,3 +1,16 @@
+<#
+.SYNOPSIS
+Get object by ID
+
+.DESCRIPTION
+Get object by ID
+
+.PARAMETER Connection
+The connection object to use, if not using default.
+
+.PARAMETER id
+ID of object
+#>
 function Get-NBMacAddressByID {
 	[CmdletBinding()]
 	param (

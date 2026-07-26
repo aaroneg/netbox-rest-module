@@ -1,3 +1,22 @@
+<#
+.SYNOPSIS
+Change properties of an object
+
+.DESCRIPTION
+Change properties of an object
+
+.PARAMETER Connection
+The connection object to use, if not using default.
+
+.PARAMETER id
+Object ID to change
+
+.PARAMETER key
+What field should be changed?
+
+.PARAMETER value
+What is the new value?
+#>
 function Set-NBMacAddress {
 	[CmdletBinding()]
 	param (
