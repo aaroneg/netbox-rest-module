@@ -1,3 +1,23 @@
+<#
+.SYNOPSIS
+Change some aspect of a circuit group assignment
+
+.DESCRIPTION
+Change some aspect of a circuit group assignment
+
+.PARAMETER Connection
+The connection object to use, if not using default.
+
+.PARAMETER id
+The ID of the assignment
+
+.PARAMETER key
+The property name you'd like to modify
+
+.PARAMETER value
+The new value you'd like to set
+
+#>
 function Set-NBCircuitGroupAssignment {
 	[CmdletBinding()]
 	param (

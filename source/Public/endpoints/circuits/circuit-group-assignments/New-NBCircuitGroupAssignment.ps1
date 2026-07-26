@@ -1,3 +1,31 @@
+<#
+.SYNOPSIS
+Create a new circuit group assignment
+
+.DESCRIPTION
+Create a new circuit group assignment
+
+.PARAMETER group
+The ID of the group to add a circuit to
+
+.PARAMETER circuit
+The ID of the circuit object you'd like to assign
+
+.PARAMETER priority
+The priority of the assignment
+
+.PARAMETER tags
+Tag ID[s]
+
+.PARAMETER Connection
+The connection object to use, if not using default.
+
+.EXAMPLE
+New-NBCircuitGroupAssignment 1 1 -priority primary
+
+.NOTES
+No notes
+#>
 function New-NBCircuitGroupAssignment {
 	[CmdletBinding()]
 	param (

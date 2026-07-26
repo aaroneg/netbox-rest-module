@@ -1,3 +1,22 @@
+<#
+.SYNOPSIS
+Remove an assignment
+
+.DESCRIPTION
+Remove an assignment
+
+.PARAMETER Connection
+The connection object to use, if not using default.
+
+.PARAMETER id
+The id of the assignment
+
+.EXAMPLE
+Remove-NBCircuitGroupAssignment 1
+
+.NOTES
+No notes
+#>
 function Remove-NBCircuitGroupAssignment {
 	[CmdletBinding()]
 	param (

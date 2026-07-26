@@ -12,7 +12,7 @@ The connection object to use, if not using default.
 Get-NBAuthenticationCheck
 
 .NOTES
-General notes
+No notes
 #>
 function Get-NBAuthenticationCheck {
 	[CmdletBinding()]
