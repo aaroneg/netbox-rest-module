@@ -1,3 +1,16 @@
+<#
+.SYNOPSIS
+Remove a provider account object
+
+.DESCRIPTION
+Remove a provider account object
+
+.PARAMETER Connection
+The connection object to use, if not using default.
+
+.PARAMETER id
+The object id to remove
+#>
 function Remove-NBCircuitProviderAccount {
 	[CmdletBinding()]
 	param (

@@ -1,3 +1,16 @@
+<#
+.SYNOPSIS
+Get the object for a provider account by name/identifier
+
+.DESCRIPTION
+Get the object for a provider account by name/identifier
+
+.PARAMETER Connection
+The connection object to use, if not using default.
+
+.PARAMETER account
+Account name or identifier
+#>
 function Get-NBCircuitProviderAccountByAccount {
 	[CmdletBinding()]
 	param (

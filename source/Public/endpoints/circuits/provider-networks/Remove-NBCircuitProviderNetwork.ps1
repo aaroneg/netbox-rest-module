@@ -1,3 +1,16 @@
+<#
+.SYNOPSIS
+Remove a provider network object
+
+.DESCRIPTION
+Remove a provider network object
+
+.PARAMETER Connection
+The connection object to use, if not using default.
+
+.PARAMETER id
+The ID of the object to remove
+#>
 function Remove-NBCircuitProviderNetwork {
 	[CmdletBinding()]
 	param (

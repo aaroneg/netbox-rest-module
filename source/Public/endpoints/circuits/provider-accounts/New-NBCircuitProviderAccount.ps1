@@ -1,3 +1,34 @@
+<#
+.SYNOPSIS
+Create a new provider account
+
+.DESCRIPTION
+Create a new provider account
+
+.PARAMETER provider
+ID of the provider object
+
+.PARAMETER name
+The name of the account
+
+.PARAMETER account
+The account identifier
+
+.PARAMETER description
+Any description you'd like to provide
+
+.PARAMETER comments
+Any comments you'd like to provide
+
+.PARAMETER tags
+A list of tag IDs as an array
+
+.PARAMETER custom_fields
+A hash table of custom fields
+
+.PARAMETER Connection
+The connection object to use, if not using default.
+#>
 function New-NBCircuitProviderAccount {
 	[CmdletBinding()]
 	param (

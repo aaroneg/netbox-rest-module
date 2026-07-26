@@ -1,3 +1,34 @@
+<#
+.SYNOPSIS
+Create circuit provider network
+
+.DESCRIPTION
+Create circuit provider network
+
+.PARAMETER provider
+The provider object ID
+
+.PARAMETER name
+The name of the network
+
+.PARAMETER service_id
+The provider-supplied service ID
+
+.PARAMETER description
+A description of the object
+
+.PARAMETER comments
+Any comments you have about the object
+
+.PARAMETER tags
+A list of tag IDs as an array
+
+.PARAMETER custom_fields
+A hash table of custom fields
+
+.PARAMETER Connection
+The connection object to use, if not using default.
+#>
 function New-NBCircuitProviderNetwork {
 	[CmdletBinding()]
 	param (

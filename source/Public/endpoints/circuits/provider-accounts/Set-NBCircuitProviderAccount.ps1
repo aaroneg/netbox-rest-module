@@ -1,3 +1,22 @@
+<#
+.SYNOPSIS
+Change some aspect of a circuit provider account
+
+.DESCRIPTION
+Change some aspect of a circuit provider account
+
+.PARAMETER Connection
+The connection object to use, if not using default.
+
+.PARAMETER id
+The account object to alter
+
+.PARAMETER key
+The parameter to modify
+
+.PARAMETER value
+The new value
+#>
 function Set-NBCircuitProviderAccount {
 	[CmdletBinding()]
 	param (
