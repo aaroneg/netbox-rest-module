@@ -1,3 +1,16 @@
+<#
+.SYNOPSIS
+Remove a connection type by ID
+
+.DESCRIPTION
+Remove a connection type by ID
+
+.PARAMETER Connection
+The connection object to use, if not using default.
+
+.PARAMETER id
+The object ID to remove
+#>
 function Remove-NBCircuitType {
 	[CmdletBinding()]
 	param (

@@ -1,3 +1,22 @@
+<#
+.SYNOPSIS
+Change aspects of a circuit type object
+
+.DESCRIPTION
+Change aspects of a circuit type object
+
+.PARAMETER Connection
+The connection object to use, if not using default.
+
+.PARAMETER id
+ID of the object to change
+
+.PARAMETER key
+The property name to change
+
+.PARAMETER value
+The new value
+#>
 function Set-NBCircuitType {
 	[CmdletBinding()]
 	param (

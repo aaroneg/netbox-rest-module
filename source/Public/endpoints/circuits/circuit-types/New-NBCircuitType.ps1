@@ -1,3 +1,28 @@
+<#
+.SYNOPSIS
+New circuit type object
+
+.DESCRIPTION
+New circuit type object
+
+.PARAMETER name
+Name of the object
+
+.PARAMETER color
+A color expressed as a hex code - digits only, no `#` character
+
+.PARAMETER description
+description
+
+.PARAMETER tags
+tag[s]
+
+.PARAMETER custom_fields
+Hashtable of custom fields
+
+.PARAMETER Connection
+The connection object to use, if not using default.
+#>
 function New-NBCircuitType {
 	[CmdletBinding()]
 	param (
