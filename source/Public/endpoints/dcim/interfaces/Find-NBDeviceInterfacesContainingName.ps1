@@ -1,3 +1,22 @@
+<#
+.SYNOPSIS
+Find objects containing name
+
+.DESCRIPTION
+Find objects containing name
+
+.PARAMETER Connection
+The connection object to use, if not using default.
+
+.PARAMETER name
+Name to look for
+
+.EXAMPLE
+An example
+
+.NOTES
+General notes
+#>
 function Find-NBDeviceInterfacesContainingName {
 	[CmdletBinding()]
 	param (

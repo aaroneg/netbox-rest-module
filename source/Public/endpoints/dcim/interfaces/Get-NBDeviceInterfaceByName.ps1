@@ -1,3 +1,16 @@
+<#
+.SYNOPSIS
+Find object by name
+
+.DESCRIPTION
+Find object by name
+
+.PARAMETER Connection
+The connection object to use, if not using default.
+
+.PARAMETER name
+Name of object
+#>
 function Get-NBDeviceInterfaceByName {
 	[CmdletBinding()]
 	param (

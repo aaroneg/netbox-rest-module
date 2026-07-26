@@ -1,3 +1,16 @@
+<#
+.SYNOPSIS
+Get all interfaces attached to a device ID
+
+.DESCRIPTION
+Get all interfaces attached to a device ID
+
+.PARAMETER Connection
+The connection object to use, if not using default.
+
+.PARAMETER id
+ID of device
+#>
 function Get-NBDeviceInterfaceForDevice {
 	[CmdletBinding()]
 	param (
