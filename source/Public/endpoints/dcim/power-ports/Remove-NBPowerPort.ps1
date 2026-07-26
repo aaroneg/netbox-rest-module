@@ -1,4 +1,4 @@
-function Remove-NBPowerPanel {
+function Remove-NBPowerPort {
 	[CmdletBinding()]
 	param (
 		[Parameter(Mandatory=$false)][object]$Connection=$Script:Connection,

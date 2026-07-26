@@ -1,8 +1,38 @@
+<#
+.SYNOPSIS
+Create power panel object
+
+.DESCRIPTION
+Create power panel object
+
+.PARAMETER site
+Object ID for site
+
+.PARAMETER location
+Object ID for location
+
+.PARAMETER name
+Name
+
+.PARAMETER description
+Description
+
+.PARAMETER owner
+Object ID for owner
+
+.PARAMETER comments
+Comments
+
+.PARAMETER tags
+Array of tag IDs
+
+.PARAMETER custom_fields
+A hashtable of custom fields & IDs
+
+.PARAMETER Connection
+The connection object to use, if not using default.
+#>
 function New-NBPowerPanel {
-	<#
-	.SYNOPSIS
-	Adds a new device object to Netbox
-	#>
 	[CmdletBinding()]
 	param (
 		[Parameter(Mandatory=$true,Position=0)][int]$site,

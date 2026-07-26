@@ -1,4 +1,4 @@
-function Set-NBPowerPanel {
+function Set-NBPowerPort {
 	[CmdletBinding()]
 	param (
 		[Parameter(Mandatory=$false)][object]$Connection=$Script:Connection,

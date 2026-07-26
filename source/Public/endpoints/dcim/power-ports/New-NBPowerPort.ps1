@@ -1,8 +1,44 @@
-function New-NBPowerPanel {
-	<#
-	.SYNOPSIS
-	Adds a new device object to Netbox
-	#>
+<#
+.SYNOPSIS
+Create power port object
+
+.DESCRIPTION
+Create power port object
+
+.PARAMETER site
+Object ID for site
+
+.PARAMETER location
+Object ID for location
+
+.PARAMETER name
+Name
+
+.PARAMETER description
+Description
+
+.PARAMETER owner
+Object ID for owner
+
+.PARAMETER comments
+Comments
+
+.PARAMETER tags
+Array of tag IDs
+
+.PARAMETER custom_fields
+A hashtable of custom fields & IDs
+
+.PARAMETER Connection
+The connection object to use, if not using default.
+
+.EXAMPLE
+An example
+
+.NOTES
+General notes
+#>
+function New-NBPowerPort {
 	[CmdletBinding()]
 	param (
 		[Parameter(Mandatory=$true,Position=0)][int]$site,

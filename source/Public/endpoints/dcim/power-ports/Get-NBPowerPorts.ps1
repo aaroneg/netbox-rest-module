@@ -11,11 +11,11 @@ The connection object to use, if not using default.
 .NOTES
 May not return all objects, subject to API limits
 #>
-function Get-NBPowerPanels {
+function Get-NBPowerPorts {
 	[CmdletBinding()]
 	param (
 		[Parameter(Mandatory=$false)][object]$Connection=$Script:Connection
 	)
-	Get-ApiItems -apiConnection $Connection -RelativePath $NBPowerPanelsAPIPath
+	Get-ApiItems -apiConnection $Connection -RelativePath $PowerPortAPIPath
 
 }
