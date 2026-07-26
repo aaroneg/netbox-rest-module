@@ -64,7 +64,7 @@ function New-NBCircuitTermination {
 		[Parameter(Mandatory=$false)][string]$xconnect_id,
 		[Parameter(Mandatory=$false)][string]$pp_info,
 		[Parameter(Mandatory=$false)][string]$description,
-		[Parameter(Mandatory=$false)][switch]$mark_connected,
+		[Parameter(Mandatory=$false)][bool]$mark_connected,
 		[Parameter(Mandatory=$false)][string[]]$tags,
 		[Parameter(Mandatory=$false)][hashtable]$custom_fields,
 		[Parameter(Mandatory=$false)][object]$Connection=$Script:Connection

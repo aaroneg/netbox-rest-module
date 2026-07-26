@@ -12,6 +12,8 @@ function New-NBVRF {
 	Enforce unique IP addresses in this VRF
 	.PARAMETER description
 	Description
+	.PARAMETER owner
+	Object ID of the owner
 	.PARAMETER comments
 	Comments
 	.PARAMETER import_targets
@@ -28,6 +30,7 @@ function New-NBVRF {
 		[Parameter(Mandatory=$false)][int]$tenant,
 		[Parameter(Mandatory=$false)][bool]$enforce_unique,
 		[Parameter(Mandatory=$false)][string]$description,
+		[Parameter(Mandatory=$false)][int]$owner,
 		[Parameter(Mandatory=$false)][string]$comments,
 		[Parameter(Mandatory=$false)][int[]]$import_targets,
 		[Parameter(Mandatory=$false)][int[]]$export_targets,

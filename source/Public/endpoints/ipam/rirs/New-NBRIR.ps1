@@ -12,6 +12,7 @@ function New-NBRIR {
 		[Parameter(Mandatory=$true,Position=0)][string]$name,
 		[Parameter(Mandatory=$false)][bool]$is_private,
 		[Parameter(Mandatory=$false)][string]$description,
+		[Parameter(Mandatory=$false)][int]$owner,
 		[Parameter(Mandatory=$false)][string[]]$tags,
 		[Parameter(Mandatory=$false)][hashtable]$custom_fields,
 		[Parameter(Mandatory=$false)][object]$Connection=$Script:Connection

@@ -1,28 +1,4 @@
 function New-NBVLAN {
-	<#
-	.SYNOPSIS
-	Creates a vlan object
-	.PARAMETER name
-	Name of the object
-	.PARAMETER vid 
-	vlan id number
-	.PARAMETER status
-	status of the vlan
-	.PARAMETER site
-	site id
-	.PARAMETER group
-	group id
-	.PARAMETER tenant
-	tenant id
-	.PARAMETER role
-	role id
-	.PARAMETER description
-	vlan description
-	.PARAMETER comments
-	comments
-	.PARAMETER Connection
-	connection object
-	#>
 	[CmdletBinding()]
 	param (
 		[Parameter(Mandatory=$false)][int]$site,
@@ -35,6 +11,9 @@ function New-NBVLAN {
 			[string]$status="active",
 		[Parameter(Mandatory=$false)][int]$role,
 		[Parameter(Mandatory=$false)][string]$description,
+		[Parameter(Mandatory=$false)][ValidateSet('svlan','cvlan')][string]$qinq_role,
+		[Parameter(Mandatory=$false)][int]$qinq_svlan,
+		[Parameter(Mandatory=$false)][int]$owner,
 		[Parameter(Mandatory=$false)][string]$comments,
 		[Parameter(Mandatory=$false)][string[]]$tags,
 		[Parameter(Mandatory=$false)][hashtable]$custom_fields,

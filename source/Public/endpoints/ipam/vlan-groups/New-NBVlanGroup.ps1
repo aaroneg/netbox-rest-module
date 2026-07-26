@@ -12,7 +12,11 @@ function New-NBVlanGroup {
 		[Parameter(Mandatory=$true,Position=0)][string]$name,
 		[Parameter(Mandatory=$false)][string]$scope_type,
 		[Parameter(Mandatory=$false)][int]$scope_id,
+		[Parameter(Mandatory=$false)][int[]]$vid_ranges,
+		[Parameter(Mandatory=$false)][int]$tenant,
 		[Parameter(Mandatory=$false)][string]$description,
+		[Parameter(Mandatory=$false)][int]$owner,
+		[Parameter(Mandatory=$false)][string]$comments,
 		[Parameter(Mandatory=$false)][string[]]$tags,
 		[Parameter(Mandatory=$false)][hashtable]$custom_fields,
 		[Parameter(Mandatory=$false)][object]$Connection=$Script:Connection

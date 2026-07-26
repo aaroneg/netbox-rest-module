@@ -7,6 +7,7 @@ function New-NBServiceTemplate {
 			$protocol,
 		[Parameter(Mandatory=$true,Position=2)][string[]]$ports,
 		[Parameter(Mandatory=$false)][string]$description,
+		[Parameter(Mandatory=$false)][int]$owner,
 		[Parameter(Mandatory=$false)][string]$comments,
 		[Parameter(Mandatory=$false)][string[]]$tags,
 		[Parameter(Mandatory=$false)][hashtable]$custom_fields,
