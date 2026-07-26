@@ -1,3 +1,46 @@
+<#
+.SYNOPSIS
+Create location object
+
+.DESCRIPTION
+Create location object
+
+.PARAMETER name
+Name
+
+.PARAMETER site
+Site object ID
+
+.PARAMETER parent
+Parent object ID
+
+.PARAMETER status
+Lifecycle status, autocomplete enabled
+
+.PARAMETER tenant
+Tenant object ID
+
+.PARAMETER facility
+A text facility name, if provided by a hosting provider/datacenter.
+
+.PARAMETER description
+Description
+
+.PARAMETER tags
+Array of tag IDs
+
+.PARAMETER custom_fields
+A hashtable of custom fields & IDs
+
+.PARAMETER owner
+Owner object ID
+
+.PARAMETER comments
+Comments
+
+.PARAMETER Connection
+The connection object to use, if not using default.
+#>
 function New-NBLocation {
 	[CmdletBinding()]
 	param (
@@ -12,6 +55,8 @@ function New-NBLocation {
 		[Parameter(Mandatory=$false)][string]$description,
 		[Parameter(Mandatory=$false)][string[]]$tags,
 		[Parameter(Mandatory=$false)][hashtable]$custom_fields,
+		[Parameter(Mandatory=$false)][int]$owner,
+		[Parameter(Mandatory=$false)][string]$comments,
 		[Parameter(Mandatory=$false)][object]$Connection=$Script:Connection
 	)
 	$PSBoundParameters['slug']=makeSlug -name $name
