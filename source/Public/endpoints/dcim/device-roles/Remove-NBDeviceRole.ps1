@@ -1,3 +1,16 @@
+<#
+.SYNOPSIS
+Remove object by ID
+
+.DESCRIPTION
+Remove object by ID
+
+.PARAMETER Connection
+The connection object to use, if not using default.
+
+.PARAMETER id
+Object ID
+#>
 function Remove-NBDeviceRole {
 	[CmdletBinding()]
 	param (

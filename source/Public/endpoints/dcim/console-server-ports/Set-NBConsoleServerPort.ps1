@@ -1,9 +1,9 @@
 <#
 .SYNOPSIS
-Change properties of a cable
+Change properties of an object
 
 .DESCRIPTION
-Change properties of a cable
+Change properties of an object
 
 .PARAMETER Connection
 The connection object to use, if not using default.
