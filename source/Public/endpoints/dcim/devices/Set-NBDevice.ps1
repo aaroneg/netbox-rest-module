@@ -1,3 +1,22 @@
+<#
+.SYNOPSIS
+Change properties of an object
+
+.DESCRIPTION
+Change properties of an object
+
+.PARAMETER Connection
+The connection object to use, if not using default.
+
+.PARAMETER id
+Object ID to change
+
+.PARAMETER key
+What field should be changed?
+
+.PARAMETER value
+What is the new value?
+#>
 function Set-NBDevice {
 	[CmdletBinding()]
 	param (
@@ -8,7 +27,7 @@ function Set-NBDevice {
 			[ValidateSet('name','device_type','role','tenant','platform','serial','asset_tag','site',
 				'location','rack','position','face','latitude','longitude','status','airflow','primary_ip4',
 				'primary_ip6','oob_ip','cluster','virtual_chassis','vc_position','vc_priority','description',
-				'comments','tags','custom_fields')]
+				'owner','comments','config_template','local_context_data','tags','custom_fields')]
 			$key,
 		[Parameter(Mandatory=$true,Position=2)][string]$value
 	)

@@ -1,3 +1,16 @@
+<#
+.SYNOPSIS
+Find objects containing name
+
+.DESCRIPTION
+Find objects containing name
+
+.PARAMETER Connection
+The connection object to use, if not using default.
+
+.PARAMETER name
+Name string to search for
+#>
 function Find-NBDevicesContainingName {
 	[CmdletBinding()]
 	param (
