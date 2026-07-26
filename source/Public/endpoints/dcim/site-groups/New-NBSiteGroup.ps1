@@ -1,3 +1,40 @@
+<#
+.SYNOPSIS
+Create site group
+
+.DESCRIPTION
+Create site group
+
+.PARAMETER name
+Name
+
+.PARAMETER parent
+Parent site group object ID
+
+.PARAMETER description
+Description
+
+.PARAMETER tags
+Array of tag IDs
+
+.PARAMETER custom_fields
+A hashtable of custom fields & IDs
+
+.PARAMETER owner
+Owner object ID
+
+.PARAMETER comments
+Comments
+
+.PARAMETER Connection
+The connection object to use, if not using default.
+
+.EXAMPLE
+An example
+
+.NOTES
+General notes
+#>
 function New-NBSiteGroup {
 	[CmdletBinding()]
 	param (

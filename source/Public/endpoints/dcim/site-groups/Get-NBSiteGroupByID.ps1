@@ -1,3 +1,16 @@
+<#
+.SYNOPSIS
+Get Object by ID
+
+.DESCRIPTION
+Get Object by ID
+
+.PARAMETER Connection
+The connection object to use, if not using default.
+
+.PARAMETER id
+Object ID
+#>
 function Get-NBSiteGroupByID {
 	[CmdletBinding()]
 	param (
