@@ -17,6 +17,9 @@ The priority of the assignment
 .PARAMETER tags
 Tag ID[s]
 
+.PARAMETER custom_fields
+A hash table of custom fields
+
 .PARAMETER Connection
 The connection object to use, if not using default.
 
@@ -33,6 +36,7 @@ function New-NBCircuitGroupAssignment {
 		[Parameter(Mandatory=$true,Position=1)][int]$circuit,
 		[Parameter(Mandatory=$false)][string][ValidateSet('primary','secondary','tertiary','inactive')]$priority,
 		[Parameter(Mandatory=$false)][string[]]$tags,
+		[Parameter(Mandatory=$false)][hashtable]$custom_fields,
 		[Parameter(Mandatory=$false)][object]$Connection=$Script:Connection
 	)
 	$PostJson = createPostJson -Fields ($PSBoundParameters.GetEnumerator())
