@@ -1,3 +1,58 @@
+<#
+.SYNOPSIS
+New circuit object
+
+.DESCRIPTION
+New circuit object
+
+.PARAMETER cid
+Circuit ID, as supplied by the provider
+
+.PARAMETER provider
+The ID of the provider object
+
+.PARAMETER provider_account
+The ID of the provider account object
+
+.PARAMETER type
+The ID of the circuit type object
+
+.PARAMETER status
+The lifecycle status of the circuit
+
+.PARAMETER tenant
+The ID of the tenant object
+
+.PARAMETER install_date
+The install date in ISO 8601 YYYY-MM-DD format
+
+.PARAMETER termination_date
+The termination date in ISO 8601 YYYY-MM-DD format
+
+.PARAMETER commit_rate
+Commit rate in Kbps
+
+.PARAMETER description
+Any description you'd like to provide
+
+.PARAMETER distance
+Number of distance units
+
+.PARAMETER distance_unit
+Distance unit types
+
+.PARAMETER comments
+Any comments you'd like to provide
+
+.PARAMETER tags
+A list of tag ID[s]
+
+.PARAMETER custom_fields
+A hashtable of custom fields
+
+.PARAMETER Connection
+The connection object to use, if not using default.
+#>
 function New-NBCircuit {
 	[CmdletBinding()]
 	param (

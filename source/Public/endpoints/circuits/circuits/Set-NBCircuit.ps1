@@ -1,3 +1,22 @@
+<#
+.SYNOPSIS
+Change some aspect of a circuit
+
+.DESCRIPTION
+Change some aspect of a circuit
+
+.PARAMETER Connection
+The connection object to use, if not using default.
+
+.PARAMETER id
+The id of the circuit
+
+.PARAMETER key
+The property name you'd like to modify
+
+.PARAMETER value
+The new value you'd like to set
+#>
 function Set-NBCircuit {
 	[CmdletBinding()]
 	param (
