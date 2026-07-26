@@ -1,3 +1,16 @@
+<#
+.SYNOPSIS
+Get Device by ID
+
+.DESCRIPTION
+Get Device by ID
+
+.PARAMETER Connection
+The connection object to use, if not using default.
+
+.PARAMETER id
+ID of object to return
+#>
 function Get-NBDevicePlatformByID {
 	[CmdletBinding()]
 	param (

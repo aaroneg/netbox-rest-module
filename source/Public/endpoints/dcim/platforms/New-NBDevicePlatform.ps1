@@ -1,3 +1,40 @@
+<#
+.SYNOPSIS
+Create device platform object
+
+.DESCRIPTION
+Create device platform object
+
+.PARAMETER name
+Name
+
+.PARAMETER parent
+Object ID of another platform that already exists, if applicable
+
+.PARAMETER manufacturer
+Object ID of manufacturer
+
+.PARAMETER config_template
+Object ID of config template
+
+.PARAMETER description
+Description
+
+.PARAMETER owner
+Object ID of owner
+
+.PARAMETER comments
+Comments
+
+.PARAMETER tags
+Array of tag IDs
+
+.PARAMETER custom_fields
+A hashtable of custom fields & IDs
+
+.PARAMETER Connection
+The connection object to use, if not using default.
+#>
 function New-NBDevicePlatform {
 	[CmdletBinding()]
 	param (

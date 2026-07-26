@@ -1,8 +1,65 @@
+<#
+.SYNOPSIS
+Create new power feed
+
+.DESCRIPTION
+Create new power feed
+
+.PARAMETER power_panel
+Power panel object ID
+
+.PARAMETER rack
+Rack object ID
+
+.PARAMETER name
+Name
+
+.PARAMETER status
+Status, autocomplete enabled
+
+.PARAMETER type
+primary or redundant
+
+.PARAMETER supply
+ac/dc
+
+.PARAMETER phase
+single-phase, three-phase
+
+.PARAMETER voltage
+Voltage
+
+.PARAMETER amperage
+Amperage
+
+.PARAMETER max_utilization
+Max utilization, as a percentage ex: 97
+
+.PARAMETER mark_connected
+Treat as connected
+
+.PARAMETER description
+Description
+
+.PARAMETER tenant
+Tenant object ID
+
+.PARAMETER owner
+Owner object ID
+
+.PARAMETER comments
+Comments
+
+.PARAMETER tags
+Array of tag IDs
+
+.PARAMETER custom_fields
+A hashtable of custom fields & IDs
+
+.PARAMETER Connection
+The connection object to use, if not using default.
+#>
 function New-NBPowerFeed {
-	<#
-	.SYNOPSIS
-	Adds a new device object to Netbox
-	#>
 	[CmdletBinding()]
 	param (
 		[Parameter(Mandatory=$true,Position=1)][int]$power_panel,
