@@ -1,27 +1,21 @@
 <#
 .SYNOPSIS
-Short description
+Change some aspect of a circuit group
 
 .DESCRIPTION
-Long description
+Change some aspect of a circuit group
 
 .PARAMETER Connection
 The connection object to use, if not using default.
 
 .PARAMETER id
-Parameter description
+ID of object to modify
 
 .PARAMETER key
-Parameter description
+The property name you'd like to modify
 
 .PARAMETER value
-Parameter description
-
-.EXAMPLE
-An example
-
-.NOTES
-General notes
+The new value you'd like to set
 #>
 function Set-NBCircuitGroup {
 	[CmdletBinding()]

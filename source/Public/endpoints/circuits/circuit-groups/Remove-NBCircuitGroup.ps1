@@ -10,12 +10,6 @@ The connection object to use, if not using default.
 
 .PARAMETER id
 Parameter description
-
-.EXAMPLE
-An example
-
-.NOTES
-General notes
 #>
 function Remove-NBCircuitGroup {
 	[CmdletBinding()]

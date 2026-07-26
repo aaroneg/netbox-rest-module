@@ -1,3 +1,22 @@
+<#
+.SYNOPSIS
+Short description
+
+.DESCRIPTION
+Long description
+
+.PARAMETER Connection
+Parameter description
+
+.PARAMETER id
+Parameter description
+
+.PARAMETER key
+Parameter description
+
+.PARAMETER value
+Parameter description
+#>
 function Set-NBCircuitTermination {
 	[CmdletBinding()]
 	param (

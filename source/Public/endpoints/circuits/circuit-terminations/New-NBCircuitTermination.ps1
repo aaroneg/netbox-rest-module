@@ -1,3 +1,49 @@
+<#
+.SYNOPSIS
+Create a circuit termination
+
+.DESCRIPTION
+Create a circuit termination
+
+.PARAMETER circuit
+The id of the circuit
+
+.PARAMETER term_side
+The side of the connection
+
+.PARAMETER site
+Site object ID
+
+.PARAMETER provider_network
+Provider ID number
+
+.PARAMETER port_speed
+Port speed in kbps
+
+.PARAMETER upstream_speed
+Port speed in kbps
+
+.PARAMETER xconnect_id
+Cross-connect identifier
+
+.PARAMETER pp_info
+patch panel / port information
+
+.PARAMETER description
+description
+
+.PARAMETER mark_connected
+Treat the termination as connected
+
+.PARAMETER tags
+A list of tag IDs
+
+.PARAMETER custom_fields
+A hash table of custom fields
+
+.PARAMETER Connection
+The connection object to use, if not using default.
+#>
 function New-NBCircuitTermination {
 	[CmdletBinding()]
 	param (

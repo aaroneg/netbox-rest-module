@@ -1,3 +1,22 @@
+<#
+.SYNOPSIS
+Delete a termination object by ID
+
+.DESCRIPTION
+Delete a termination object by ID
+
+.PARAMETER Connection
+The connection object to use, if not using default.
+
+.PARAMETER id
+The ID number of the termination to remove
+
+.EXAMPLE
+An example
+
+.NOTES
+General notes
+#>
 function Remove-NBCircuitTermination {
 	[CmdletBinding()]
 	param (

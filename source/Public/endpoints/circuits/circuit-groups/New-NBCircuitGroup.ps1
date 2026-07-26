@@ -22,12 +22,6 @@ A hash table of custom fields
 
 .PARAMETER Connection
 The connection object to use, if not using default.
-
-.EXAMPLE
-An example
-
-.NOTES
-General notes
 #>
 function New-NBCircuitGroup {
 	[CmdletBinding()]

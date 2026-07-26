@@ -16,7 +16,6 @@ Get-NBCircuitGroupAssignmentByCircuitGroup 1
 
 .NOTES
 No Notes
-
 #>
 function Get-NBCircuitGroupAssignmentByCircuitGroup {
 	[CmdletBinding()]
