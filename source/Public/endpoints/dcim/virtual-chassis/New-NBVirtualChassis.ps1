@@ -1,3 +1,37 @@
+<#
+.SYNOPSIS
+Create virtual chassis object
+
+.DESCRIPTION
+Create virtual chassis object
+
+.PARAMETER name
+Name
+
+.PARAMETER domain
+Domain
+
+.PARAMETER master
+Object ID of a device that is already in the virtual chassis
+
+.PARAMETER description
+Description
+
+.PARAMETER owner
+Object ID of the owner
+
+.PARAMETER comments
+Comments
+
+.PARAMETER tags
+Array of tag IDs
+
+.PARAMETER custom_fields
+A hashtable of custom fields & IDs
+
+.PARAMETER Connection
+The connection object to use, if not using default.
+#>
 function New-NBVirtualChassis {
 	[CmdletBinding()]
 	param (

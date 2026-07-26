@@ -1,3 +1,16 @@
+<#
+.SYNOPSIS
+Get device types containing a string
+
+.DESCRIPTION
+Get device types containing a string
+
+.PARAMETER Connection
+The connection object to use, if not using default.
+
+.PARAMETER name
+String to look for in a 'contains' query
+#>
 function Find-NBSitesContainingName {
 	[CmdletBinding()]
 	param (

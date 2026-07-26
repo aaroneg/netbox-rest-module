@@ -1,3 +1,22 @@
+<#
+.SYNOPSIS
+Change properties of an object
+
+.DESCRIPTION
+Change properties of an object
+
+.PARAMETER Connection
+The connection object to use, if not using default.
+
+.PARAMETER id
+Object ID to change
+
+.PARAMETER key
+What field should be changed?
+
+.PARAMETER value
+What is the new value?
+#>
 function Set-NBSite {
 	[CmdletBinding()]
 	param (
@@ -6,7 +25,7 @@ function Set-NBSite {
 		[Parameter(Mandatory=$true,Position=1)][string]
 			[ValidateSet('name','slug','status','region','group','tenant','facility',
 			'time_zone','description','physical_address','shipping_address','latitude',
-			'longitude','comments','asns','tags','custom_fields')]
+			'longitude','owner','comments','asns','tags','custom_fields')]
 			$key,
 		[Parameter(Mandatory=$true,Position=2)][string]$value
 	)

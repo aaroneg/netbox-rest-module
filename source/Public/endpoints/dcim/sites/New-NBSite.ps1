@@ -1,3 +1,64 @@
+<#
+.SYNOPSIS
+Create a new site object
+
+.DESCRIPTION
+Create a new site object
+
+.PARAMETER name
+Name
+
+.PARAMETER status
+Lifecycle status, autocomplete enabled
+
+.PARAMETER region
+Object ID for region
+
+.PARAMETER group
+Object ID for site group
+
+.PARAMETER tenant
+Object ID for tenant
+
+.PARAMETER facility
+Facility name / description
+
+.PARAMETER time_zone
+Time Zone ex: Africa/Abidjan
+
+.PARAMETER description
+Description
+
+.PARAMETER physical_address
+Physical address
+
+.PARAMETER shipping_address
+Address for shipping
+
+.PARAMETER latitude
+Latitude
+
+.PARAMETER longitude
+Longitude
+
+.PARAMETER owner
+Object ID of Owner
+
+.PARAMETER comments
+Comments
+
+.PARAMETER asns
+Array of ASN object IDs
+
+.PARAMETER tags
+Array of tag IDs
+
+.PARAMETER custom_fields
+Parameter description
+
+.PARAMETER Connection
+A hashtable of custom fields & IDs
+#>
 function New-NBSite {
 	[CmdletBinding()]
 	param (
