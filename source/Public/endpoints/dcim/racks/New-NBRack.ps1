@@ -1,3 +1,100 @@
+<#
+.SYNOPSIS
+Create rack object
+
+.DESCRIPTION
+Create rack object
+
+.PARAMETER name
+Name
+
+.PARAMETER facility_id
+Facility identifier string
+
+.PARAMETER site
+Object ID for site
+
+.PARAMETER location
+Object ID for location
+
+.PARAMETER tenant
+Object ID for tenant
+
+.PARAMETER status
+Status, autocomplete enabled
+
+.PARAMETER role
+Object ID for role
+
+.PARAMETER serial
+Serial
+
+.PARAMETER asset_tag
+Asset tag
+
+.PARAMETER rack_type
+Object ID for rack type
+
+.PARAMETER form_factor
+Rack form factor
+
+.PARAMETER width
+Width
+
+.PARAMETER u_height
+Rack height in rack units
+
+.PARAMETER starting_unit
+Lowest numbered rack unit
+
+.PARAMETER weight
+Weight in whatever unit
+
+.PARAMETER max_weight
+Maximum weight in whatever unit
+
+.PARAMETER weight_unit
+g, kg, lb, oz
+
+.PARAMETER desc_units
+$true if the lowest numbered rack unit is at the top
+
+.PARAMETER outer_width
+Outside width
+
+.PARAMETER outer_height
+Outside height
+
+.PARAMETER outer_depth
+Outside depth
+
+.PARAMETER outer_unit
+mm, in
+
+.PARAMETER mounting_depth
+measured in mm
+
+.PARAMETER airflow
+Air flow direction, autocomplete enabled
+
+.PARAMETER description
+Description
+
+.PARAMETER owner
+Object ID for owner
+
+.PARAMETER comments
+Comments
+
+.PARAMETER tags
+Array of tag IDs
+
+.PARAMETER custom_fields
+A hashtable of custom fields & IDs
+
+.PARAMETER Connection
+The connection object to use, if not using default.
+#>
 function New-NBRack {
 	[CmdletBinding()]
 	param (
