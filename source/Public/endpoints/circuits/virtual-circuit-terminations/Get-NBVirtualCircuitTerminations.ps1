@@ -1,3 +1,13 @@
+<#
+.SYNOPSIS
+Get objects
+
+.DESCRIPTION
+Get objects
+
+.PARAMETER Connection
+The connection object to use, if not using default.
+#>
 function Get-NBVirtualCircuitTerminations {
 	[CmdletBinding()]
 	param (

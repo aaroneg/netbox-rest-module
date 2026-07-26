@@ -1,3 +1,22 @@
+<#
+.SYNOPSIS
+Get object by ID
+
+.DESCRIPTION
+Get object by ID
+
+.PARAMETER Connection
+The connection object to use, if not using default.
+
+.PARAMETER id
+ID of the object to retrieve
+
+.EXAMPLE
+An example
+
+.NOTES
+General notes
+#>
 function Get-NBVirtualCircuitTypeByID {
 	[CmdletBinding()]
 	param (

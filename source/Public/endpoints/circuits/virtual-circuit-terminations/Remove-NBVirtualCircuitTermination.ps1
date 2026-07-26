@@ -1,3 +1,22 @@
+<#
+.SYNOPSIS
+Remove termination object
+
+.DESCRIPTION
+Remove termination object
+
+.PARAMETER Connection
+The connection object to use, if not using default.
+
+.PARAMETER id
+ID of object
+
+.EXAMPLE
+An example
+
+.NOTES
+General notes
+#>
 function Remove-NBVirtualCircuitTermination {
 	[CmdletBinding()]
 	param (

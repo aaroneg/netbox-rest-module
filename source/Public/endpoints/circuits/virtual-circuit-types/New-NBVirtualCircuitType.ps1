@@ -1,3 +1,34 @@
+<#
+.SYNOPSIS
+New virtual circuit type
+
+.DESCRIPTION
+New virtual circuit type
+
+.PARAMETER name
+Name of circuit type
+
+.PARAMETER color
+Hex color code, do not prefix with `#`
+
+.PARAMETER description
+A description
+
+.PARAMETER owner
+An owner object ID
+
+.PARAMETER comments
+commects
+
+.PARAMETER tags
+list of tag ID[s]
+
+.PARAMETER custom_fields
+hashtable of custom fields
+
+.PARAMETER Connection
+The connection object to use, if not using default.
+#>
 function New-NBVirtualCircuitType {
 	[CmdletBinding()]
 	param (

@@ -1,3 +1,31 @@
+<#
+.SYNOPSIS
+New Netbox object
+
+.DESCRIPTION
+New Netbox object
+
+.PARAMETER virtual_circuit
+virtual circuit ID
+
+.PARAMETER role
+The termination role
+
+.PARAMETER interface
+interface object ID
+
+.PARAMETER description
+object description
+
+.PARAMETER tags
+list of tag ID[s]
+
+.PARAMETER custom_fields
+hashtable of custom fields
+
+.PARAMETER Connection
+The connection object to use, if not using default.
+#>
 function New-NBVirtualCircuitTermination {
 	[CmdletBinding()]
 	param (

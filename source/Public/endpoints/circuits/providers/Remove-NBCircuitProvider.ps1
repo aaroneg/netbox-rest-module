@@ -1,3 +1,16 @@
+<#
+.SYNOPSIS
+Remove a circuit provider object by ID
+
+.DESCRIPTION
+Remove a circuit provider object by ID
+
+.PARAMETER Connection
+The connection object to use, if not using default.
+
+.PARAMETER id
+The object ID to remove
+#>
 function Remove-NBCircuitProvider {
 	[CmdletBinding()]
 	param (

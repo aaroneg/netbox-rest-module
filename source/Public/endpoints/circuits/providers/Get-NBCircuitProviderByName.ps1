@@ -1,3 +1,16 @@
+<#
+.SYNOPSIS
+Get circuit provider by name
+
+.DESCRIPTION
+Get circuit provider by name
+
+.PARAMETER Connection
+The connection object to use, if not using default.
+
+.PARAMETER name
+The name of the circuit provider
+#>
 function Get-NBCircuitProviderByName {
 	[CmdletBinding()]
 	param (

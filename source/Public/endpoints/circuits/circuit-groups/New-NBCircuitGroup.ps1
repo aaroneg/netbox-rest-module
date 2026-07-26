@@ -14,6 +14,12 @@ description
 .PARAMETER tenant
 Tenant object ID
 
+.PARAMETER owner
+Owner object ID
+
+.PARAMETER comments
+Any comments you'd like to add
+
 .PARAMETER tags
 A list of tag IDs as an array
 
@@ -29,6 +35,8 @@ function New-NBCircuitGroup {
 		[Parameter(Mandatory=$true,Position=0)][string]$name,
 		[Parameter(Mandatory=$false)][string]$description,
 		[Parameter(Mandatory=$false)][int]$tenant,
+		[Parameter(Mandatory=$false)][int]$owner,
+		[Parameter(Mandatory=$false)][string]$comments,
 		[Parameter(Mandatory=$false)][string[]]$tags,
 		[Parameter(Mandatory=$false)][hashtable]$custom_fields,
 		[Parameter(Mandatory=$false)][object]$Connection=$Script:Connection
