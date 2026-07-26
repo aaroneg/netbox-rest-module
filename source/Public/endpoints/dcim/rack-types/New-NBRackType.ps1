@@ -1,3 +1,73 @@
+<#
+.SYNOPSIS
+Create rack type
+
+.DESCRIPTION
+Create rack type
+
+.PARAMETER manufacturer
+Object ID of manufacturer
+
+.PARAMETER model
+Object ID of model
+
+.PARAMETER description
+Description
+
+.PARAMETER form_factor
+Form factor of rack type
+
+.PARAMETER width
+Width in inches, autocomplete enabled
+
+.PARAMETER u_height
+Height measured in rack units
+
+.PARAMETER starting_unit
+Lowest numbered rack unit
+
+.PARAMETER desc_units
+$true if unit numbers are numberd top-to-bottom instead of the lowest number being nearest the floor
+
+.PARAMETER outer_width
+outer width
+
+.PARAMETER outer_height
+outer height
+
+.PARAMETER outer_depth
+outer depth
+
+.PARAMETER outer_unit
+mm or in
+
+.PARAMETER weight
+Number of weight units
+
+.PARAMETER max_weight
+Maximum number of weight units
+
+.PARAMETER weight_unit
+kg, g, lb, oz
+
+.PARAMETER mounting_depth
+Mounting depth, in mm
+
+.PARAMETER owner
+Object ID for owner
+
+.PARAMETER comments
+Comments
+
+.PARAMETER tags
+Array of tag IDs
+
+.PARAMETER custom_fields
+A hashtable of custom fields & IDs
+
+.PARAMETER Connection
+The connection object to use, if not using default.
+#>
 function New-NBRackType {
 	[CmdletBinding()]
 	param (

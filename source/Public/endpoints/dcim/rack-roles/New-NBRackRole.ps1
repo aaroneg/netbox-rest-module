@@ -1,3 +1,34 @@
+<#
+.SYNOPSIS
+Create rack role
+
+.DESCRIPTION
+Create rack role
+
+.PARAMETER name
+Name
+
+.PARAMETER color
+Hex code for color, do not prepend '#' ex: ffffff
+
+.PARAMETER description
+Description
+
+.PARAMETER owner
+Object ID of owner
+
+.PARAMETER comments
+Comments
+
+.PARAMETER tags
+Array of tag IDs
+
+.PARAMETER custom_fields
+A hashtable of custom fields & IDs
+
+.PARAMETER Connection
+The connection object to use, if not using default.
+#>
 function New-NBRackRole {
 	[CmdletBinding()]
 	param (
