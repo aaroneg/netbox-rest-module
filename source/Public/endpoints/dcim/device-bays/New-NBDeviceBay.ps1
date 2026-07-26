@@ -35,11 +35,8 @@ A hashtable of custom fields & IDs
 .PARAMETER Connection
 The connection object to use, if not using default.
 
-.EXAMPLE
-An example
-
 .NOTES
-General notes
+The device type for the device you try to add a bay to must already be set as a 'parent' device instead of null or child
 #>
 function New-NBDeviceBay {
 	[CmdletBinding()]
