@@ -2,10 +2,6 @@ function New-NBCable {
 	[CmdletBinding()]
 	param (
 		[Parameter(Mandatory=$false)]
-			[ValidateSet(
-				'cat3','cat5','cat5e','cat6','cat6a','cat7','cat7a','cat8','dac-active','dac-passive','mrj21-trunk','coaxial','mmf',
-				'mmf-om1','mmf-om2','mmf-om3','mmf-om4','mmf-om5','smf','smf-os1','smf-os2','aoc','usb','power'
-			)]
 			[string]$type,
 		[Parameter(Mandatory=$true,Position=0)][hashtable[]]$a_terminations,
 		[Parameter(Mandatory=$true,Position=1)][hashtable[]]$b_terminations,
