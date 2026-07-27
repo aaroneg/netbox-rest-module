@@ -4,7 +4,7 @@ function Set-NBVMCluster {
 		[Parameter(Mandatory=$false)][object]$Connection=$Script:Connection,
 		[Parameter(Mandatory=$true,Position=0)][int]$id,
 		[Parameter(Mandatory=$true,Position=1)][string]
-			[ValidateSet('name','type','group','tenant','site','comments','tags','custom_fields')]
+			[ValidateSet('name','type','group','status','tenant','scope_type','scope_id','description','owner','comments','tags','custom_fields')]
 			$key,
 		[Parameter(Mandatory=$true,Position=2)][string]$value
 	)

@@ -5,7 +5,8 @@ function Set-NBVLAN {
 		[Parameter(Mandatory=$true,Position=0)][int]$id,
 		[Parameter(Mandatory=$true,Position=1)][string]
 			[ValidateSet('site','group','vid','name','tenant','status',
-			'role','description','comments','tags','custom_fields')]
+			'role','description','qinq_role','qinq_svlan','owner',
+			'comments','tags','custom_fields')]
 			$key,
 		[Parameter(Mandatory=$true,Position=2)][string]$value
 	)
