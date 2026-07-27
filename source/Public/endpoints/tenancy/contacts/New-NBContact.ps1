@@ -25,7 +25,7 @@ function New-NBContact {
 	#>
 	[CmdletBinding()]
 	param (
-		[Parameter(Mandatory=$false)][int]$group,
+		[Parameter(Mandatory=$false)][int[]]$groups,
 		[Parameter(Mandatory=$true,Position=0)][string]$name,
 		[Parameter(Mandatory=$false)][string]$title,
 		[Parameter(Mandatory=$false)][string]$phone,
@@ -33,6 +33,7 @@ function New-NBContact {
 		[Parameter(Mandatory=$false)][string]$address,
 		[Parameter(Mandatory=$false)][string]$link,
 		[Parameter(Mandatory=$false)][string]$description,
+		[Parameter(Mandatory=$false)][int]$owner,
 		[Parameter(Mandatory=$false)][string]$comments,
 		[Parameter(Mandatory=$false)][string[]]$tags,
 		[Parameter(Mandatory=$false)][hashtable]$custom_fields,

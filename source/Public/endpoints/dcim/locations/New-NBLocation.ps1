@@ -30,7 +30,7 @@ Description
 Array of tag IDs
 
 .PARAMETER custom_fields
-A hashtable of custom fields & IDs
+A hashtable of custom fields & values
 
 .PARAMETER owner
 Owner object ID

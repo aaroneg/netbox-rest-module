@@ -4,8 +4,9 @@ function Set-NBVM {
 		[Parameter(Mandatory=$false)][object]$Connection=$Script:Connection,
 		[Parameter(Mandatory=$true,Position=0)][int]$id,
 		[Parameter(Mandatory=$true,Position=1)][string]
-			[ValidateSet('name','status','site','cluster','device','serial','role','tenant','platform','primary_ip4','primary_ip6',
-			'vcpus','memory','disk','comments','description','config_template','local_context_data','tags','custom_fields')]
+			[ValidateSet('name','virtual_machine_type','role','status','start_on_boot','site','cluster','device',
+			'platform','primary_ip4','primary_ip6','vcpus','memory','disk','description','serial','tenant',
+			'owner','comments','tags','local_context_data','config_template','custom_fields')]
 			$key,
 		[Parameter(Mandatory=$true,Position=2)][string]$value
 	)

@@ -21,7 +21,7 @@ Comments
 Array of tag IDs
 
 .PARAMETER custom_fields
-A hashtable of custom fields & IDs
+A hashtable of custom fields & values
 
 .PARAMETER Connection
 The connection object to use, if not using default.

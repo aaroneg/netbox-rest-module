@@ -57,7 +57,7 @@ Array of tag IDs
 Parameter description
 
 .PARAMETER Connection
-A hashtable of custom fields & IDs
+A hashtable of custom fields & values
 #>
 function New-NBSite {
 	[CmdletBinding()]

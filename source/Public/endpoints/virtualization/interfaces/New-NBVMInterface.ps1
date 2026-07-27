@@ -35,14 +35,17 @@ function New-NBVMInterface {
 		[Parameter(Mandatory=$false)][int]$parent,
 		[Parameter(Mandatory=$false)][int]$bridge,
 		[Parameter(Mandatory=$false)][int]$mtu,
-		[Parameter(Mandatory=$false)][string]$mac_address,
+		[Parameter(Mandatory=$false)][string]$primary_mac_address,
 		[Parameter(Mandatory=$false)][string]$description,
 		[Parameter(Mandatory=$false)][string]
 		[ValidateSet('access','tagged','tagged-all')]
 		$mode,
 		[Parameter(Mandatory=$false)][int]$untagged_vlan,
 		[Parameter(Mandatory=$false)][int[]]$tagged_vlans,
+		[Parameter(Mandatory=$false)][int]$qinq_svlan,
+		[Parameter(Mandatory=$false)][int]$vlan_translation_policy,
 		[Parameter(Mandatory=$false)][int]$vrf,
+		[Parameter(Mandatory=$false)][int]$owner,
 		[Parameter(Mandatory=$false)][string[]]$tags,
 		[Parameter(Mandatory=$false)][hashtable]$custom_fields,
 		[Parameter(Mandatory=$false)][object]$Connection=$Script:Connection

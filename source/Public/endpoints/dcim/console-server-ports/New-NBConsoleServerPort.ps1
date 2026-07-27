@@ -36,7 +36,7 @@ Object ID of the owner
 Array of tag IDs
 
 .PARAMETER custom_fields
-A hashtable of custom fields & IDs
+A hashtable of custom fields & values
 
 .PARAMETER Connection
 The connection object to use, if not using default.
@@ -51,7 +51,7 @@ function New-NBConsoleServerPort {
 		[Parameter(Mandatory=$false)][string]$type,
 		[Parameter(Mandatory=$false)][int][ValidateSet(1200,2400,4800,9600,19200,38400,57600,115200)]$speed,
 		[Parameter(Mandatory=$false)][string]$description,
-		[Parameter(Mandatory=$false)][switch]$mark_connected,
+		[Parameter(Mandatory=$false)][bool]$mark_connected,
 		[Parameter(Mandatory=$false)][int]$owner,
 		[Parameter(Mandatory=$false)][string[]]$tags,
 		[Parameter(Mandatory=$false)][hashtable]$custom_fields,

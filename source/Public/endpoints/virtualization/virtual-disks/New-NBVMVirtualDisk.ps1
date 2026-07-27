@@ -5,6 +5,7 @@ function New-NBVMVirtualDisk {
 		[Parameter(Mandatory=$true,Position=1)][string]$name,
 		[Parameter(Mandatory=$false)][string]$description,
 		[Parameter(Mandatory=$true,Position=2)][int]$size,
+		[Parameter(Mandatory=$false)][int]$owner,
 		[Parameter(Mandatory=$false)][string[]]$tags,
 		[Parameter(Mandatory=$false)][hashtable]$custom_fields,
 		[Parameter(Mandatory=$false)][object]$Connection=$Script:Connection

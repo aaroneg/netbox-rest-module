@@ -1,106 +1,106 @@
+<#
+.SYNOPSIS
+Create a Virtual Machine
+
+.DESCRIPTION
+Create a Virtual Machine
+
+.PARAMETER name
+Description
+
+.PARAMETER virtual_machine_type
+Object ID for virtual machine type
+
+.PARAMETER role
+Object ID for 'device' role - must be a role that's been marked as eligible for virtual machines
+
+.PARAMETER status
+Lifecycle status of the VM, autocomplete enabled
+
+.PARAMETER start_on_boot
+$true if the vm is configured to start on boot
+
+.PARAMETER site
+Object ID for site - Required if you're not specifying a cluster
+
+.PARAMETER cluster
+Object ID for virtual machine cluster - Required if you're not specifying a site
+
+.PARAMETER device
+Object ID for device representing hypervisor
+
+.PARAMETER platform
+Object ID for device platform/OS
+
+.PARAMETER vcpus
+vCPU number - expressable a solid numbers or decimal ex: 1.5
+
+.PARAMETER memory
+Memory in MB
+
+.PARAMETER disk
+Disk in MB
+
+.PARAMETER description
+Description
+
+.PARAMETER serial
+Serial number
+
+.PARAMETER tenant
+Object ID for tenant
+
+.PARAMETER owner
+Object ID for owner
+
+.PARAMETER comments
+Comments
+
+.PARAMETER tags
+Array of tag IDs
+
+.PARAMETER local_context_data
+JSON string for local context data
+
+.PARAMETER config_template
+Object ID for config template
+
+.PARAMETER custom_fields
+A hashtable of custom fields & values
+
+.PARAMETER Connection
+The connection object to use, if not using default.
+#>
 function New-NBVM {
-	<#
-	.SYNOPSIS
-	Adds a new virtual machine object to Netbox
-	.PARAMETER name
-	The name of the virtual machine 
-	.PARAMETER cluster
-	The ID of the vm cluster object
-	.PARAMETER status
-	The status of the new vm
-	.PARAMETER site
-	The ID of the site for the object
-	.PARAMETER device
-	The ID of a device in the cluster this object is pinned to
-	.PARAMETER role
-	Role object ID
-	.PARAMETER tenant
-	Tenant object ID
-	.PARAMETER platform 
-	Platform object ID
-	.PARAMETER primary_ip4
-	IPv4 object ID
-	.PARAMETER primary_ip6
-	IPv6 object ID
-	.PARAMETER vcpus
-	Number of vCPUs assigned to this VM
-	.PARAMETER memory
-	Memory measured in MB
-	.PARAMETER disk
-	Disk space measured in GB
-	.PARAMETER description
-	A description of the object.
-	.PARAMETER comments
-	Any comments you would like to add
-	.PARAMETER local_context_data
-	A json string with local context data for the object.
-	.PARAMETER Connection
-	Connection object to use
-	#>
 	[CmdletBinding(DefaultParameterSetName = 'Cluster')]
+	[Alias('New-NBVirtualMachine')]
 	param (
-		[Parameter(Mandatory=$true,Position=0,ParameterSetName='Cluster')]
-		[Parameter(Mandatory=$true,Position=0,ParameterSetName='Site')]
-			[string]$name,
-		[Parameter(Mandatory=$false,ParameterSetName='Cluster')]
-		[Parameter(Mandatory=$false,ParameterSetName='Site')]
-			[ValidateSet('offline','active','planned','staged','failed', 'decommissioning')]
+		[Parameter(Mandatory=$true,Position=0)][string]$name,
+		[Parameter(Mandatory=$false)][int]$virtual_machine_type,
+		[Parameter(Mandatory=$false)][int]$role,
+		[Parameter(Mandatory=$true,Position=1)]
+			[ValidateSet('offline','active','planned','staged','failed','decommissioning','paused')]
 			[string]$status,
-		[Parameter(Mandatory=$false,ParameterSetName='Cluster')]
-		[Parameter(Mandatory=$true,ParameterSetName='Site')]
+		[Parameter(Mandatory=$false)][bool]$start_on_boot,
+		[Parameter(Mandatory=$false,ParameterSetName='Cluster')][Parameter(Mandatory=$true,ParameterSetName='Site')]
 			[int]$site,
-		[Parameter(Mandatory=$true,Position=1,ParameterSetName='Cluster')]
-		[Parameter(Mandatory=$false,Position=1,ParameterSetName='Site')]
+		[Parameter(Mandatory=$true,Position=2,ParameterSetName='Cluster')][Parameter(Mandatory=$false,Position=2,ParameterSetName='Site')]
 			[int]$cluster,
-		[Parameter(Mandatory=$false,ParameterSetName='Cluster')]
-		[Parameter(Mandatory=$false,ParameterSetName='Site')]
-			[int]$device,
-		[Parameter(Mandatory=$false,ParameterSetName='Cluster')]
-		[Parameter(Mandatory=$false,ParameterSetName='Site')]
-			[string]$serial,
-		[Parameter(Mandatory=$false,ParameterSetName='Cluster')]
-		[Parameter(Mandatory=$false,ParameterSetName='Site')]
-			[int]$role,
-		[Parameter(Mandatory=$false,ParameterSetName='Cluster')]
-		[Parameter(Mandatory=$false,ParameterSetName='Site')]
-			[int]$tenant,
-		[Parameter(Mandatory=$false,ParameterSetName='Cluster')]
-		[Parameter(Mandatory=$false,ParameterSetName='Site')]
-			[int]$platform,
-		# Genuinely don't understand why the form asks for this on a new vm, not like there's an IP already associated
-		# that you could assign as primary
-		# [Parameter(Mandatory=$false)][int]$primary_ip4,
-		# [Parameter(Mandatory=$false)][int]$primary_ip6,
-		[Parameter(Mandatory=$false,ParameterSetName='Cluster')]
-		[Parameter(Mandatory=$false,ParameterSetName='Site')]
-			[double]$vcpus,
-		[Parameter(Mandatory=$false,ParameterSetName='Cluster')]
-		[Parameter(Mandatory=$false,ParameterSetName='Site')]
-			[int]$memory,
-		[Parameter(Mandatory=$false,ParameterSetName='Cluster')]
-		[Parameter(Mandatory=$false,ParameterSetName='Site')]
-			[int]$disk,
-		[Parameter(Mandatory=$false,ParameterSetName='Cluster')]
-		[Parameter(Mandatory=$false,ParameterSetName='Site')]
-			[string]$description,
-		[Parameter(Mandatory=$false,ParameterSetName='Cluster')]
-		[Parameter(Mandatory=$false,ParameterSetName='Site')]
-			[string]$comments,
-		[Parameter(Mandatory=$false,ParameterSetName='Cluster')]
-		[Parameter(Mandatory=$false,ParameterSetName='Site')]
-			[string]$config_template,			
-		[Parameter(Mandatory=$false,ParameterSetName='Cluster')]
-		[Parameter(Mandatory=$false,ParameterSetName='Site')]
-			[string]$local_context_data,
-		[Parameter(Mandatory=$false,ParameterSetName='Cluster')]
-		[Parameter(Mandatory=$false,ParameterSetName='Site')]
-			[string[]]$tags,
-		[Parameter(Mandatory=$false,ParameterSetName='Cluster')]
-		[Parameter(Mandatory=$false,ParameterSetName='Site')]
-			[hashtable]$custom_fields,
-		[Parameter(Mandatory=$false,ParameterSetName='Cluster')]
-		[Parameter(Mandatory=$false,ParameterSetName='Site')]
-			[object]$Connection=$Script:Connection
+		[Parameter(Mandatory=$false)][int]$device,
+		[Parameter(Mandatory=$false)][int]$platform,
+		[Parameter(Mandatory=$false)][double]$vcpus,
+		[Parameter(Mandatory=$false)][int]$memory,
+		[Parameter(Mandatory=$false)][int]$disk,
+		[Parameter(Mandatory=$false)][string]$description,
+		[Parameter(Mandatory=$false)][string]$serial,
+		[Parameter(Mandatory=$false)][int]$tenant,
+		[Parameter(Mandatory=$false)][int]$owner,
+		[Parameter(Mandatory=$false)][string]$comments,
+		[Parameter(Mandatory=$false)][int[]]$tags,
+		[Parameter(Mandatory=$false)][string]$local_context_data,
+		[Parameter(Mandatory=$false)][string]$config_template,
+		[Parameter(Mandatory=$false)][hashtable]$custom_fields,
+		[Parameter(Mandatory=$false)][object]$Connection=$Script:Connection
 	)
 	$PostJson = createPostJson -Fields ($PSBoundParameters.GetEnumerator())
 	$restParams=@{

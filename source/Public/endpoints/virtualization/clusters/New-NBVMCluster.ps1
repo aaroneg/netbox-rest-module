@@ -30,8 +30,10 @@ function New-NBVMCluster {
 			[ValidateSet('planned','staging','active','decommissioning','offline')]
 			$status="active",
 		[Parameter(Mandatory=$false)][int]$tenant,
-		[Parameter(Mandatory=$false)][int]$site,
+		[Parameter(Mandatory=$false)][ValidateSet('dcim.location','dcim.region','dcim.site','dcim.sitegroup')][string]$scope_type,
+		[Parameter(Mandatory=$false)][int]$scope_id,
 		[Parameter(Mandatory=$false)][string]$description,
+		[Parameter(Mandatory=$false)][int]$owner,
 		[Parameter(Mandatory=$false)][string]$comments,
 		[Parameter(Mandatory=$false)][string[]]$tags,
 		[Parameter(Mandatory=$false)][hashtable]$custom_fields,
