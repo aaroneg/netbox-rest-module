@@ -18,4 +18,4 @@ remove-module netbox-rest-module
 import-module netbox-rest-module -force
 Get-Module netbox-rest-module
 cd $startDir
-. .\init.ps1
+if("$startDir.FullName" -ne "$PSScriptRoot.FullName"){. .\init.ps1}
