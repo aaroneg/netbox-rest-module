@@ -1,6 +1,19 @@
 # Changelog
 
-## 1.0.0
+## 1.0.0-beta
+
+* Add some opinionated convenience functions to save configuration for Netbox to disk, and also to manage the credential in a slightly better way than writing it unencrypted to disk. You don't have to use them, but if you don't you have to handle more things yourself.
+  * Set-NBCredential
+  * Get-NBCredential
+  * New-NBConnectionFromSecretVault
+  * Write-NBConfig
+  * Read-NBConfig
+
+The *-NBConfig commands expect to be given a folder path to save the config file to, which will be saved as `nbconfig.xml`, the file name is not user-configurable. The Write-NBConfig command is expected to be run interactively as part of an environment setup. Read-NBConfig is meant to be used as a part of a script run, say for a scheduled task run.
+
+The *-NBCredential and New-NBConnectionFromSecretVault commands are similar. They are opinionated in that they will set up and use the `Microsoft.PowerShell.SecretManagement` module to store passwords in a reusable way without writing passwords to disk in plain text. Naturally as soon as I do that, they 'archive' the project [Issue 247](https://github.com/PowerShell/SecretManagement/issues/247), saying that they're committed to fixing security problems. This was a stupid decision, because as much as Microsoft might want to believe that passwords (like api keys) are on their way out, that just isn't realistic any time soon -  and managing passwords without just leaving them in a plaintext file called "passwords.txt" is still a legitimate need. Not everyone's company is willing to spend money on a more complete credential management solution. I will keep looking around for a supported replacement.
+
+## 1.0.0-alpha
 
 * This release targets changes from Netbox 4.6
 * implemented (and mandated) Netbox v2 keys, rating the major version bump
