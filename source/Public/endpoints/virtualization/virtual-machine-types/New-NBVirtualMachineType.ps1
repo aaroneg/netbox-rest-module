@@ -43,7 +43,6 @@ General notes
 #>
 function New-NBVirtualMachineType {
 	[CmdletBinding(DefaultParameterSetName = 'Cluster')]
-	[Alias('New-NBVirtualMachine')]
 	param (
 		[Parameter(Mandatory=$true,Position=0)][string]$name,
 		[Parameter(Mandatory=$false)][int]$default_platform,
