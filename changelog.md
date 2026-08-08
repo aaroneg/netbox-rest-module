@@ -17,7 +17,7 @@ The *-NBCredential and New-NBConnectionFromSecretVault commands are similar. The
 
 * This release targets changes from Netbox 4.6
 * implemented (and mandated) Netbox v2 keys, rating the major version bump
-* implement Get-NBAuthenticationCheck
+* implement Get-NBAuthenticationCheck - returns information about the user tied to the API key
 * Netbox has made pretty major changes, and this release attempts to track them.
   * "Owner" field added to a large amount of fields
   * Some objects now support connections to multiple field types, so the behavior change is breaking.
