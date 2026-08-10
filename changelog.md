@@ -3,15 +3,19 @@
 ## 1.0.0-beta
 
 * Add some opinionated convenience functions to save configuration for Netbox to disk, and also to manage the credential in a slightly better way than writing it unencrypted to disk. You don't have to use them, but if you don't you have to handle more things yourself.
-  * Set-NBCredential
-  * Get-NBCredential
-  * New-NBConnectionFromSecretVault
-  * Write-NBConfig
-  * Read-NBConfig
+
+  * Write-NBConfig - Write an XML file into a given folder for use later - saves you the trouble of creating a config yourself and serializing it to disk
+  * Read-NBConfig - Write an XML file into a given folder for use
+  * Remove-NBConfig - Honestly this one just deletes that XML file, it's only here because I like creating cmdlets in sets of 3.
+  * Set-NBCredential - Store credentials using the SecretStore module using whatver config you have loaded
+  * Remove-NBCredential - Convenience method to delete the secret in case you fat-fingered or rotated it
+  * New-NBConnectionFromSecretVault - Create connection using the configuration and secret you have loaded
 
 The *-NBConfig commands expect to be given a folder path to save the config file to, which will be saved as `nbconfig.xml`, the file name is not user-configurable. The Write-NBConfig command is expected to be run interactively as part of an environment setup. Read-NBConfig is meant to be used as a part of a script run, say for a scheduled task run.
 
 The *-NBCredential and New-NBConnectionFromSecretVault commands are similar. They are opinionated in that they will set up and use the `Microsoft.PowerShell.SecretManagement` module to store passwords in a reusable way without writing passwords to disk in plain text. Naturally as soon as I do that, they 'archive' the project [Issue 247](https://github.com/PowerShell/SecretManagement/issues/247), saying that they're committed to fixing security problems. This was a stupid decision, because as much as Microsoft might want to believe that passwords (like api keys) are on their way out, that just isn't realistic any time soon -  and managing passwords without just leaving them in a plaintext file called "passwords.txt" is still a legitimate need. Not everyone's company is willing to spend money on a more complete credential management solution. I will keep looking around for a supported replacement.
+
+[netbox-rest-module-demo](https://github.com/aaroneg/netbox-rest-module-demo) pretty much always tracks anything pushed to this repository as it's how I sanity check changes to the module. It is the reference implementation for how to use the module and how I tend to write projects that use it.
 
 ## 1.0.0-alpha
 
