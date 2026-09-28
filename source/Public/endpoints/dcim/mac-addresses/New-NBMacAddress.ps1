@@ -36,7 +36,7 @@ function New-NBMacAddress {
 	[CmdletBinding()]
 	param (
 		[Parameter(Mandatory=$true,Position=0)][string]$mac_address,
-		[Parameter(Mandatory=$true,Position=1)][ValidateSet('dcim.interface','virtualization.vminterface')][int]$assigned_object_type,
+		[Parameter(Mandatory=$true,Position=1)][ValidateSet('dcim.interface','virtualization.vminterface')][string]$assigned_object_type,
 		[Parameter(Mandatory=$true,Position=2)][int]$assigned_object_id,
 		[Parameter(Mandatory=$false)][string]$description,
 		[Parameter(Mandatory=$false)][int]$owner,

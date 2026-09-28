@@ -1,6 +1,14 @@
 # Changelog
 
-## 1.0.0-beta
+## 1.0.2
+
+* Bugfix: New-NBMacAddress expected an int for `assigned_object_type` when it should have expected a string
+
+## 1.0.1
+
+* Bugfixes in Get-NBIPAddressForDeviceInterface and Get-NBIPAddressForVMInterface
+
+## 1.0.0
 
 * Add some opinionated convenience functions to save configuration for Netbox to disk, and also to manage the credential in a slightly better way than writing it unencrypted to disk. You don't have to use them, but if you don't you have to handle more things yourself.
 

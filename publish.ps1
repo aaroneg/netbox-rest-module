@@ -6,5 +6,6 @@ $publishModuleSplat = @{
     Repository = 'PSGallery'
 
 }
-Publish-Module @publishModuleSplat -NuGetApiKey (Read-Host -Prompt 'API Key')
-install-module netbox-rest-module -Scope CurrentUser -Force -Repository PSGallery
+
+Publish-Module @publishModuleSplat -NuGetApiKey (Read-Host -Prompt 'API Key') -Verbose -Debug
+install-module netbox-rest-module -Scope CurrentUser -Force -Repository PSGallery -AllowPrerelease
